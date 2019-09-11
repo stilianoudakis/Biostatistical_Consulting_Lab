@@ -1,0 +1,326 @@
+---
+title: "Data Exploration"
+author: "Spiro Stilianoudakis"
+date: "September 2, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Libraries
+
+```{r}
+library(openxlsx)
+#library(xlsx)
+library(MatchIt)
+library(Matching)
+library(survival)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(ggpubr)
+library(tidyr)
+```
+
+# Reading in Data
+
+```{r}
+setwd("C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107")
+
+thirtyday <- read.xlsx("Acute care CSI - 10-18-2017 - From 03-01-2009 to 02-28-2010-For-Abstract-CleanData-For Analysis-Final 1-16-2018.xlsx",
+                    sheet = "Data",
+                    startRow = 1,
+                    colNames = TRUE)
+dim(thirtyday) #2549   16
+```
+
+# Cleaning the Data
+
+```{r}
+
+names(thirtyday)
+
+#changing names of covariates
+names(thirtyday) <- c("Age", 
+                      "Gender",
+                      "Race",
+                      "Ethnicity",
+                      "Readmission", 
+                      "Length_of_stay",
+                      "Days_to_death",
+                      "Weeks_to_death",
+                      "Whole_Weeks_to_death",
+                      "Months_to_death",
+                      "Years_to_death",
+                      "ICD_code", 
+                      "Diagnostic_group", 
+                      "Diagnostic_Name", 
+                      "Death_within_30days_of_admission",
+                      "Severity_index")
+
+#add patient ID
+thirtyday$ID <- c(1:dim(thirtyday)[1])
+thirtyday <- thirtyday[,c(17,1:16)]
+
+#Removing patients that have days to death less than 30
+thirtyday <- thirtyday[which(thirtyday$Death_within_30days_of_admission=="No"),]
+
+#Evaluating patients that have days to death less than 30 
+#length(which(thirtyday$Days_to_death <= 30)) #194
+#d2d30 <- thirtyday[which(thirtyday$Days_to_death <= 30),]
+
+#Evaluating readmission status
+summary(thirtyday$Readmission)
+#two patients are missing readmission status
+#remove them
+thirtyday <- thirtyday[-which(is.na(thirtyday$Readmission)),]
+dim(thirtyday) #2387   17
+
+#converting days to death to months to death
+summary(thirtyday$Days_to_death)
+summary(thirtyday$Months_to_death)
+thirtyday$Months_to_death <- thirtyday$Days_to_death/30
+summary(thirtyday$Months_to_death)
+
+#Keeping only the necessary columns
+vars <- c("ID","Age","Gender","Race","Ethnicity","Readmission","Length_of_stay", "Months_to_death","Diagnostic_group","Severity_index")
+thirtyday <- thirtyday[,which(names(thirtyday) %in% vars)]
+dim(thirtyday) #2547   10
+head(thirtyday)
+
+#Changing the structure of variables
+
+#Readmission
+thirtyday$Readmission <- ifelse(thirtyday$Readmission==0,'No','Yes')
+thirtyday$Readmission <- factor(thirtyday$Readmission)
+
+#Diagnostic GRoup
+thirtyday$Diagnostic_group <- gsub("-M", "", thirtyday$Diagnostic_group)
+#collapse diagnostic group categories into:Cardiovascular, Respiratory, Gastrointestinal, Neurological, Infections, Renal, Metabolic and Other
+thirtyday$Diagnostic_group[-which(thirtyday$Diagnostic_group %in% c("Cardiovascular", 
+                                                                    "Respiratory", 
+                                                                    "Gastrointestinal", 
+                                                                    "Neurological", 
+                                                                    "Infections", 
+                                                                    "Renal",
+                                                                    "Metabolic"))] <- "Other"
+table(thirtyday$Diagnostic_group)
+prop.table(table(thirtyday$Diagnostic_group))
+thirtyday$Diagnostic_group<- factor(thirtyday$Diagnostic_group)
+
+#Severity Index
+table(thirtyday$Severity_index)
+prop.table(table(thirtyday$Severity_index))
+thirtyday$Severity_index <- factor(thirtyday$Severity_index, levels = c("<2.5%",
+                                                                        "2.5 - 5%",
+                                                                        "5 - 10%",
+                                                                        "10 - 30%",
+                                                                        ">=30%"))
+
+#Gender
+thirtyday$Gender <- ifelse(thirtyday$Gender==0,'Female','Male')
+thirtyday$Gender <- factor(thirtyday$Gender)
+
+#Race
+table(thirtyday$Race)
+prop.table(table(thirtyday$Race))
+#collapsing race into:white, black, other
+thirtyday$Race[which(thirtyday$Race>=3)] <- 3
+thirtyday$Race <- ifelse(thirtyday$Race==1, "White",
+                         ifelse(thirtyday$Race==2, "Black",
+                                ifelse(thirtyday$Race==3, "Other", NA)))
+thirtyday$Race <- factor(thirtyday$Race, levels = c("White", "Black", "Other"))
+
+#Ethnicity
+table(thirtyday$Ethnicity)
+prop.table(table(thirtyday$Ethnicity))
+thirtyday$Ethnicity <- ifelse(thirtyday$Ethnicity==0,'Not Hispanic','Hispanic')
+thirtyday$Ethnicity <- factor(thirtyday$Ethnicity)
+
+#Assigning patients with missing months to death and months to death > 24 as 24
+thirtyday$Months_to_death[which(thirtyday$Months_to_death>=24 | 
+                                  is.na(thirtyday$Months_to_death))] <- 24
+
+
+
+str(thirtyday)
+
+#checking to making sure there are no missing fields
+#should all be 0
+lapply(thirtyday,function(x){which(is.na(x))})
+
+
+```
+
+
+# Creating a "Status" variable
+## 0 is alive; 1 is dead
+
+```{r}
+
+#Cutting the study off at 24 months (2 years) 
+#If a patient died after 24 months they are considered alived at end of study and therefore censored
+
+thirtyday$Status <- factor(ifelse(thirtyday$Months_to_death>=24,0,1))
+
+
+```
+
+
+# Data Exploration
+
+```{r}
+#Calculating followup time as length of stay (converted to months) + Months to death
+thirtyday$followup <- (thirtyday$Length_of_stay/30) + thirtyday$Months_to_death
+summary(thirtyday$followup)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#   1.00   24.03   24.07   20.65   24.13   27.33 
+
+#median followup time
+median(thirtyday$followup) #24.06667
+
+
+#looking at summaries for months to death
+summary(thirtyday$Months_to_death[which(thirtyday$Status==1)])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#  0.000   3.533   7.933   9.593  15.267  23.900 
+
+#broken down by readmission status
+#readmitted
+summary(thirtyday$Months_to_death[which(thirtyday$Status==1 & thirtyday$Readmission=="Yes")])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#  1.100   2.900   6.767   8.759  13.333  22.933  
+
+#not readmitted
+summary(thirtyday$Months_to_death[which(thirtyday$Status==1 & thirtyday$Readmission=="No")])
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#  0.000   3.642   8.150   9.768  15.425  23.900
+
+#histograms
+p<-ggplot(thirtyday, aes(x=Months_to_death, group=Readmission, fill=Readmission)) +
+  geom_histogram(position="identity", alpha=0.5, binwidth=1) 
+p
+
+p<-ggplot(thirtyday, aes(x=Months_to_death)) +
+  geom_histogram(color="black", fill="white") +
+  facet_grid(Readmission ~ .)
+p
+
+
+
+```
+
+
+#Patient Summaries
+
+##Readmitted Group
+
+```{r}
+
+readmitted <- thirtyday[which(thirtyday$Readmission=="Yes"),]
+dim(readmitted) #245  12
+
+#Continuous variables
+rdf <- tbl_df(readmitted)
+
+rdf.sum <- rdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+rdf.sum.tidy <- rdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+rdf.sum.tidy <- data.frame(rdf.sum.tidy)
+colnames(rdf.sum.tidy)[1] <- "Variable"
+rdf.sum.tidy$Variable <- substr(rdf.sum.tidy$Variable, 1, nchar(rdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+rdf.tab <- rdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- rdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- data.frame(rdf.tab.tidy)
+colnames(rdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+```
+
+
+##Non-Readmitted Group
+
+```{r}
+
+nonreadmitted <- thirtyday[which(thirtyday$Readmission=="No"),]
+dim(nonreadmitted) #2142   12
+
+nrdf <- tbl_df(nonreadmitted)
+
+#Continuous variables
+nrdf.sum <- nrdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+nrdf.sum.tidy <- nrdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+nrdf.sum.tidy <- data.frame(nrdf.sum.tidy)
+colnames(nrdf.sum.tidy)[1] <- "Variable"
+nrdf.sum.tidy$Variable <- substr(nrdf.sum.tidy$Variable, 1, nchar(nrdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+nrdf.tab <- nrdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- nrdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- data.frame(nrdf.tab.tidy)
+colnames(nrdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+```
+
+# Performing tests
+
+```{r}
+
+t.test(thirtyday$Age[which(thirtyday$Readmission=="Yes")],
+       thirtyday$Age[which(thirtyday$Readmission=="No")])
+t.test(thirtyday$Length_of_stay[which(thirtyday$Readmission=="Yes")],
+       thirtyday$Length_of_stay[which(thirtyday$Readmission=="No")])
+chisq.test(thirtyday$Gender,thirtyday$Readmission)
+chisq.test(thirtyday$Race,thirtyday$Readmission)
+chisq.test(thirtyday$Ethnicity,thirtyday$Readmission)
+chisq.test(thirtyday$Diagnostic_group,thirtyday$Readmission)
+chisq.test(thirtyday$Severity_index,thirtyday$Readmission)
+
+```
+
+
+# Saving RDS Object
+
+```{r}
+saveRDS(thirtyday, "C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/thirtyday.rds")
+saveRDS(thirtyday, "Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/thirtyday.rds")
+```
+

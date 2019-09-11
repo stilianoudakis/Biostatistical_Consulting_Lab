@@ -1,0 +1,131 @@
+---
+title: "Exploratory Data Analysis"
+author: "Spiro Stilianoudakis"
+date: "9/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+```
+
+# Patients with behavioral event
+
+```{r}
+pwbe <- read.csv("Y:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2018 - R168 (Holton-Burke - Nerology)/1 - Data/keppra_data_with_behavior.csv", 
+                header = TRUE,na.strings='N/A',
+                colClasses = c(rep("numeric",2),
+                               rep("character",3),
+                               rep("numeric",1),
+                               rep("character",1),
+                               rep("numeric",3),
+                               rep("character",3),
+                               rep("numeric",1),
+                               rep("character",1),
+                               rep("numeric",1),
+                               rep("character",2)))
+
+dim(pwbe)
+#453  18
+
+table(unlist(lapply(pwbe,class)))
+#character   numeric 
+#       10         8 
+```
+
+# Patients without behavioral event
+
+```{r}
+pwobe <- read.csv("Y:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2018 - R168 (Holton-Burke - Nerology)/1 - Data/keppra_data_without_behavior.csv", 
+                header = TRUE,na.strings='N/A',
+                colClasses = c(rep("numeric",2),
+                               rep("character",3),
+                               rep("numeric",1),
+                               rep("character",1),
+                               rep("numeric",3)))
+
+dim(pwobe)
+#512  10
+
+table(unlist(lapply(pwobe,class)))
+#character   numeric 
+#        4         6 
+```
+
+#Combine with and without behavioral event with only demographics
+
+```{r}
+keppra_demo <- rbind.data.frame(pwbe[,c(1:10)],
+                                pwobe)
+keppra_demo$BehavioralEvent <- c(rep("Yes", dim(pwbe)[1]),
+                                 rep("No", dim(pwobe)[1]))
+
+names(keppra_demo) <- c("ID",
+                        "Age",
+                        "Ethnicity",
+                        "Gender",
+                        "Diagnosis",
+                        "GCS",
+                        "Discharge.Disposition",
+                        "Length_of_Stay_Hospital",
+                        "Length_of_Stay_ICU",
+                        "Keppra_Doses",
+                        "Behavioral_Event")
+```
+
+#Creating table of demographics
+
+```{r}
+#missingness
+lapply(keppra_demo, function(x)table(is.na(x))) #no missingness
+
+#summaries
+lapply(keppra_demo, function(x)if(class(x)=="numeric"){summary(x)}else(table(x)))
+
+#recode ethnicity
+##black, white, other, unknown
+keppra_demo$Ethnicity[which(keppra_demo$Ethnicity %in% c("American Indian-Alaskan", "Asian", "Multiple", "Native Hawaii/Other Pac Island", "Other"))] <- "Other"
+keppra_demo$Ethnicity[which(keppra_demo$Ethnicity %in% c("N/A-Outreach Use Only", "Unknown-Unable to Communicate", "Unknown-Pt Refusal"))] <- "Unknown"
+table(keppra_demo$Ethnicity)
+
+#length of stay
+par(mfrow=c(1,2))
+hist(keppra_demo$Length_of_Stay_Hospital); hist(log(keppra_demo$Length_of_Stay_Hospital))
+hist(keppra_demo$Length_of_Stay_ICU); hist(log(keppra_demo$Length_of_Stay_ICU))
+par(mfrow=c(1,1))
+
+#gcs
+hist(keppra_demo$GCS)
+
+#dose
+par(mfrow=c(1,2))
+hist(keppra_demo$Keppra_Doses); hist(log(keppra_demo$Keppra_Doses))
+par(mfrow=c(1,1))
+
+#create log of variables
+keppra_demo$log_Length_of_Stay_Hospital <- log(keppra_demo$Length_of_Stay_Hospital)
+keppra_demo$log_Length_of_Stay_ICU <- log(keppra_demo$Length_of_Stay_ICU)
+keppra_demo$log_Dose <- log(keppra_demo$Keppra_Doses)
+
+tableOne <- CreateTableOne(vars = c("Age",
+                        "Ethnicity",
+                        "Gender",
+                        "Diagnosis",
+                        "GCS",
+                        "Discharge.Disposition",
+                        "log_Length_of_Stay_Hospital",
+                        "log_Length_of_Stay_ICU",
+                        "log_Dose"),
+               strata = "Behavioral_Event",
+               data = keppra_demo)
+```
+
+

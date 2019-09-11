@@ -1,0 +1,237 @@
+---
+title: "Checking Missingness 3"
+subtitle: "BCL R-96"
+author: "Spiro Stilianoudakis"
+date: "November 2, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(openxlsx)
+library(scales)
+library(lattice)
+library(nlme)
+library(lme4)
+library(lattice)
+library(multcomp)
+library(lmtest)
+```
+
+
+#Defining Two Datasets
+```{r include=FALSE}
+setwd("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+
+#Dataset for patients that only have baseline and 1 month response
+two_time_pts <- readRDS("two_time_pts.RDS")
+
+#################################################################
+
+#Dataset for patients that only have baseline
+baseline_pt <- readRDS("baseline_pt.RDS")
+```
+Here we have 3 time points:
+* Baseline
+* 1 month
+* 3 month
+
+Previously, we determined that the most dropout of patients occured after the baseline measurement. Therefore we restrict our analysis to two datasets:
+
+* Patients that only had a baseline measurement, and
+* Patients that had both baseline and 1 month measurements
+
+# Defining the Models
+
+## Patient with only baseline
+
+For patients that only had a baseline response, the model is given by
+
+$$QoL \sim \beta_{0} + \beta_{1}Age$$
+The following plots and diagnostic tests show that Age needs a square root transformation.
+
+```{r echo=FALSE}
+par(mfrow=c(2,2))
+hist(baseline_pt$Age_cont)
+plot(baseline_pt$Age_cont, baseline_pt$QoL_score)
+
+hist(baseline_pt$Age_cont^2)
+plot(baseline_pt$Age_cont^2, baseline_pt$QoL_score)
+```
+
+```{r}
+model2 <- lm(QoL_score ~ sqrt(Age_cont), data = baseline_pt)
+summary(model2)
+
+```
+
+```{r echo=FALSE}
+par(mfrow=c(2,2))
+plot(model2)
+```
+
+Therefore the model becomes:
+
+$$QoL \sim \beta_{0} + \beta_{1}\sqrt{Age}$$
+
+
+We see that the square root of Age for patients with only a baseline response is significantly and negatively associated with QoL, with a slope of -8.061 and p-value of 0.00828. That is, a year increase in age corresponds to 8 unit decrease in QoL for these patients. So for this group, older patients had lower QoL on average.
+
+```{r include=FALSE}
+par(mfrow=c(1,1))
+#constant variance
+par(las=1) # horizontal style of axis labels
+plot(fitted(model2), residuals(model2), xlab="Fitted", ylab="Residuals")
+abline(h=0, col="red") 
+plot(fitted(model2), abs(residuals(model2)), xlab="Fitted", ylab="|Residuals|")
+
+summary(lm(abs(residuals(model2)) ~ fitted(model2)))
+
+#Normality
+qqnorm(residuals(model2), ylab="Residuals") # Q-Q plot
+qqline(residuals(model2)) 
+shapiro.test(residuals(model2))
+
+```
+
+```{r include=FALSE}
+# Constructing a model of age and time vs QoL
+# for patients that only had baseline 
+
+#baseline_pt$timing_of_survey <- factor(baseline_pt$timing_of_survey)
+
+hist(baseline_pt$Age_cont)
+
+plot(baseline_pt$Age_cont, baseline_pt$QoL_score)
+
+#simple ols
+model1 <- lm(QoL_score ~ Age_cont, data = baseline_pt)
+summary(model1)
+
+par(mfrow=c(2,2))
+plot(model1)
+
+#constant variance
+par(las=1) # horizontal style of axis labels
+plot(fitted(model1), residuals(model1), xlab="Fitted", ylab="Residuals")
+abline(h=0, col="red") 
+plot(fitted(model1), abs(residuals(model1)), xlab="Fitted", ylab="|Residuals|")
+
+summary(lm(abs(residuals(model1)) ~ fitted(model1)))
+
+#Normality
+par(mfrow=c(1,1)) # reset plotting device
+qqnorm(residuals(model1), ylab="Residuals") # Q-Q plot
+qqline(residuals(model1)) 
+shapiro.test(residuals(model1))
+
+#Checking for correlated errors
+dwtest(QoL_score ~ Age_cont, data = baseline_pt)
+
+#Outliers
+mod1_infl <- influence(model1)
+mod1_infl$hat
+summary(mod1_infl$hat)
+p=1
+n=67
+2*p/n
+which(mod1_infl$hat > .03)
+(cook <- cooks.distance(model1))
+which.max(cook)
+
+plot(model1, which=4)
+plot(model1, which=6)
+
+par(mfrow=c(1,1))
+```
+
+## Patients with both baseline and 1 month response
+
+For patients with both baseline and 1 month responses the model becomes
+
+$$QoL \sim \beta_{0} + \beta_{1}\sqrt{Age} + \beta_{2}T1 + \beta_{3}\sqrt{Age}*T1$$
+Now in order to compare both this group with the other group we want to restrict this group to just their baseline responses (in other words when T1=0). Then we can compare what effect Age has on QoL at baseline for patients that ended up remaining in the study for one more measurement. 
+
+```{r}
+model5 <- lm(QoL_score ~ sqrt(Age_cont), data = two_time_pts[which(two_time_pts$timing_of_survey==0),])
+summary(model5)
+```
+
+Now, we see the effect of $\sqrt{Age}$ on QoL is 3.037, although it is not significant with a p-value of 0.482. This means that, for this group of patients, the older you are the higher your QoL will be.
+
+This result seems to contrast with the group of patients that only had a baseline measurement signifying that the two groups are not the same in terms of how Age is affecting QoL.
+
+```{r include=FALSE}
+# Constructing a model of age and time vs QoL
+# for patients that only had baseline and 1 month response
+
+two_time_pts$timing_of_survey <- factor(two_time_pts$timing_of_survey)
+
+
+x1 <- sqrt(two_time_pts$Age_cont)
+x2 <- two_time_pts$timing_of_survey
+y <- two_time_pts$QoL_score
+
+
+model3 <- lm(y ~ x1*x2)
+summary(model3)
+names(coef(model3))
+
+summary(glht(model3, linfct = c("x1 + x1:x21 = 0")))
+mod.lh <- glht(model3, linfct = c("x1 + x1:x21 = 0"))
+confint(mod.lh)
+
+
+model4 <- lm(QoL_score ~ sqrt(Age_cont), data = two_time_pts[which(two_time_pts$timing_of_survey==1),])
+summary(model4)
+
+model5 <- lm(QoL_score ~ sqrt(Age_cont), data = two_time_pts[which(two_time_pts$timing_of_survey==0),])
+summary(model5)
+
+```
+
+
+# Comments
+
+## 1
+
+In our previous meeting, we discussed the option of creating a solitary model with dummy Group variable denoting whether the patient had both a baseline and T1 response or just a baseline response. I was thinking more about this and I was finding it difficult to see how this could give any meaningful information. In terms of a hypothetical dataset you would have
+
+| ID       | Age      | Time     |Group     | QoL      |
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+|1         |60        |0         |1         |80        |
+|1         |60        |1         |1         |90        |
+|2         |57        |0         |0         |70        |
+|3         |55        |0         |0         |75        |
+|4         |72        |0         |1         |55        |
+|4         |72        |1         |1         |60        |
+|and so on |and so on |and so on |and so on |and so on |
+
+I am not sure how this would work with group variable having multiple 1s for patients with two timepoints
+Now we could disregard the baseline timepoints for patients with two timepoints. Therefore the data would be:
+
+| ID       | Age      | Time     |Group     | QoL      |
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+|1         |60        |1         |1         |90        |
+|2         |57        |0         |0         |70        |
+|3         |55        |0         |0         |75        |
+|4         |72        |1         |1         |60        |
+|and so on |and so on |and so on |and so on |and so on |
+
+However, now the Group and Time varaibles will be same. So i'm still a little confused on the logic of this approach.
+
+#2
+
+Secondly, we discussed comparing the beta1 coefficient on the baseline model to the (beta1+beta3) coeffient on the model with two time points. However the (beta1+beta3) coeffient assumes T1=1. However, I was wondering how informative this would be to compare between the two models since the first model doesn't have a second time point. Wouldn't it make more sense to compare when T1=0. That way you are comparing baseline to baseline between the two groups? This is the approach I took above.
+
+
+
+
+
+
+
+
+

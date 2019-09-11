@@ -1,0 +1,543 @@
+---
+title: "Checking Missingness 4"
+author: "Spiro Stilianoudakis"
+date: "November 5, 2017"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(openxlsx)
+library(scales)
+library(caret)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(DT)
+library(nlme)
+```
+
+```{r include=FALSE}
+setwd("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+#setwd("X:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+#setwd("T:/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+
+med_hist <- read.xlsx("Jh QoL all 7-19-17 FINAL cleaned DEID.xlsx",
+                    sheet = 1,
+                    startRow = 1,
+                    colNames = TRUE,
+                    na.strings = c("","n/a","N/a"),
+                    detectDates = TRUE)
+quest <- read.xlsx("NeuroQoL_FINAL_YS_DEID.xlsx",
+                           sheet = 1,
+                           startRow = 1,
+                           colNames = TRUE)
+attach(med_hist)
+attach(quest)
+```
+
+
+```{r include=FALSE}
+#Removing rows where timing of the survey was after 3 months
+
+colnames(quest)[3] <- "timing_of_survey"
+
+quest2 <- quest[quest[,3] <= 3,]
+dim(quest2)
+#391 x 43
+
+#Removing all but the QoL column, the 4 uncertainty related questions, the timing, and location
+
+quest3 <- quest2[,which(colnames(quest2)=="Data.Base.ID" |
+                                          colnames(quest2)=="timing_of_survey" |
+                                          colnames(quest2)=="Location.(0.office,.1.home)" |
+                                          colnames(quest2)=="Overall.quality.of.life" |
+                                          colnames(quest2)=="Feel.uncertain.about.future?" |
+                                          colnames(quest2)=="Setbacks.in.condition?" |
+                                          colnames(quest2)=="Concerned.about.disrupting.family.life?" |
+                                          colnames(quest2)=="Outlook.on.future.worsen?")]
+dim(quest3)
+#391 x 8
+names(quest3) <- c("ID", "timing_of_survey", "location_of_survey", "QoL", "uncertainty1", "uncertainty2", "uncertainty3","uncertainty4")
+
+#Removing rows with either 999 or NA in them or others
+
+quest4 <- quest3[complete.cases(quest3), ]
+quest5 <- subset(quest4, !quest4$ID %in% quest4$ID[quest4$QoL==999 |
+                                                                   quest4$uncertainty1==999 |
+                                                                   quest4$uncertainty2==999 |
+                                                                   quest4$uncertainty3==999 |
+                                                                   quest4$uncertainty4==999])
+num <- c("1","2","3","4")
+grep(paste(num, collapse = "|"), quest5$uncertainty2,invert = TRUE)
+quest5 <- quest5[-grep(paste(num, collapse = "|"), quest5$uncertainty2,invert = TRUE),]
+dim(quest5)
+head(quest5)
+#349 x 8
+str(quest5)
+
+quest5$uncertainty2 <- as.numeric(quest5$uncertainty2)
+
+#Transforming QoL 
+
+QoL_calc <- function(x){
+  ((x-1)/(max(quest5$QoL)-min(quest5$QoL)))*100
+}
+quest5$QoL_score <- QoL_calc(quest5$QoL)
+
+#Adding scores for uncertainty
+
+quest5$raw_score <- rowMeans(quest5[,5:8])
+
+#Transforming uncertainty
+
+uncertain_calc <- function(x){
+  ((x-1)/(max(quest5$uncertainty1)-min(quest5$uncertainty1)))*100
+}
+quest5$uncertain_score <- uncertain_calc(quest5$raw_score)
+
+#removing QoL, uncertainty1-4
+quest6 <- quest5[,c(1,2,3,9,11)]
+
+
+#Determining which patients (IDs) have resposes for t=1 or 3 but no baseline
+#t3vt1 <- setdiff(quest6$ID[which(quest6$timing_of_survey==3)],quest6$ID[which(quest6$timing_of_survey==1)])
+#t3vbase <- setdiff(quest6$ID[which(quest6$timing_of_survey==3)],quest6$ID[which(quest6$timing_of_survey==0)])
+#t1vbase <- setdiff(quest6$ID[which(quest6$timing_of_survey==1)],quest6$ID[which(quest6$timing_of_survey==0)])
+#union(union(t3vt1,t3vbase),t1vbase)
+
+#patients that only had baseline measurement
+baseline <- data.frame(quest6 %>% group_by(ID) %>% filter(n() == 1))
+baseline <- baseline[which(baseline$timing_of_survey==0),]
+baseline$Group <- 1
+
+#patients that had any other sort of followup measurement
+followup <- quest6[-which(quest6$ID %in% baseline$ID),]
+followup$Group <- 2
+
+#Concantenating the two groups into one dataset
+mydata <- rbind.data.frame(baseline,followup)
+mydata <- mydata[order(mydata$ID,mydata$timing_of_survey),]
+
+#Adding covariates from med_hist data to the questionaiire data
+vars <- c(1,4,6,7,10,13,17,19,21,9,18,26,32)
+med_hist2 <- med_hist[,vars]
+names(med_hist2) <- c("ID", "Gender", "Age_cont", "Age_Group", "prior_brain_radiation", "radiation_type",
+                      "prior_resection", "tumor_histology", "histology", "KPS", 
+                      "concurrent_chemo", "tumor_location", "cancer_still_affecting" )
+
+#Removing patients that had prior brain radiation
+#prior_brain_radiation=1
+med_hist2 <- med_hist2[-grep(paste(c("Y","y"), collapse = "|"), med_hist2$prior_brain_radiation),]
+dim(mydata_med)
+#264 x 16
+
+#which patients have a baseline,followup response but do not appear in medical history data
+setdiff(mydata$ID, med_hist2$ID)
+##setdiff(followup$ID, med_hist2$ID)
+
+
+#remove these from questionaire data
+mydata2 <- mydata[-setdiff(mydata$ID, med_hist2$ID),]
+#followup <- followup[-which(followup$ID==69 | followup$ID==83 | followup$ID==100),]
+
+#check that all baseline,followup responders are in medical data
+setdiff(mydata2$ID, mydata2$ID)
+#setdiff(followup$ID, med_hist2$ID)
+
+
+#removing patients (IDs) from medical history data that do not appear in the final questionaire data
+
+#med_hist3 <- med_hist2[which(med_hist2$ID %in% baseline$ID),]
+#all.equal(med_hist3$ID,baseline$ID)
+
+#Removing patients with radiation type=4 or 5
+which(med_hist2$radiation_type==4 | med_hist2$radiation_type==5)
+med_hist3 <- med_hist2[-which(med_hist2$radiation_type==4 | med_hist2$radiation_type==5),]
+
+med_hist2$ID[which(med_hist2$radiation_type==4 | med_hist2$radiation_type==5)]
+baseline <- baseline[-which(baseline$ID %in% med_hist2$ID[which(med_hist2$radiation_type==4 | med_hist2$radiation_type==5)]),]
+followup <- followup[-which(followup$ID %in% med_hist2$ID[which(med_hist2$radiation_type==4 | med_hist2$radiation_type==5)])]
+
+med_hist4 <- med_hist3
+
+#fixing the variable classes
+med_hist4$Gender <- ifelse(med_hist4$Gender==1,0,1)
+med_hist4$Gender <- factor(med_hist4$Gender)
+
+med_hist4$Age_Group <- ifelse(med_hist4$Age_Group==1,0,1)
+med_hist4$Age_Group <- factor(med_hist4$Age_Group)
+
+med_hist4$prior_brain_radiation <- ifelse(grepl("o",med_hist4$prior_brain_radiation),0,1)
+med_hist4$prior_brain_radiation <- factor(med_hist4$prior_brain_radiation)
+
+table(med_hist4$radiation_type)
+med_hist4$radiation_type <- factor(med_hist4$radiation_type)
+
+med_hist4$prior_resection <- ifelse(grepl("o",med_hist4$prior_resection),0,1)
+med_hist4$prior_resection <- factor(med_hist4$prior_resection)
+
+med_hist4$histology <- ifelse(med_hist4$histology==5,0,1)
+med_hist4$histology <- factor(med_hist4$histology)
+
+med_hist4$concurrent_chemo <- ifelse(grepl("o",med_hist4$concurrent_chemo),0,1)
+med_hist4$concurrent_chemo <- factor(med_hist4$concurrent_chemo)
+
+med_hist4$cancer_still_affecting <- ifelse(grepl("o",med_hist4$cancer_still_affecting),0,1)
+med_hist4$cancer_still_affecting <- factor(med_hist4$cancer_still_affecting)
+
+#dropping tumor_histology and tumor_location because there are too many subgroups
+names(med_hist4)
+med_hist4 <- med_hist4[,-c(8,12)]
+
+str(med_hist4)
+
+#Adding medical history to each subset of the questionaire data
+
+mydata_med <- merge(mydata2,med_hist4, by = "ID")
+#followup_med <- merge(followup,med_hist4, by = "ID")
+
+
+#seeing if any of the data have missing values
+which(rowSums(is.na(mydata_med))!=0)
+#which(rowSums(is.na(followup_med))!=0)
+
+
+#remove missing values from base_med data
+mydata_med <- mydata_med[-which(rowSums(is.na(mydata_med))!=0),]
+
+mydata_med$timing_of_survey <- factor(mydata_med$timing_of_survey)
+mydata_med$Group <- factor(mydata_med$Group)
+
+mydata_med <- mydata_med[order(mydata_med$ID),]
+dim(mydata_med)
+#235 x 16
+
+
+#quest7 <- merge(quest6,med_hist4, by="ID")
+#quest7 <- quest7[order(quest7$ID,quest7$timing_of_survey),]
+#quest7$timing_of_survey <- factor(quest7$timing_of_survey)
+
+dropout_after_1 <- data.frame(followup %>% group_by(ID) %>% filter(n() == 2))
+ids <- dropout_after_1$ID[which(dropout_after_1$timing_of_survey==3)]
+dropout_after_1 <- dropout_after_1[-which(dropout_after_1$ID %in% ids),]
+
+completed <- data.frame(followup %>% group_by(ID) %>% filter(n() == 3))
+
+baseline <- merge(baseline, med_hist4, by="ID")
+dropout_after_1 <- merge(dropout_after_1, med_hist4, by="ID")
+completed <- merge(completed, med_hist4, by="ID")
+
+which(rowSums(is.na(baseline))!=0)
+which(rowSums(is.na(dropout_after_1))!=0)
+which(rowSums(is.na(completed))!=0)
+
+#baseline <- baseline[-which(rowSums(is.na(baseline))!=0),]
+
+table(baseline$timing_of_survey)
+table(dropout_after_1$timing_of_survey)
+table(completed$timing_of_survey)
+intersect(baseline$ID,dropout_after_1$ID)
+intersect(baseline$ID,completed$ID)
+intersect(dropout_after_1$ID,completed$ID)
+```
+
+#plots
+```{r echo=FALSE}
+mydata_base <- mydata_med[which(mydata_med$timing_of_survey==0),]
+
+ids <- setdiff(mydata_base$ID[which(mydata_base$Group==2)], union(unique(dropout_after_1$ID),unique(completed$ID)))
+
+mydata_base <- mydata_base[-which(mydata_base$ID %in% ids),]
+
+#baseline2 <- baseline
+#dropout_after_12 <- dropout_after_1
+#completed2 <- completed
+
+#baseline2$Group <- 1
+#dropout_after_12$Group <- 2
+#completed2$Group <- 3
+
+#mydata_comb <- rbind.data.frame(baseline2,dropout_after_12,completed2)
+#mydata_comb2 <- mydata_comb[order(mydata_comb$ID),]
+#mydata_comb2$Group <- factor(mydata_comb2$Group)
+
+loess1 <- ggplot(mydata_med, aes(x=Age_cont, y=QoL_score, color=timing_of_survey, shape=timing_of_survey)) +
+  geom_point(show.legend=F) + 
+  geom_smooth(method='loess', se=FALSE, fullrange=TRUE)+
+  scale_linetype_manual(values=c("solid","twodash", "dotted"))+
+  scale_colour_manual(name="Timing of Survey",labels = c("Baseline", "1 Month", "3 Month"),values=c("#000000","#606060","#DFDFDF"))+
+  xlab("Age")+
+  ylab("QoL Score")+
+  theme_bw()+
+  theme(legend.position="top")
+
+loess2 <- ggplot(mydata_med, aes(x=Age_cont, y=uncertain_score, color=timing_of_survey, shape=timing_of_survey)) +
+  geom_point(show.legend=F) + 
+  geom_smooth(method='loess', se=FALSE, fullrange=TRUE)+
+  scale_linetype_manual(values=c("solid","twodash", "dotted"))+
+  scale_colour_manual(name="Timing of Survey",labels = c("Baseline", "1 Month", "3 Month"),values=c("#000000","#606060","#DFDFDF"))+
+  xlab("Age")+
+  ylab("Uncertainty Score")+
+  theme_bw()+
+  theme(legend.position="top")
+
+gridExtra::grid.arrange(loess1 , loess2 , ncol =2)
+
+```
+
+#summary table
+```{r echo=FALSE}
+#patients that only had baseline and 1 month
+#x <- followup_med$ID[which(followup_med$timing_of_survey==1)]
+#y <- followup_med$ID[which(followup_med$timing_of_survey==3)]
+
+#base_and_1 <- quest7[(quest7$ID %in% setdiff(x,y)),]
+#base_and_1 <- base_and_1[-which(base_and_1$ID==110 | base_and_1$ID==131),]
+
+#complete <- data.frame(quest7 %>% group_by(ID) %>% filter(n() == 3))
+
+
+out <- 
+  structure(c(dim(completed)[1]/3, dim(dropout_after_1)[1]/2, dim(baseline)[1],
+              length(completed$Age_Group[which(completed$Age_Group==0)])/3, length(dropout_after_1$Age_Group[which(dropout_after_1$Age_Group==0)])/2, length(baseline$Age_Group[which(baseline$Age_Group==0)]),
+              length(completed$Age_Group[which(completed$Age_Group==1)])/3, length(dropout_after_1$Age_Group[which(dropout_after_1$Age_Group==1)])/2, length(baseline$Age_Group[which(baseline$Age_Group==1)]),
+              length(completed$Gender[which(completed$Gender==0)])/3, length(dropout_after_1$Gender[which(dropout_after_1$Gender==0)])/2, length(baseline$Gender[which(baseline$Gender==0)]),
+              length(completed$Gender[which(completed$Gender==1)])/3, length(dropout_after_1$Gender[which(dropout_after_1$Gender==1)])/2, length(baseline$Gender[which(baseline$Gender==1)]),
+              length(completed$prior_brain_radiation[which(completed$prior_brain_radiation==0)])/3, length(dropout_after_1$prior_brain_radiation[which(dropout_after_1$prior_brain_radiation==0)])/2, length(baseline$prior_brain_radiation[which(baseline$prior_brain_radiation==0)]),
+              length(completed$prior_brain_radiation[which(completed$prior_brain_radiation==1)])/3, length(dropout_after_1$prior_brain_radiation[which(dropout_after_1$prior_brain_radiation==1)])/2, length(baseline$prior_brain_radiation[which(baseline$prior_brain_radiation==1)]),
+              length(completed$prior_resection[which(completed$prior_resection==0)])/3, length(dropout_after_1$prior_resection[which(dropout_after_1$prior_resection==0)])/2, length(baseline$prior_resection[which(baseline$prior_resection==0)]),
+              length(completed$prior_resection[which(completed$prior_resection==1)])/3, length(dropout_after_1$prior_resection[which(dropout_after_1$prior_resection==1)])/2, length(baseline$prior_resection[which(baseline$prior_resection==1)]),
+              length(completed$cancer_still_affecting[which(completed$cancer_still_affecting==0)])/3, length(dropout_after_1$cancer_still_affecting[which(dropout_after_1$cancer_still_affecting==0)])/2, length(baseline$cancer_still_affecting[which(baseline$cancer_still_affecting==0)]),
+              length(completed$cancer_still_affecting[which(completed$cancer_still_affecting==1)])/3, length(dropout_after_1$cancer_still_affecting[which(dropout_after_1$cancer_still_affecting==1)])/2, length(baseline$cancer_still_affecting[which(baseline$cancer_still_affecting==1)]),
+              round(mean(completed$KPS[which(completed$timing_of_survey==0)]),2), round(mean(dropout_after_1$KPS[which(dropout_after_1$timing_of_survey==0)]),2), round(mean(baseline$KPS[which(baseline$timing_of_survey==0)]),2),
+              round(mean(completed$Age_cont[which(completed$timing_of_survey==0)]),2), round(mean(dropout_after_1$Age_cont[which(dropout_after_1$timing_of_survey==0)]),2), round(mean(baseline$Age_cont[which(baseline$timing_of_survey==0)]),2),
+              round(mean(completed$QoL_score[which(completed$timing_of_survey==0)]),2), round(mean(dropout_after_1$QoL_score[which(dropout_after_1$timing_of_survey==0)]),2), round(mean(baseline$QoL_score[which(baseline$timing_of_survey==0)]),2),
+              round(mean(completed$uncertain_score[which(completed$timing_of_survey==0)]),2), round(mean(dropout_after_1$uncertain_score[which(dropout_after_1$timing_of_survey==0)]),2), round(mean(baseline$uncertain_score[which(baseline$timing_of_survey==0)]),2)
+ ),
+  .Dim = c(3L, 15L),
+  .Dimnames = list(NULL, c("n", "al", "ag", "gm", "gn", "prn", "pry", "pren", "prey", "csn", "csy","kps","ac","qol","unc")))
+
+## format rows/cols
+colnames(out) <- c("Total (n)", "< 60", ">= 60","M","F","No","Yes","No","Yes","No","Yes","Mean KPS", "Mean Age", "Mean QoL Score", "Mean Uncertainty Score")
+
+rownames(out) <- c("Complete", "Baseline & 1 Month", "Only Baseline")
+
+## bolding rownames
+rownames(out) <- sprintf('<b>%s</b>', rownames(out))
+
+## table column headers (with line breaks (<br />))
+cgroup <- c("", "Age", "Gender", "Prior Radiation<br />Treatment", "Prior Resection", "Cancer Still<br />Affecting","","","","")
+
+library(htmlTable)
+htmlTable(out, rowlabel = "Time of<br />Dropout", 
+          ctable = TRUE, align = 'ccccccccccccccc',
+          ## number of columns that each cgroup label spans:
+          n.cgroup = c(1,2,2,2,2,2,1,1,1,1), cgroup = cgroup,
+          ## insert two table spanning sections:
+          tspanner = c('',''),  # no labels
+          n.tspanner = c(3), # number of rows to span (must sum to nrow(out))
+#           css.tspanner.sep = "border-bottom: 1px dotted grey;",
+          caption = "Summaries of each group of patients by number of measurements across different variables.")#, 
+          #tfoot = '<font size=1><sup>&dagger;</sup>Some note.</font>')
+
+
+```
+
+
+#analysis between the two groups
+```{r eval=FALSE, echo=FALSE}
+
+t.test(mydata_base$QoL_score[which(mydata_base$Group==1)],mydata_base$QoL_score[which(mydata_base$Group==2)])
+t.test(mydata_base$uncertain_score[which(mydata_base$Group==1)],mydata_base$uncertain_score[which(mydata_base$Group==2)])
+t.test(mydata_base$Age_cont[which(mydata_base$Group==1)],mydata_base$Age_cont[which(mydata_base$Group==2)])
+t.test(mydata_base$KPS[which(mydata_base$Group==1)],mydata_base$KPS[which(mydata_base$Group==2)])
+
+
+chisq.test(mydata_base$Gender,mydata_base$Group)
+chisq.test(mydata_base$prior_brain_radiation,mydata_base$Group)
+chisq.test(mydata_base$prior_resection,mydata_base$Group)
+chisq.test(mydata_base$cancer_still_affecting,mydata_base$Group)
+```
+
+
+```{r echo=FALSE}
+
+#dframe <- data.frame(Variable=c("QoL Score", "Uncertainty Score", "Age", "KPS", "Gender", "Prior Brain Radiation", "Prior Resection", "Cancer Still Affecting"),
+#                     "Test #Statistic"=c(-1.357,-0.579,0.218,-0.389,0.565,0.002,1.228, 0.00),
+                     #"P-Value"=c(0.177,0.563,0.828,0.698,0.452,0.964,0.267, 1))
+
+#kable(dframe)
+
+#datatable(dframe)
+```
+
+
+```{r}
+fit.compsym <- lme(QoL_score ~ Age_cont*as.numeric(timing_of_survey), 
+                   data=mydata_med, 
+                   random= ~1| ID, 
+                   method="ML",
+                   correlation=corCompSymm(, form= ~ 1 | ID))
+
+fit.nostruct <- lme(QoL_score ~ Age_cont*as.numeric(timing_of_survey), 
+                    data=mydata_med, 
+                    random= ~1| ID, 
+                    method="ML",
+                    control=lmeControl(msMaxIter = 200),
+                    correlation=corSymm(, form= ~ 1 | ID), 
+                    weights = varIdent(form = ~ 1 | timing_of_survey))
+
+fit.ar1 <- lme(QoL_score ~ Age_cont*as.numeric(timing_of_survey), 
+               data=mydata_med, 
+               random= ~1| ID, 
+               method="ML",
+               correlation=corAR1(, form= ~ 1 | ID))
+
+
+anova(fit.compsym, fit.nostruct, fit.ar1)
+
+
+fit.ar1.ranslope <- lme(QoL_score ~ Age_cont*as.numeric(timing_of_survey), 
+               data=mydata_med, 
+               random= ~1+timing_of_survey| ID, 
+               method="ML",
+               control=lmeControl(msMaxIter = 200),
+               correlation=corAR1(, form= ~ 1 | ID))
+
+anova(fit.ar1,fit.ar1.ranslope)
+```
+
+```{r}
+mydata_med$resid_qol <- r <- resid(fit.ar1)
+mydata_med$fit_qol <- fitted(fit.ar1)
+mydata_med$rstud_qol <- residuals(fit.ar1, type ="pearson")
+yl <- ylab('Residuals')
+yl2 <- ylab('Standardized Residuals')
+#p1 <- ggplot(mydata_med, aes(x =fit_qol , y = resid_qol ) ) + geom_point() #+ facet_grid(~ mydata_med$timing_of_survey ) + yl
+#p2 <- ggplot(mydata_med, aes(x = fit_qol , y= rstud_qol )) + geom_point() #+ facet_grid(~ mydata_med$timing_of_survey ) + yl2
+p3 <- ggplot(mydata_med, aes(resid_qol)) + geom_histogram() + yl # + stat_summary( fun.data ="mean" , geom ="smooth")
+p4 <- ggplot(mydata_med, aes(sample =resid_qol ) ) + stat_qq() +
+geom_abline(intercept = mean(r), slope=sd(r)) + yl
+
+gridExtra::grid.arrange(p3 , p4 , ncol =2)
+
+
+anova(fit.nostruct)
+summary(fit.nostruct)
+
+```
+
+
+
+```{r}
+fit.compsym_unc <- lme(uncertain_score ~ Age_cont*as.numeric(timing_of_survey), 
+                   data=mydata_med, 
+                   random= ~1| ID, 
+                   method="ML",
+                   correlation=corCompSymm(, form= ~ 1 | ID))
+
+fit.nostruct_unc <- lme(uncertain_score ~ Age_cont*as.numeric(timing_of_survey), 
+                    data=mydata_med, 
+                    random= ~1| ID, 
+                    method="ML",
+                    control=lmeControl(msMaxIter = 200),
+                    correlation=corSymm(, form= ~ 1 | ID), 
+                    weights = varIdent(form = ~ 1 | timing_of_survey))
+
+fit.ar1_unc <- lme(uncertain_score ~ Age_cont*as.numeric(timing_of_survey), 
+               data=mydata_med, 
+               random= ~1| ID, 
+               method="ML",
+               correlation=corAR1(, form= ~ 1 | ID))
+
+
+anova(fit.compsym_unc, fit.nostruct_unc, fit.ar1_unc)
+
+
+
+#fit.nostruct.trans <- lme(uncertain_score ~ Age_cont*I(timing_of_survey)^2, 
+ #                   data=mydata_med, 
+  #                  random= ~1| ID, 
+   #                 method="ML",
+    #                control=lmeControl(msMaxIter = 200),
+     #               correlation=corSymm(, form= ~ 1 | ID), 
+      #              weights = varIdent(form = ~ 1 | timing_of_survey))
+
+fit.nostruct.ranslope_unc <- lme(uncertain_score ~ Age_cont*as.numeric(timing_of_survey), 
+               data=mydata_med, 
+               random= ~timing_of_survey | ID, 
+               method="ML",
+               correlation=corAR1(, form= ~ 1 | ID))
+
+anova(fit.nostruct_unc,fit.nostruct.ranslope_unc)
+```
+
+
+```{r}
+mydata_med$resid_unc <- r <- resid(fit.nostruct_unc)
+mydata_med$fit_unc <- fitted(fit.nostruct_unc)
+mydata_med$rstud_unc <- residuals(fit.nostruct_unc, type ="pearson")
+yl <- ylab('Residuals')
+yl2 <- ylab('Standardized Residuals')
+#p1 <- ggplot(mydata_med, aes(x =fit_unc , y = resid_unc ) ) + geom_point() + facet_grid(~ mydata_med$timing_of_survey ) + yl
+#p2 <- ggplot(mydata_med, aes(x = fit_unc , y= rstud_unc )) + geom_point() + facet_grid(~ mydata_med$timing_of_survey ) + yl2
+p3 <- ggplot(mydata_med, aes(resid_unc)) + geom_histogram() + yl # + stat_summary( fun.data ="mean" , geom ="smooth")
+p4 <- ggplot(mydata_med, aes(sample =resid_unc ) ) + stat_qq() +
+geom_abline(intercept = mean(r), slope=sd(r)) + yl
+
+gridExtra::grid.arrange( p3 , p4 , ncol =2)
+
+#perform sqrt transformation
+
+fit.nostruct_unc_trans <- lme(sqrt(uncertain_score) ~ Age_cont*as.numeric(timing_of_survey), 
+               data=mydata_med, 
+               random= ~1| ID, 
+               method="ML",
+               correlation=corAR1(, form= ~ 1 | ID))
+mydata_med$resid_unc_trans <- r <- resid(fit.nostruct_unc_trans)
+mydata_med$fit_unc_trans <- fitted(fit.nostruct_unc_trans)
+mydata_med$rstud_unc_trans <- residuals(fit.nostruct_unc_trans, type ="pearson")
+yl <- ylab('Residuals')
+yl2 <- ylab('Standardized Residuals')
+p3 <- ggplot(mydata_med, aes(resid_unc_trans)) + geom_histogram() + yl # + stat_summary( fun.data ="mean" , geom ="smooth")
+p4 <- ggplot(mydata_med, aes(sample =resid_unc_trans ) ) + stat_qq() +
+geom_abline(intercept = mean(r), slope=sd(r)) + yl
+
+gridExtra::grid.arrange( p3 , p4 , ncol =2)
+
+
+anova(fit.nostruct_unc)
+summary(fit.nostruct_unc)
+
+```
+
+
+```{r}
+#xyplot(QoL_score~timing_of_survey | ID, 
+#       data=mydata_med, 
+#      panel=function(x,y){
+#         panel.xyplot(x, y)
+ #        panel.lmline(x,y)
+  #     }, as.table=T)
+
+p <- ggplot(data = mydata_med, aes(x = timing_of_survey, y = QoL_score, group = ID))
+p + geom_line() #raw data
+p + stat_smooth( method = "lm", se = FALSE) #ols for each patient across time
+p + geom_line() + stat_smooth(aes(group=1), method = "lm", se = FALSE) +  theme_bw()
+
+interaction.plot(mydata_med$timing_of_survey, mydata_med$Age_cont, mydata_med$QoL_score, lty=c(1:length(unique(mydata_med$ID))),col=c(1:length(unique(mydata_med$ID))),lwd=2,ylab="Mean QoL Score", xlab="Time", trace.label="Treatment", legend=F)
+```
+
+
+```{r}
+p <- ggplot(data = mydata_med, aes(x = timing_of_survey, y = uncertain_score, group = ID))
+p + geom_line() #raw data
+p + stat_smooth( method = "lm", se = FALSE) #ols for each patient across time
+p + geom_line() + stat_smooth(aes(group=1), method = "lm", se = FALSE) +  theme_bw()
+
+interaction.plot(mydata_med$timing_of_survey, mydata_med$Age_cont, mydata_med$uncertain_score, lty=c(1:length(unique(mydata_med$ID))),col=c(1:length(unique(mydata_med$ID))),lwd=2,ylab="Mean Uncertainty Score", xlab="Time", trace.label="Treatment", legend=F)
+```
+

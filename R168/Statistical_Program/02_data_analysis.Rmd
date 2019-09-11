@@ -1,0 +1,290 @@
+---
+title: "Incidences for patients with behavioral event"
+author: "Spiro Stilianoudakis"
+date: "9/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+library(survival)
+library(ggplot2)
+library(ggfortify)
+library(survminer)
+```
+
+# Patients with behavioral event
+
+```{r}
+pwbe <- read.csv("Y:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2018 - R168 (Holton-Burke - Nerology)/1 - Data/keppra_data_with_behavior.csv", 
+                header = TRUE,na.strings='N/A',
+                colClasses = c(rep("numeric",2),
+                               rep("character",3),
+                               rep("numeric",1),
+                               rep("character",1),
+                               rep("numeric",3),
+                               rep("character",3),
+                               rep("numeric",1),
+                               rep("character",1),
+                               rep("numeric",1),
+                               rep("character",2)))
+
+dim(pwbe)
+#453  18
+
+table(unlist(lapply(pwbe,class)))
+#character   numeric 
+#       10         8 
+```
+
+# Incidence
+
+## Delirium Diagnosis
+
+```{r}
+table(pwbe$Delirium.diagnosis, exclude = "ifany")
+# No Yes 
+#305 148
+
+pwbe %>% 
+    group_by(Delirium.diagnosis) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=Delirium.diagnosis, y=count, fill=Delirium.diagnosis)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Delirium Diagnosis") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+## Antipsychotic administration
+
+```{r}
+table(pwbe$Antipsychotic.administration.while.on.Keppra, exclude = "ifany")
+# No Yes 
+#262 191
+
+pwbe %>% 
+    group_by(Antipsychotic.administration.while.on.Keppra) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=Antipsychotic.administration.while.on.Keppra, y=count, fill=Antipsychotic.administration.while.on.Keppra)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Received Antipsychotic") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+## Positive CAM-ICU
+
+```{r}
+table(pwbe$Positive.CAM.ICU.while.on.Keppra, exclude = "ifany")
+# No Yes 
+#340 113
+
+pwbe %>% 
+    group_by(Positive.CAM.ICU.while.on.Keppra) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=Positive.CAM.ICU.while.on.Keppra, y=count, fill=Positive.CAM.ICU.while.on.Keppra)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Positive CAM-ICU") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+## Adverse event disgnosis code
+
+```{r}
+table(pwbe$Adverse.event.diagnosis.code, exclude = "ifany")
+# No Yes 
+#193 260 
+
+pwbe %>% 
+    group_by(Adverse.event.diagnosis.code) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=Adverse.event.diagnosis.code, y=count, fill=Adverse.event.diagnosis.code)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Adverse Event Diagnosis") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+## Physical Restraints
+
+```{r}
+table(pwbe$Physical.Restraints, exclude = "ifany")
+# No Yes 
+#396  57 
+
+pwbe %>% 
+    group_by(Physical.Restraints) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=Physical.Restraints, y=count, fill=Physical.Restraints)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Physical Restraints") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+# Percentage of patients with multiple yes in two or more columns
+
+```{r}
+vars <- c("Delirium.diagnosis", 
+          "Antipsychotic.administration.while.on.Keppra", 
+          "Positive.CAM.ICU.while.on.Keppra",
+          "Adverse.event.diagnosis.code",
+          "Physical.Restraints")
+
+table(apply(pwbe[, which(names(pwbe) %in% vars)], 1, function(x){sum(x=="Yes")}))
+#  1   2   3   4   5 
+#246 127  54  23   3 
+
+pwbe$multipleYes <- apply(pwbe[, which(names(pwbe) %in% vars)], 1, function(x){sum(x=="Yes")})
+pwbe$multipleYes <- as.character(pwbe$multipleYes)
+
+pwbe %>% 
+    group_by(multipleYes) %>% 
+    summarize(count = n()) %>% 
+    mutate(percent = count/sum(count)) %>% 
+    ggplot(aes(x=multipleYes, y=count, fill=multipleYes)) +
+    geom_col() +
+    geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    scale_x_discrete(label=c("Only 1 Yes",
+                              "2 Yes",
+                              "3 Yes",
+                              "4 Yes",
+                              "5 Yes")) +
+    xlab("Multiple Yes") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+## Patients with Antipsychotic administration while on Keppra; most frequently administered drug
+
+```{r}
+pwbe_antipsy <- pwbe[which(pwbe$Antipsychotic.administration.while.on.Keppra=="Yes"),]
+
+table(pwbe_antipsy$Antipsychotic.received.while.on.Keppra, exclude = "ifany")
+#  H  HO  HQ HQZ HRQ HZQ   O  OH  OQ OQH OQZ   Q  QH QHO QHZ  QO  QR QRH  QZ   R  RQ   Z  ZQ 
+# 30   4  16   1   1   1   4   2   3   1   1  92  21   1   1   1   1   1   1   4   2   1   1 
+
+pwbe_antipsy$H <- ifelse(grepl("H", pwbe_antipsy$Antipsychotic.received.while.on.Keppra), "Yes", "No")
+pwbe_antipsy$O <- ifelse(grepl("O", pwbe_antipsy$Antipsychotic.received.while.on.Keppra), "Yes", "No")
+pwbe_antipsy$Q <- ifelse(grepl("Q", pwbe_antipsy$Antipsychotic.received.while.on.Keppra), "Yes", "No")
+pwbe_antipsy$Z <- ifelse(grepl("Z", pwbe_antipsy$Antipsychotic.received.while.on.Keppra), "Yes", "No")
+pwbe_antipsy$R <- ifelse(grepl("R", pwbe_antipsy$Antipsychotic.received.while.on.Keppra), "Yes", "No")
+
+apply(pwbe_antipsy[,c("H","O","Q","Z","R")], 2, table)
+
+antipsychotic <- data.frame(Antipsychotic = c("H","O","Q","Z","R"),
+                            Count = apply(pwbe_antipsy[,c("H","O","Q","Z","R")], 2, table)[2,])
+
+ggplot(antipsychotic, aes(x=Antipsychotic, y=Count, fill=Antipsychotic)) +
+    geom_col() +
+    #geom_text(aes(label = paste0(round(100 * percent, 1), "%")), vjust = -.5, size=5)+
+    xlab("Antipsychotic") + 
+    ylab("Count")+
+    guides(fill=FALSE)+
+    theme_bw()+
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+```
+
+# Time to event
+
+## Time to Antipsyhotic Administration after first dose of Keppra (DAYS)
+
+```{r}
+pwbe$TTA_Status <- ifelse(pwbe$Antipsychotic.administration.while.on.Keppra=="Yes", 1, 0)
+pwbe$TTA <- pwbe$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS.
+pwbe$TTA[which(is.na(pwbe$TTA))] <- pwbe$Hospital.Length.of.Stay..DAYS.[which(is.na(pwbe$TTA))]
+
+fittreat <- survfit(Surv(TTA, TTA_Status) ~ 1, data=pwbe)
+survfit(Surv(TTA, TTA_Status) ~ 1, data=pwbe) #median=29.2
+ggsurvplot(fittreat, 
+            data = pwbe, 
+            conf.int = TRUE, 
+            censor=TRUE, 
+            #size = 1.5,
+            legend="none",
+            xlab="Time to antipsychotic administration (days)",
+            ylab="Probability of antipsychotic administration",
+            risk.table = FALSE,
+            fontsize = 5,
+            font.x = 20,
+            font.y = 20,
+            ggtheme = theme_bw())
+```
+
+# Time to Positive CAM-ICU
+
+```{r}
+pwbe$PosCAM_Status <- ifelse(pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes", 1, 0)
+pwbe$PosCAM <- pwbe$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS.
+pwbe$PosCAM[which(is.na(pwbe$PosCAM))] <- pwbe$ICU.length.of.stay..DAYS.[which(is.na(pwbe$PosCAM))]
+
+fittreat <- survfit(Surv(PosCAM, PosCAM_Status) ~ 1, data=pwbe)
+survfit(Surv(PosCAM, PosCAM_Status) ~ 1, data=pwbe) #median=
+ggsurvplot(fittreat, 
+            data = pwbe, 
+            conf.int = TRUE, 
+            censor=TRUE, 
+            #size = 1.5,
+            legend="none",
+            xlab="Time to positive CAM (days)",
+            ylab="Probability of positive CAM",
+            risk.table = FALSE,
+            fontsize = 5,
+            font.x = 20,
+            font.y = 20,
+            ggtheme = theme_bw())
+```
+

@@ -1,0 +1,204 @@
+---
+title: "Propensity Score Matching"
+author: "Spiro Stilianoudakis"
+date: "September 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Libraries
+
+```{r}
+library(openxlsx)
+#library(xlsx)
+library(MatchIt)
+library(Matching)
+library(survival)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(ggpubr)
+```
+
+# Loading Data Frame
+
+```{r}
+thirtyday <- readRDS("C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/thirtyday.rds")
+thirtyday <- readRDS("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/thirtyday.rds")
+```
+
+# Propensity Score Matching
+## 2:1 ratio of readmission to nonreadmission
+
+```{r}
+thirtyday2 <- thirtyday
+thirtyday2$Readmission <- ifelse(as.character(thirtyday2$Readmission)=="No", 0, 1)
+
+set.seed(123)
+match.out <- matchit(Readmission ~ Diagnostic_group + Severity_index + Length_of_stay, 
+                     data = thirtyday2, 
+                     method = "nearest",
+                     ratio = 2) 
+match.out
+
+match.out$match.matrix
+dim(match.out$match.matrix) #245   2
+plot(match.out)
+summary(match.out)
+
+#Creating a dataset with just the matched sample
+matched.samp <- match.data(match.out)
+dim(matched.samp) #735  14
+matched.samp <- matched.samp[,-c(13,14)]
+
+saveRDS(matched.samp, "Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/matched.samp.rds")
+saveRDS(matched.samp, "C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/matched.samp.rds")
+
+```
+
+#Visually Inspecting the matched sample
+
+```{r}
+#p1 <- ggplot(matched.samp, aes(x = distance, y = Length_of_stay, color = factor(Readmission))) +
+#     geom_point(alpha = 0.2, size = 1.3) +
+#     geom_smooth(method = "loess", se = F) +
+#     xlab("Propensity score") +
+#     ylab("Length of stay") +
+#     theme_bw() + scale_color_discrete(name="Readmission", breaks=c(0,1), labels = c("No","Yes"))
+
+#p2 <- ggplot(matched.samp, aes(x = distance, y = Diagnostic_group, color = factor(Readmission))) +
+#     geom_point(alpha = 0.2, size = 1.3) +
+#     geom_smooth(method = "loess", se = F) +
+#     xlab("Propensity score") +
+#     ylab("Diagnostic Group") +
+#     theme_bw() + scale_color_discrete(name="Readmission", breaks=c(0,1), labels = c("No","Yes"))
+
+#p3 <- ggplot(matched.samp, aes(x = distance, y = Severity_index, color = factor(Readmission))) +
+#     geom_point(alpha = 0.2, size = 1.3) +
+#     geom_smooth(method = "loess", se = F) +
+#     xlab("Propensity score") +
+#     ylab("Severity Index") +
+#     theme_bw() + scale_color_discrete(name="Readmission", breaks=c(0,1), labels = c("No","Yes"))
+
+#p4 <- ggplot(matched.samp, aes(x = distance, y = Age, color = factor(Readmission))) +
+#     geom_point(alpha = 0.2, size = 1.3) +
+#     geom_smooth(method = "loess", se = F) +
+#     xlab("Propensity score") +
+#     ylab("Severity Index") +
+#     theme_bw() + scale_color_discrete(name="Readmission", breaks=c(0,1), labels = c("No","Yes"))
+
+#ggarrange(p1, p2, p3, p4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+
+
+```
+
+
+#Patient Summaries
+
+##Readmitted Group
+
+```{r}
+
+mydata <- readRDS("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/matched.samp.rds")
+
+readmitted <- mydata[which(mydata$Readmission==1),]
+dim(readmitted) #245  12
+
+#Continuous variables
+rdf <- tbl_df(readmitted)
+
+rdf.sum <- rdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+rdf.sum.tidy <- rdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+rdf.sum.tidy <- data.frame(rdf.sum.tidy)
+colnames(rdf.sum.tidy)[1] <- "Variable"
+rdf.sum.tidy$Variable <- substr(rdf.sum.tidy$Variable, 1, nchar(rdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+rdf.tab <- rdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- rdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- data.frame(rdf.tab.tidy)
+colnames(rdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+```
+
+
+##Non-Readmitted Group
+
+```{r}
+
+nonreadmitted <- mydata[which(mydata$Readmission==0),]
+dim(nonreadmitted) #490   12
+
+nrdf <- tbl_df(nonreadmitted)
+
+#Continuous variables
+nrdf.sum <- nrdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+nrdf.sum.tidy <- nrdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+nrdf.sum.tidy <- data.frame(nrdf.sum.tidy)
+colnames(nrdf.sum.tidy)[1] <- "Variable"
+nrdf.sum.tidy$Variable <- substr(nrdf.sum.tidy$Variable, 1, nchar(nrdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+nrdf.tab <- nrdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- nrdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- data.frame(nrdf.tab.tidy)
+colnames(nrdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+```
+
+
+# Performing tests
+
+```{r}
+
+t.test(mydata$Age[which(mydata$Readmission==1)],
+       mydata$Age[which(mydata$Readmission==0)])
+t.test(mydata$Length_of_stay[which(mydata$Readmission==1)],
+       mydata$Length_of_stay[which(mydata$Readmission==0)])
+chisq.test(mydata$Gender,mydata$Readmission)
+chisq.test(mydata$Race,mydata$Readmission)
+chisq.test(mydata$Ethnicity,mydata$Readmission)
+chisq.test(mydata$Diagnostic_group,mydata$Readmission)
+chisq.test(mydata$Severity_index,mydata$Readmission)
+
+```
+

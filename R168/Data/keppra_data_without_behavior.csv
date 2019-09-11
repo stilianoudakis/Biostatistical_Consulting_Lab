@@ -1,0 +1,513 @@
+Patient ID,Age on arrival,Ethnicity,Gender,Admission Diagnosis,GCS on Admission,Discharge Disposition,Hospital Length of Stay (DAYS),ICU length of stay (DAYS),Doses of Keppra Received in the ICU
+1,66.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,28.03,21.0,7
+2,37.1,White,F,INTRACEREBRAL HEMORRHAGE,7,Expired,33.11,31.9,16
+3,52.2,White,F,SUBARACHNOID HEMORRHAGE,14,Home,9.91,1.5,2
+4,66.4,White,F,INTRACEREBRAL HEMORRHAGE,13,Disch to Rehab Unit/Facility,26.21,25.8,52
+5,59.7,White,M,Traumatic intracranial injury,13,Expired,15.14,11.3,23
+6,71.1,White,F,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,33.20,24.7,7
+7,75.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,5.09,2.3,5
+8,47.2,Other,F,Traumatic intracranial injury,15,Home,4.30,2.0,4
+9,41.2,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,5.23,4.2,7
+10,85.5,Unknown-Unable to Communicate,M,INTRACEREBRAL HEMORRHAGE,15,Home,2.19,0.7,1
+11,63.6,White,M,CEREBRAL INFARCTION,14,Disch to SNF,8.82,0.7,1
+12,86.1,White,M,CEREBRAL INFARCTION,9,Disch to SNF,25.84,4.8,1
+13,65.7,White,M,CEREBRAL INFARCTION,14,Home,6.03,2.7,5
+14,57.6,White,M,CEREBRAL INFARCTION,10,Hospice,3.52,2.8,3
+15,37.2,Black or African American,F,CEREBRAL INFARCTION,15,Home,11.35,1.0,1
+16,47.0,Black or African American,F,CEREBRAL INFARCTION,13,Home,30.32,2.0,3
+17,81.2,White,F,CEREBRAL INFARCTION,15,Expired,7.13,3.9,2
+18,68.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,11,Disch to Rehab Unit/Facility,8.97,3.2,3
+19,81.8,White,F,INTRACEREBRAL HEMORRHAGE,4,Expired,0.79,0.7,1
+20,85.4,White,F,INTRACEREBRAL HEMORRHAGE,5,Expired,1.09,1.0,2
+21,48.6,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,11.66,11.4,12
+22,66.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,20.02,1.2,1
+23,46.4,White,F,CEREBRAL INFARCTION,5,Disch to Rehab Unit/Facility,35.03,27.5,56
+24,64.2,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,11.36,9.1,13
+25,55.0,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,28.20,26.3,14
+26,42.6,White,F,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,19.73,18.5,27
+27,92.3,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,6.62,4.4,10
+28,73.7,White,F,CEREBRAL INFARCTION,13,Disch to SNF,6.14,2.9,5
+29,76.0,Black or African American,F,CEREBRAL INFARCTION,14,Disch to SNF,23.70,7.8,13
+30,79.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,10.92,5.9,10
+31,92.1,White,F,CEREBRAL INFARCTION,14,Disch to SNF,7.42,3.3,3
+32,81.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,8.76,2.3,5
+33,91.5,White,F,Traumatic intracranial injury,15,Home,10.75,7.4,4
+34,62.6,Other,M,Traumatic intracranial injury,13,Disch to SNF,24.94,12.6,25
+35,60.1,White,M,INTRACEREBRAL HEMORRHAGE,3,Expired,3.11,3.0,6
+36,71.1,White,F,Traumatic intracranial injury,15,Disch to SNF,12.92,1.2,3
+37,64.4,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,21.64,18.3,16
+38,61.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,10.19,3.9,7
+39,81.3,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,4.67,1.9,1
+40,63.7,White,M,INTRACEREBRAL HEMORRHAGE,11,Hospice,38.03,35.2,71
+41,46.5,White,F,CEREBRAL INFARCTION,14,Home,20.95,19.7,40
+42,30.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,14,Home,7.78,2.8,6
+43,31.1,White,F,INTRACEREBRAL HEMORRHAGE,5,Disch to SNF,26.95,15.0,14
+44,88.0,White,M,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,19.52,8.5,20
+45,53.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Expired,2.28,2.2,2
+46,66.6,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,8.05,4.2,4
+47,85.6,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,10.56,8.8,17
+48,59.9,Black or African American,F,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,51.83,39.6,15
+49,26.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Expired,26.04,0.8,1
+50,79.2,White,F,CEREBRAL INFARCTION,8,Expired,13.12,11.1,20
+51,76.5,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,11.04,6.8,14
+52,93.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,20.65,2.0,4
+53,38.7,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,1.98,1.9,1
+54,60.1,White,F,CEREBRAL INFARCTION,6,Hospice,11.95,4.1,9
+55,73.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Hospice,9.14,2.3,3
+56,73.5,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,21.97,17.1,14
+57,71.8,Black or African American,F,CEREBRAL INFARCTION,12,Home,11.08,9.6,15
+58,22.9,White,F,SUBARACHNOID HEMORRHAGE,15,Home,10.51,10.1,11
+59,38.3,White,M,INTRACEREBRAL HEMORRHAGE,14,Expired,19.85,19.2,37
+60,45.1,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,13.91,8.8,15
+61,79.7,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,0.91,0.9,1
+62,71.4,White,F,CEREBRAL INFARCTION,15,Home,1.54,1.4,3
+63,73.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,10,Other,24.26,24.1,52
+64,58.8,White,M,INTRACEREBRAL HEMORRHAGE,14,Home,10.86,9.5,16
+65,82.1,Other,F,CEREBRAL INFARCTION,6,Expired,20.57,15.6,15
+66,53.0,Black or African American,M,CEREBRAL INFARCTION,13,Disch to Rehab Unit/Facility,14.08,12.6,14
+67,58.2,Unknown-Pt Refusal,F,INTRACEREBRAL HEMORRHAGE,15,Home,7.78,6.4,14
+68,89.2,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,10.75,2.6,4
+69,75.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,4.82,4.4,8
+70,53.1,White,M,CEREBRAL INFARCTION,15,Home,3.09,2.0,5
+71,92.8,Black or African American,F,CEREBRAL INFARCTION,5,Expired,5.55,5.5,10
+72,86.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Hospice,7.87,7.8,15
+73,73.5,Black or African American,F,SUBARACHNOID HEMORRHAGE,3,Expired,2.56,2.5,6
+74,89.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Home,3.92,1.7,4
+75,73.0,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,13.93,12.9,14
+76,63.5,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,25.95,18.7,15
+77,50.8,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,13.84,13.5,11
+78,69.1,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,38.15,16.8,2
+79,63.0,Black or African American,F,CEREBRAL INFARCTION,9,Disch to SNF,53.14,8.6,5
+80,68.3,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,9.92,9.3,20
+81,70.8,Black or African American,F,CEREBRAL INFARCTION,6,Hospice,2.86,2.6,1
+82,71.0,Unknown-Unable to Communicate,M,CEREBRAL INFARCTION,13,Expired,4.17,3.8,8
+83,67.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Home,5.90,5.8,13
+84,64.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Home,8.80,2.9,6
+85,74.0,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,2.16,2.1,4
+86,53.4,White,F,SUBARACHNOID HEMORRHAGE,14,Home,12.70,8.2,16
+87,62.5,White,F,INTRACEREBRAL HEMORRHAGE,8,Disch to SNF,19.99,8.2,15
+88,61.0,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,9.19,9.0,20
+89,59.6,White,M,CEREBRAL INFARCTION,12,Disch to Rehab Unit/Facility,10.77,8.4,14
+90,45.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,2.90,2.7,4
+91,56.4,White,M,CEREBRAL INFARCTION,10,Other,16.89,16.5,5
+92,86.1,Black or African American,F,CEREBRAL INFARCTION,3,Expired,0.77,0.7,2
+93,79.0,White,M,INTRACEREBRAL HEMORRHAGE,6,Disch to SNF,13.03,7.8,13
+94,22.1,White,M,CEREBRAL INFARCTION,10,Other,9.09,4.9,11
+95,60.1,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,29.13,11.1,14
+96,45.8,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,5.51,2.6,5
+97,21.6,White,M,Traumatic intracranial injury,15,Other,9.00,3.1,7
+98,87.9,White,M,INTRACEREBRAL HEMORRHAGE,14,Home,4.80,1.9,4
+99,87.9,White,F,Traumatic intracranial injury,14,Disch to SNF,5.18,2.7,6
+100,49.6,Black or African American,M,Traumatic intracranial injury,14,Home,15.74,7.4,14
+101,47.4,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,7.97,6.9,3
+102,67.0,Black or African American,F,CEREBRAL INFARCTION,13,Disch to SNF,32.17,31.9,1
+103,67.5,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,4.49,2.5,6
+104,49.6,White,M,SUBARACHNOID HEMORRHAGE,15,Home,4.48,4.3,7
+105,33.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Home,6.80,4.7,9
+106,63.5,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,16.28,15.9,14
+107,34.1,White,M,Traumatic intracranial injury,15,Home,1.54,1.4,3
+108,72.3,White,F,SUBARACHNOID HEMORRHAGE,15,Home,11.85,8.2,11
+109,66.2,Black or African American,M,CEREBRAL INFARCTION,6,Disch to SNF,25.67,21.5,1
+110,77.5,White,F,INTRACEREBRAL HEMORRHAGE,13,Home,6.89,1.7,3
+111,77.4,Black or African American,M,CEREBRAL INFARCTION,14,Disch to SNF,5.73,1.5,4
+112,44.6,White,M,Traumatic intracranial injury,15,Home,14.05,0.8,1
+113,72.2,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,2.05,1.9,2
+114,62.8,Black or African American,M,CEREBRAL INFARCTION,13,Disch to Rehab Unit/Facility,24.31,2.7,6
+115,51.6,White,F,SUBARACHNOID HEMORRHAGE,14,Home,18.74,16.5,15
+116,54.0,Black or African American,F,SUBARACHNOID HEMORRHAGE,13,Home,19.43,14.4,18
+117,57.6,Black or African American,M,CEREBRAL INFARCTION,10,Disch to SNF,18.61,9.6,1
+118,68.6,White,F,CEREBRAL INFARCTION,15,Home,11.02,10.6,17
+119,82.2,White,F,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,7.40,3.9,9
+120,39.0,White,F,SUBARACHNOID HEMORRHAGE,14,Home,16.57,16.1,13
+121,69.2,White,F,CEREBRAL INFARCTION,4,Expired,31.93,23.3,17
+122,60.6,Unknown-Unable to Communicate,F,INTRACEREBRAL HEMORRHAGE,5,Expired,2.73,2.5,4
+123,50.1,White,M,SUBARACHNOID HEMORRHAGE,14,Home,12.59,12.4,14
+124,63.0,White,F,SUBARACHNOID HEMORRHAGE,15,Home,11.80,9.7,15
+125,67.4,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,6.90,6.4,13
+126,40.3,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,8.09,7.9,14
+127,77.2,Black or African American,F,CEREBRAL INFARCTION,10,Home,2.81,1.8,3
+128,42.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,8,Home,19.45,18.1,34
+129,56.0,White,M,SUBARACHNOID HEMORRHAGE,12,Home,10.53,10.3,13
+130,76.5,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,4.93,2.0,4
+131,56.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,19.03,10.2,4
+132,57.9,Black or African American,M,CEREBRAL INFARCTION,12,Disch to SNF,31.33,1.0,2
+133,55.3,Black or African American,M,CEREBRAL INFARCTION,15,Expired,3.00,2.9,6
+134,70.8,Black or African American,F,Traumatic intracranial injury,3,Expired,1.87,0.3,1
+135,86.1,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,6.25,3.1,6
+136,20.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Expired,11.13,11.0,22
+137,42.3,Other,M,CEREBRAL INFARCTION,14,Home,8.01,3.2,7
+138,70.0,White,F,SUBARACHNOID HEMORRHAGE,15,Home,1.58,1.4,1
+139,59.8,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,10.52,7.9,15
+140,70.5,White,F,INTRACEREBRAL HEMORRHAGE,5,Disch to Rehab Unit/Facility,8.63,8.3,15
+141,70.2,Black or African American,F,CEREBRAL INFARCTION,14,Hospice,30.75,26.2,47
+142,60.1,Asian,F,CEREBRAL INFARCTION,14,Home,14.25,14.0,15
+143,36.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,3,Home,21.13,20.3,15
+144,46.1,Black or African American,M,CEREBRAL INFARCTION,5,Disch to SNF,31.89,15.9,32
+145,61.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Home,3.94,1.5,4
+146,73.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,8.73,4.8,9
+147,70.3,White,F,CEREBRAL INFARCTION,15,Disch to SNF,19.82,15.3,12
+148,57.7,White,M,SUBARACHNOID HEMORRHAGE,7,Disch to Rehab Unit/Facility,23.19,22.9,11
+149,78.1,White,F,Traumatic intracranial injury,11,Disch to SNF,20.70,6.1,7
+150,83.4,White,M,Traumatic intracranial injury,14,Expired,7.76,7.5,14
+151,74.8,White,M,CEREBRAL INFARCTION,11,Home,3.37,3.3,3
+152,74.9,Unknown-Unable to Communicate,F,Traumatic intracranial injury,4,Expired,0.49,0.4,1
+153,70.4,White,F,SUBARACHNOID HEMORRHAGE,14,Home,15.33,1.5,2
+154,39.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,8.65,8.3,12
+155,81.1,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,8.13,7.2,13
+156,28.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,16.23,16.0,15
+157,53.8,Unknown-Unable to Communicate,M,SUBARACHNOID HEMORRHAGE,13,Home,18.97,12.8,25
+158,58.6,Black or African American,F,SUBARACHNOID HEMORRHAGE,10,Disch to Rehab Unit/Facility,36.15,28.6,14
+159,72.5,White,F,CEREBRAL INFARCTION,2,Home,8.95,5.8,11
+160,91.9,White,F,Traumatic intracranial injury,15,Home,3.00,0.8,2
+161,83.1,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,1.79,1.7,3
+162,52.5,Other,M,INTRACEREBRAL HEMORRHAGE,15,Home,4.68,2.4,2
+163,48.6,Black or African American,M,CEREBRAL INFARCTION,7,Disch to SNF,123.59,123.0,19
+164,57.5,White,F,SUBARACHNOID HEMORRHAGE,11,Home,15.05,14.8,13
+165,71.8,White,M,INTRACEREBRAL HEMORRHAGE,3,Expired,0.52,0.5,1
+166,58.4,Black or African American,M,Traumatic intracranial injury,3,Expired,4.12,4.0,6
+167,85.9,Black or African American,M,CEREBRAL INFARCTION,7,Home,3.82,3.8,7
+168,71.9,Unknown-Unable to Communicate,M,INTRACEREBRAL HEMORRHAGE,15,Home,14.69,14.2,7
+169,17.8,White,M,Traumatic intracranial injury,15,Home,10.94,2.1,4
+170,76.3,White,F,CEREBRAL INFARCTION,13,Home,2.99,2.6,4
+171,74.5,Black or African American,M,CEREBRAL INFARCTION,15,Home,3.66,3.4,6
+172,74.3,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,14.55,7.2,11
+173,58.4,Black or African American,F,CEREBRAL INFARCTION,6,Hospice,13.12,13.0,13
+174,57.3,White,F,INTRACEREBRAL HEMORRHAGE,9,Hospice,33.75,33.4,49
+175,51.5,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Expired,3.36,3.3,7
+176,43.8,Black or African American,M,CEREBRAL INFARCTION,15,Home,9.50,9.1,14
+177,61.3,White,M,SUBARACHNOID HEMORRHAGE,4,Expired,2.23,1.9,3
+178,46.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,0.92,0.7,1
+179,45.9,White,M,Traumatic intracranial injury,13,Home,19.19,1.1,2
+180,37.2,Black or African American,M,INTRACEREBRAL HEMORRHAGE,7,Expired,7.75,7.6,13
+181,54.3,White,F,INTRACEREBRAL HEMORRHAGE,10,Disch to Rehab Unit/Facility,8.51,3.2,7
+182,49.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,10.63,10.2,5
+183,75.9,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Home,6.68,3.9,8
+184,51.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Home,12.14,11.7,15
+185,52.9,White,M,CEREBRAL INFARCTION,6,Expired,9.90,9.8,6
+186,84.4,Unknown-Pt Refusal,F,CEREBRAL INFARCTION,15,Home,2.93,2.9,4
+187,46.3,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,15.16,15.0,14
+188,62.8,Black or African American,F,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,20.24,5.9,11
+189,61.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,9.77,8.4,15
+190,71.3,Native Hawaii/Other Pac Island,M,CEREBRAL INFARCTION,3,Expired,5.68,5.4,11
+191,49.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,1.48,0.8,2
+192,68.1,Black or African American,F,CEREBRAL INFARCTION,13,Other,55.73,32.3,15
+193,91.7,White,F,CEREBRAL INFARCTION,3,Expired,4.03,2.7,1
+194,88.3,White,M,SUBARACHNOID HEMORRHAGE,15,Other,3.16,2.9,5
+195,46.4,Black or African American,M,CEREBRAL INFARCTION,4,Expired,2.27,2.2,4
+196,54.0,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,10.28,9.9,14
+197,67.1,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,11.07,10.7,14
+198,67.7,White,M,INTRACEREBRAL HEMORRHAGE,6,Expired,2.27,2.0,2
+199,49.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,4.85,3.8,2
+200,60.4,White,M,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,8.21,2.1,2
+201,83.0,White,M,INTRACEREBRAL HEMORRHAGE,13,Disch to SNF,4.06,2.9,12
+202,81.9,White,F,SUBARACHNOID HEMORRHAGE,3,Expired,0.26,0.2,2
+203,45.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,10.77,9.8,28
+204,69.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Home,12.26,10.9,31
+205,50.8,Black or African American,M,CEREBRAL INFARCTION,10,Home,4.10,1.8,5
+206,47.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,5,Expired,3.18,3.1,12
+207,53.5,Black or African American,M,CEREBRAL INFARCTION,12,Expired,16.27,13.9,19
+208,52.1,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,5.04,4.9,24
+209,48.0,White,M,Traumatic intracranial injury,13,Home,4.85,3.0,12
+210,60.0,White,M,CEREBRAL INFARCTION,7,Home,1.72,0.8,2
+211,87.0,White,M,Traumatic intracranial injury,9,Home,5.87,3.8,1
+212,42.8,Black or African American,F,CEREBRAL INFARCTION,7,Expired,10.30,10.2,1
+213,65.5,White,M,INTRACEREBRAL HEMORRHAGE,3,Other,16.76,13.0,24
+214,71.5,Other,F,SUBARACHNOID HEMORRHAGE,13,Home,2.18,1.8,4
+215,83.8,Black or African American,F,CEREBRAL INFARCTION,14,Expired,3.62,1.5,3
+216,66.6,Black or African American,M,CEREBRAL INFARCTION,3,Home,9.11,3.8,8
+217,36.7,N/A-Outreach Use Only,F,INTRACEREBRAL HEMORRHAGE,3,Home,7.89,2.0,4
+218,37.5,White,F,CEREBRAL INFARCTION,15,Home,2.73,1.9,4
+219,56.2,White,F,Traumatic intracranial injury,14,Disch to SNF,14.02,8.8,17
+220,67.1,White,F,Traumatic intracranial injury,8,Disch to Rehab Unit/Facility,28.98,17.1,14
+221,55.5,Black or African American,M,Traumatic intracranial injury,11,Other,5.61,5.3,10
+222,20.3,White,F,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,28.38,28.2,45
+223,22.0,White,M,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,29.20,22.0,28
+224,34.3,Other,M,Traumatic intracranial injury,7,Home,2.69,0.7,2
+225,65.3,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,4.06,2.0,4
+226,46.7,Black or African American,M,CEREBRAL INFARCTION,7,Other,115.70,71.8,6
+227,16.7,Black or African American,M,CEREBRAL INFARCTION,10,Home,2.43,1.3,4
+228,75.5,Black or African American,F,Traumatic intracranial injury,6,Expired,20.71,2.5,3
+229,55.6,Black or African American,M,CEREBRAL INFARCTION,9,Home,8.36,2.4,4
+230,88.6,White,F,CEREBRAL INFARCTION,11,Expired,0.41,0.2,1
+231,92.2,White,F,CEREBRAL INFARCTION,6,Home,2.93,0.9,2
+232,87.7,White,F,Traumatic intracranial injury,6,Expired,4.39,0.6,1
+233,69.4,Black or African American,F,Traumatic intracranial injury,3,Expired,1.89,1.8,3
+234,54.4,White,M,INTRACEREBRAL HEMORRHAGE,7,Other,5.79,3.1,6
+235,46.0,Black or African American,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,26.33,17.4,16
+236,23.0,Black or African American,M,Traumatic intracranial injury,14,Home,3.22,2.8,6
+237,76.7,White,M,Traumatic intracranial injury,15,Expired,7.19,7.0,12
+238,29.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,2.98,2.6,6
+239,72.9,Black or African American,F,Traumatic intracranial injury,9,Expired,1.30,1.1,1
+240,19.7,White,M,Traumatic intracranial injury,7,Home,2.85,2.0,4
+241,51.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Expired,7.90,4.9,1
+242,76.7,Black or African American,F,CEREBRAL INFARCTION,3,Home,3.89,1.7,4
+243,66.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Home,5.10,1.7,3
+244,77.1,Black or African American,F,Traumatic intracranial injury,11,Home,6.05,1.4,2
+245,86.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Expired,18.84,8.7,2
+246,86.8,White,F,Traumatic intracranial injury,7,Expired,2.47,2.2,4
+247,55.7,White,M,CEREBRAL INFARCTION,3,Home,4.68,1.5,2
+248,58.7,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,27.92,17.6,14
+249,79.2,Black or African American,M,CEREBRAL INFARCTION,15,Expired,9.48,3.2,4
+250,55.8,White,M,CEREBRAL INFARCTION,15,Home,2.73,1.9,4
+251,43.7,White,M,Traumatic intracranial injury,7,Home,9.64,6.4,5
+252,42.7,Black or African American,M,Traumatic intracranial injury,4,Expired,3.80,3.7,8
+253,20.6,White,M,Traumatic intracranial injury,14,Home,9.97,9.5,12
+254,24.4,Black or African American,M,Traumatic intracranial injury,7,Home,2.86,1.7,3
+255,51.2,White,M,Traumatic intracranial injury,15,Home,34.04,15.6,14
+256,77.7,Black or African American,F,CEREBRAL INFARCTION,14,Home,42.07,23.0,48
+257,81.4,White,M,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,21.73,17.5,16
+258,57.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,4.75,1.7,4
+259,66.3,White,M,CEREBRAL INFARCTION,15,Other,26.17,26.0,13
+260,31.4,Black or African American,M,CEREBRAL INFARCTION,14,Disch to SNF,40.89,33.9,27
+261,51.9,Black or African American,M,Traumatic intracranial injury,3,Other,18.18,13.8,10
+262,21.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,11,Home,2.40,2.2,4
+263,74.6,White,M,SUBARACHNOID HEMORRHAGE,15,Home,5.95,2.7,5
+264,58.4,Black or African American,M,Traumatic intracranial injury,15,Expired,4.26,4.1,4
+265,28.5,White,M,CEREBRAL INFARCTION,3,Home,12.10,11.6,14
+266,57.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,12.81,6.6,3
+267,30.5,Black or African American,F,CEREBRAL INFARCTION,13,Expired,6.90,6.6,9
+268,20.9,White,F,CEREBRAL INFARCTION,15,Home,5.02,2.0,4
+269,64.0,White,F,CEREBRAL INFARCTION,7,Home,6.21,2.0,4
+270,65.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,4.88,0.7,1
+271,25.1,Black or African American,M,CEREBRAL INFARCTION,14,Expired,1.15,1.1,1
+272,16.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Home,1.87,1.7,2
+273,59.3,Black or African American,F,Traumatic intracranial injury,15,Expired,6.00,5.4,11
+274,67.6,Black or African American,M,CEREBRAL INFARCTION,5,Home,3.00,2.0,4
+275,64.8,Black or African American,M,CEREBRAL INFARCTION,14,Other,17.55,17.4,35
+276,62.2,White,M,CEREBRAL INFARCTION,10,Home,4.81,2.7,5
+277,74.2,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,11.77,5.5,13
+278,41.3,White,M,INTRACEREBRAL HEMORRHAGE,14,Other,25.09,25.0,14
+279,62.7,White,M,Traumatic intracranial injury,5,Disch to SNF,30.74,16.5,16
+280,58.3,White,M,Traumatic intracranial injury,15,Home,4.75,1.4,3
+281,75.8,Black or African American,M,Traumatic intracranial injury,14,Expired,24.09,23.2,8
+282,15.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,10.98,0.6,2
+283,81.6,Black or African American,F,Traumatic intracranial injury,7,Disch to SNF,2.96,2.9,3
+284,83.4,Black or African American,F,CEREBRAL INFARCTION,14,Disch to SNF,18.08,9.2,17
+285,81.3,White,F,Traumatic intracranial injury,11,Home,3.34,1.1,3
+286,57.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Expired,8.26,8.1,16
+287,54.8,White,M,Traumatic intracranial injury,7,Home,2.57,2.3,5
+288,80.4,White,M,CEREBRAL INFARCTION,15,Hospice,8.34,4.2,6
+289,30.3,Black or African American,F,Traumatic intracranial injury,6,Home,42.99,18.6,16
+290,42.9,Black or African American,F,Traumatic intracranial injury,6,Home,4.80,1.4,3
+291,68.9,White,F,Traumatic intracranial injury,15,Home,2.36,1.4,2
+292,75.8,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,22.83,9.3,13
+293,74.6,White,F,CEREBRAL INFARCTION,15,Home,3.69,1.4,2
+294,75.9,White,M,Traumatic intracranial injury,15,Home,4.78,2.9,3
+295,91.5,White,M,INTRACEREBRAL HEMORRHAGE,13,Expired,0.70,0.5,1
+296,75.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,23.66,13.9,13
+297,66.3,White,M,Traumatic intracranial injury,3,Home,3.13,1.2,1
+298,76.4,White,M,Traumatic intracranial injury,15,Home,11.42,4.0,8
+299,19.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,29.98,23.8,35
+300,19.7,Black or African American,M,Traumatic intracranial injury,10,Disch to Rehab Unit/Facility,6.84,3.0,6
+301,71.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,1.42,1.3,2
+302,27.4,White,M,CEREBRAL INFARCTION,3,Home,4.13,3.9,7
+303,42.9,White,M,Traumatic intracranial injury,8,Home,3.65,2.5,6
+304,53.6,Black or African American,M,Traumatic intracranial injury,14,Home,2.36,1.9,4
+305,77.5,Black or African American,M,Traumatic intracranial injury,10,Disch to SNF,1.88,1.8,4
+306,94.5,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,6.78,4.1,9
+307,62.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Home,12.87,5.1,7
+308,59.8,Black or African American,F,CEREBRAL INFARCTION,13,Home,8.43,8.1,15
+309,82.3,White,M,INTRACEREBRAL HEMORRHAGE,15,Expired,7.32,7.1,16
+310,90.8,White,F,INTRACEREBRAL HEMORRHAGE,4,Expired,5.63,5.6,11
+311,60.7,White,F,INTRACEREBRAL HEMORRHAGE,8,Home,11.19,9.8,13
+312,77.6,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,19.81,13.7,14
+313,16.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Other,55.76,36.9,48
+314,60.4,Black or African American,F,Traumatic intracranial injury,14,Expired,4.76,4.7,9
+315,68.3,Black or African American,F,CEREBRAL INFARCTION,14,Disch to SNF,18.03,16.5,14
+316,48.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,59.08,45.0,82
+317,31.7,White,M,CEREBRAL INFARCTION,13,Disch to Rehab Unit/Facility,32.50,25.1,50
+318,41.7,Black or African American,F,Traumatic intracranial injury,3,Home,11.11,7.6,13
+319,62.9,Black or African American,F,Traumatic intracranial injury,15,Other,22.26,20.0,43
+320,30.0,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,2.06,0.7,2
+321,64.5,White,M,Traumatic intracranial injury,15,Expired,1.62,1.4,3
+322,79.5,Black or African American,F,SUBARACHNOID HEMORRHAGE,4,Hospice,21.04,17.8,37
+323,68.0,White,M,Traumatic intracranial injury,6,Home,3.73,2.8,5
+324,76.2,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Expired,10.26,9.6,15
+325,53.4,Black or African American,F,Traumatic intracranial injury,10,Disch to Rehab Unit/Facility,21.10,18.9,13
+326,77.1,White,F,Traumatic intracranial injury,14,Expired,4.23,4.1,9
+327,72.4,White,F,Traumatic intracranial injury,7,Home,10.16,2.3,5
+328,89.4,White,M,CEREBRAL INFARCTION,9,Disch to Rehab Unit/Facility,4.70,0.8,2
+329,46.9,Black or African American,M,SUBARACHNOID HEMORRHAGE,13,Expired,0.35,0.2,1
+330,50.3,White,F,CEREBRAL INFARCTION,15,Home,13.11,10.9,13
+331,44.9,Black or African American,F,Traumatic intracranial injury,6,Expired,22.63,22.6,15
+332,64.7,White,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,8.96,5.2,11
+333,79.5,White,M,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,7.16,1.7,3
+334,80.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,3.63,3.3,1
+335,59.3,White,F,CEREBRAL INFARCTION,14,Home,0.81,0.7,3
+336,19.6,Black or African American,F,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,33.37,32.8,37
+337,66.5,Black or African American,M,Traumatic intracranial injury,6,Expired,5.23,5.1,9
+338,73.2,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Home,5.81,2.9,6
+339,79.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Home,2.27,1.0,2
+340,58.0,White,M,Traumatic intracranial injury,15,Disch to SNF,18.75,6.6,13
+341,57.9,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Home,9.30,4.0,8
+342,55.7,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,26.73,14.4,13
+343,54.0,Other,F,CEREBRAL INFARCTION,13,Home,17.41,13.7,27
+344,44.3,White,M,Traumatic intracranial injury,15,Expired,17.50,17.4,14
+345,63.3,White,F,CEREBRAL INFARCTION,12,Home,11.20,8.6,15
+346,64.2,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,3.89,1.7,4
+347,56.0,White,M,SUBARACHNOID HEMORRHAGE,14,Disch to Rehab Unit/Facility,3.03,2.0,5
+348,24.9,White,F,Traumatic intracranial injury,15,Home,7.34,4.1,8
+349,28.2,Other,M,INTRACEREBRAL HEMORRHAGE,13,Home,4.52,2.3,5
+350,59.5,White,M,Traumatic intracranial injury,14,Hospice,6.88,2.3,3
+351,31.1,White,F,CEREBRAL INFARCTION,3,Disch to Rehab Unit/Facility,27.95,27.9,23
+352,59.8,White,M,Traumatic intracranial injury,8,Disch to SNF,42.27,14.9,16
+353,77.7,Black or African American,F,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,22.64,1.7,3
+354,21.6,White,M,Traumatic intracranial injury,15,Home,6.53,4.1,8
+355,15.5,White,F,Traumatic intracranial injury,15,Expired,5.60,5.5,10
+356,54.9,Black or African American,F,Traumatic intracranial injury,6,Disch to SNF,79.92,39.2,14
+357,29.3,White,M,INTRACEREBRAL HEMORRHAGE,14,Home,1.93,1.8,4
+358,41.6,Black or African American,M,CEREBRAL INFARCTION,12,Home,3.78,3.7,7
+359,58.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Other,10.19,3.8,8
+360,24.7,Black or African American,M,Traumatic intracranial injury,6,Expired,4.17,4.0,8
+361,67.0,White,M,CEREBRAL INFARCTION,3,Disch to SNF,21.36,10.3,13
+362,56.9,Black or African American,M,CEREBRAL INFARCTION,15,Home,2.09,1.9,4
+363,49.5,Black or African American,M,SUBARACHNOID HEMORRHAGE,3,Disch to Rehab Unit/Facility,52.07,51.9,48
+364,79.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,10,Disch to SNF,16.72,3.8,8
+365,77.1,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,7.93,1.9,3
+366,54.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,7.23,6.8,14
+367,77.4,Black or African American,M,CEREBRAL INFARCTION,15,Home,1.75,1.6,3
+368,23.9,White,F,SUBARACHNOID HEMORRHAGE,11,Disch to Rehab Unit/Facility,16.12,15.9,13
+369,53.0,White,F,Traumatic intracranial injury,7,Expired,1.58,1.5,4
+370,65.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,5,Expired,2.09,2.0,5
+371,64.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Home,10.22,7.8,14
+372,79.9,White,M,SUBARACHNOID HEMORRHAGE,15,Home,6.73,6.2,13
+373,63.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,5.32,3.0,6
+374,56.0,White,M,Traumatic intracranial injury,6,Home,3.77,1.6,3
+375,52.7,White,F,Traumatic intracranial injury,15,Other,14.07,13.9,15
+376,53.1,Black or African American,M,CEREBRAL INFARCTION,9,Home,7.23,6.8,13
+377,60.7,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,5.24,3.9,8
+378,64.5,White,M,Traumatic intracranial injury,14,Expired,2.03,1.9,4
+379,37.0,Black or African American,F,Traumatic intracranial injury,2,Disch to SNF,32.88,15.2,26
+380,21.7,Black or African American,F,CEREBRAL INFARCTION,9,Other,30.09,30.0,30
+381,79.0,Black or African American,F,Traumatic intracranial injury,3,Disch to SNF,18.00,10.1,14
+382,73.2,White,M,INTRACEREBRAL HEMORRHAGE,6,Expired,1.26,1.2,2
+383,61.2,White,M,CEREBRAL INFARCTION,3,Disch to Rehab Unit/Facility,11.22,2.0,4
+384,63.2,Other,M,Traumatic intracranial injury,12,Disch to Rehab Unit/Facility,7.11,5.2,11
+385,36.8,White,F,Traumatic intracranial injury,15,Home,13.90,12.5,26
+386,34.9,Other,M,INTRACEREBRAL HEMORRHAGE,11,Disch to Rehab Unit/Facility,36.07,28.1,34
+387,67.3,Black or African American,M,Traumatic intracranial injury,14,Other,19.64,19.5,1
+388,79.9,White,F,Traumatic intracranial injury,15,Disch to SNF,5.07,1.1,2
+389,29.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Home,3.46,1.6,4
+390,68.5,White,F,CEREBRAL INFARCTION,3,Disch to Rehab Unit/Facility,11.12,3.9,9
+391,49.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Disch to SNF,17.79,6.5,11
+392,88.4,White,F,Traumatic intracranial injury,7,Disch to SNF,13.80,10.6,16
+393,77.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,2,Disch to Rehab Unit/Facility,7.30,3.2,7
+394,78.0,White,M,Traumatic intracranial injury,15,Disch to SNF,14.88,4.8,2
+395,79.7,White,M,CEREBRAL INFARCTION,15,Expired,16.42,14.3,3
+396,55.9,White,F,Traumatic intracranial injury,6,Expired,0.98,0.9,2
+397,67.7,White,F,INTRACEREBRAL HEMORRHAGE,9,Disch to Rehab Unit/Facility,14.88,7.0,15
+398,79.4,White,M,INTRACEREBRAL HEMORRHAGE,3,Expired,1.97,1.9,1
+399,57.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Home,4.81,1.3,3
+400,74.6,White,M,Traumatic intracranial injury,15,Disch to SNF,5.38,5.3,8
+401,88.2,White,M,INTRACEREBRAL HEMORRHAGE,13,Expired,4.60,4.4,6
+402,26.7,White,M,Traumatic intracranial injury,5,Expired,25.37,13.8,24
+403,60.2,White,M,CEREBRAL INFARCTION,11,Home,15.05,11.6,14
+404,61.2,White,M,Traumatic intracranial injury,15,Expired,1.82,1.7,2
+405,73.3,Black or African American,M,CEREBRAL INFARCTION,9,Disch to SNF,7.11,4.9,9
+406,92.5,White,M,CEREBRAL INFARCTION,12,Disch to SNF,3.43,3.3,7
+407,86.9,White,F,CEREBRAL INFARCTION,8,Expired,13.67,11.1,18
+408,52.5,White,F,INTRACEREBRAL HEMORRHAGE,2,Disch to Rehab Unit/Facility,6.12,1.3,1
+409,77.2,White,M,Traumatic intracranial injury,15,Expired,6.50,5.6,8
+410,21.1,Black or African American,F,Traumatic intracranial injury,14,Home,3.13,2.2,2
+411,52.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,21.88,9.7,13
+412,77.1,Black or African American,M,CEREBRAL INFARCTION,9,Home,2.79,2.7,5
+413,19.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,7,Home,1.99,1.9,4
+414,86.8,Black or African American,F,Traumatic intracranial injury,7,Disch to SNF,20.63,4.2,3
+415,57.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Expired,11.18,11.0,21
+416,74.2,White,M,INTRACEREBRAL HEMORRHAGE,14,Expired,12.07,10.5,23
+417,70.8,White,F,INTRACEREBRAL HEMORRHAGE,9,Disch to Rehab Unit/Facility,6.10,5.7,12
+418,56.7,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,18.13,17.0,12
+419,77.1,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,4.04,2.2,3
+420,60.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,12,Expired,1.28,1.2,2
+421,62.0,White,M,INTRACEREBRAL HEMORRHAGE,3,Other,56.08,56.0,38
+422,64.3,White,F,Traumatic intracranial injury,3,Expired,23.24,17.9,13
+423,40.7,Black or African American,F,Traumatic intracranial injury,6,Home,0.80,0.7,1
+424,52.1,Black or African American,M,CEREBRAL INFARCTION,15,Home,4.35,1.3,2
+425,33.1,Black or African American,M,Traumatic intracranial injury,7,Home,3.25,0.8,2
+426,79.7,White,M,INTRACEREBRAL HEMORRHAGE,15,Hospice,18.92,8.1,15
+427,60.1,White,M,Traumatic intracranial injury,3,Home,2.30,1.8,4
+428,66.5,White,M,SUBARACHNOID HEMORRHAGE,14,Other,1.64,1.6,4
+429,42.6,White,M,Traumatic intracranial injury,14,Home,3.91,1.7,4
+430,69.9,White,F,Traumatic intracranial injury,14,Disch to SNF,13.97,7.2,10
+431,52.2,Black or African American,M,CEREBRAL INFARCTION,15,Home,1.97,1.7,1
+432,54.6,White,F,Traumatic intracranial injury,14,Disch to SNF,15.69,15.4,14
+433,44.2,Black or African American,F,Traumatic intracranial injury,15,Other,32.82,28.6,16
+434,45.6,White,M,INTRACEREBRAL HEMORRHAGE,13,Home,3.69,1.0,2
+435,51.2,White,M,CEREBRAL INFARCTION,15,Expired,3.34,3.3,6
+436,29.6,Black or African American,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,10.10,6.9,14
+437,67.6,Black or African American,M,Traumatic intracranial injury,6,Expired,7.86,7.8,13
+438,48.8,Black or African American,F,Traumatic intracranial injury,14,Expired,0.33,0.2,1
+439,44.0,White,F,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,17.91,17.6,12
+440,87.7,Black or African American,M,SUBARACHNOID HEMORRHAGE,3,Hospice,15.50,12.8,17
+441,48.9,Black or African American,M,Traumatic intracranial injury,7,Expired,59.96,19.7,38
+442,62.7,White,M,Traumatic intracranial injury,10,Home,7.75,7.3,12
+443,82.5,Black or African American,M,CEREBRAL INFARCTION,15,Expired,1.13,1.0,2
+444,61.2,White,M,Traumatic intracranial injury,7,Expired,15.38,15.3,32
+445,55.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,16.11,14.9,14
+446,28.4,White,M,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,108.85,27.3,15
+447,64.6,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,19.13,5.2,9
+448,70.7,Other,F,CEREBRAL INFARCTION,12,Expired,10.90,8.0,2
+449,26.9,Black or African American,M,Traumatic intracranial injury,6,Disch to Rehab Unit/Facility,56.81,45.7,34
+450,74.1,White,M,SUBARACHNOID HEMORRHAGE,15,Home,2.03,1.9,2
+451,63.4,Black or African American,F,Traumatic intracranial injury,6,Home,3.90,3.6,9
+452,94.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Expired,3.28,2.9,4
+453,85.4,White,F,Traumatic intracranial injury,15,Home,3.44,2.2,4
+454,59.9,White,M,CEREBRAL INFARCTION,14,Other,6.18,3.7,3
+455,37.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Home,3.51,1.5,3
+456,65.2,Other,F,Traumatic intracranial injury,15,Other,24.20,24.1,14
+457,81.9,Black or African American,M,Traumatic intracranial injury,6,Expired,2.84,2.7,7
+458,38.4,Black or African American,M,Traumatic intracranial injury,7,Home,2.05,1.9,4
+459,55.0,White,M,Traumatic intracranial injury,15,Expired,2.37,2.1,2
+460,78.7,Black or African American,F,Traumatic intracranial injury,3,Home,3.89,2.0,4
+461,85.1,Black or African American,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,3.77,3.6,8
+462,32.4,Black or African American,M,SUBARACHNOID HEMORRHAGE,14,Disch to Rehab Unit/Facility,8.07,6.8,14
+463,46.8,Other,F,Traumatic intracranial injury,14,Home,3.96,2.6,5
+464,67.3,White,F,Traumatic intracranial injury,4,Expired,2.89,2.6,5
+465,79.8,Black or African American,M,Traumatic intracranial injury,3,Expired,3.07,2.2,1
+466,55.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Home,4.99,1.8,4
+467,62.1,White,M,Traumatic intracranial injury,13,Expired,0.75,0.7,1
+468,64.3,Black or African American,M,Traumatic intracranial injury,3,Home,5.01,4.9,19
+469,47.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,5.80,4.8,20
+470,46.0,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Home,3.80,2.7,4
+471,55.0,Black or African American,F,SUBARACHNOID HEMORRHAGE,3,Home,17.70,16.0,26
+472,62.8,Black or African American,M,SUBARACHNOID HEMORRHAGE,12,Disch to Rehab Unit/Facility,11.35,8.2,24
+473,25.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,34.47,25.1,29
+474,72.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Expired,12.05,9.9,40
+475,51.5,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Expired,5.20,5.1,4
+476,53.5,Black or African American,M,CEREBRAL INFARCTION,13,Disch to SNF,26.03,14.5,57
+477,67.9,White,M,SUBARACHNOID HEMORRHAGE,3,Expired,3.21,2.0,2
+478,26.0,White,M,CEREBRAL INFARCTION,15,Home,1.87,0.8,2
+479,36.3,Black or African American,M,Traumatic intracranial injury,15,Home,1.04,0.8,4
+480,17.2,White,F,CEREBRAL INFARCTION,11,Home,5.90,3.7,16
+481,62.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Home,12.09,11.8,19
+482,59.2,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Expired,0.89,0.8,4
+483,65.3,White,M,INTRACEREBRAL HEMORRHAGE,5,Home,1.97,1.7,7
+484,63.3,White,F,Traumatic intracranial injury,14,Expired,16.41,13.7,25
+485,70.0,White,F,INTRACEREBRAL HEMORRHAGE,3,Home,2.85,1.7,6
+486,59.0,American Indian-Alaskan,F,CEREBRAL INFARCTION,15,Expired,12.11,12.0,47
+487,37.4,White,F,SUBARACHNOID HEMORRHAGE,13,Home,20.25,19.1,27
+488,27.3,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,32.78,3.5,7
+489,52.8,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,18.83,8.8,30
+490,56.3,White,F,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,21.89,20.5,28
+491,57.9,Black or African American,M,Traumatic intracranial injury,5,Expired,8.29,8.1,22
+492,35.6,Black or African American,F,CEREBRAL INFARCTION,13,Home,1.96,1.6,8
+493,56.0,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,9.58,5.7,9
+494,23.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Other,21.20,19.7,67
+495,26.9,Black or African American,M,Traumatic intracranial injury,9,Disch to Rehab Unit/Facility,8.21,0.8,16
+496,66.4,White,F,INTRACEREBRAL HEMORRHAGE,12,Expired,1.09,0.9,2
+497,33.5,White,M,Traumatic intracranial injury,13,Disch to Rehab Unit/Facility,5.10,3.7,8
+498,42.3,White,F,SUBARACHNOID HEMORRHAGE,12,Home,22.86,19.4,26
+499,75.0,Black or African American,M,SUBARACHNOID HEMORRHAGE,7,Home,3.89,2.9,12
+500,48.2,Other,M,CEREBRAL INFARCTION,15,Expired,8.01,7.8,35
+501,52.1,Black or African American,F,Traumatic intracranial injury,6,Disch to Rehab Unit/Facility,3.22,1.2,4
+502,44.2,Other,F,Traumatic intracranial injury,6,Home,16.67,16.3,18
+503,19.7,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,2.46,2.4,10
+504,53.9,White,M,Traumatic intracranial injury,15,Home,10.10,9.8,28
+505,58.1,Black or African American,F,SUBARACHNOID HEMORRHAGE,8,Expired,3.43,3.3,14
+506,82.0,White,M,CEREBRAL INFARCTION,15,Disch to SNF,13.75,11.7,18
+507,42.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,3.00,1.8,9
+508,35.5,White,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,7.26,7.1,16
+509,70.8,Black or African American,F,CEREBRAL INFARCTION,15,Home,10.26,7.3,2
+510,46.9,Other,M,SUBARACHNOID HEMORRHAGE,15,Home,13.25,12.9,26
+511,69.8,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,5.16,1.0,2
+512,54.9,White,F,INTRACEREBRAL HEMORRHAGE,15,Expired,5.88,5.8,24

@@ -1,0 +1,310 @@
+---
+title: "Tables and Figures"
+author: "Spiro Stilianoudakis"
+date: "September 4, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Libraries
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(DT)
+library(survival)
+library(ggplot2)
+library(survminer)
+```
+
+
+# Table of Unmatched sample
+
+```{r}
+thirtyday <- readRDS("C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/thirtyday.rds")
+thirtyday <- readRDS("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/thirtyday.rds")
+```
+
+##Readmitted Group
+
+```{r}
+
+readmitted <- thirtyday[which(thirtyday$Readmission=="Yes"),]
+dim(readmitted) #245  12
+
+#Continuous variables
+rdf <- tbl_df(readmitted)
+
+rdf.sum <- rdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+rdf.sum.tidy <- rdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+rdf.sum.tidy <- data.frame(rdf.sum.tidy)
+colnames(rdf.sum.tidy)[1] <- "Variable"
+rdf.sum.tidy$Variable <- substr(rdf.sum.tidy$Variable, 1, nchar(rdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+rdf.tab <- rdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- rdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- data.frame(rdf.tab.tidy)
+colnames(rdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+
+datatable(rdf.sum.tidy)
+datatable(rdf.tab.tidy)
+
+
+
+```
+
+
+##Non-Readmitted Group
+
+```{r}
+
+nonreadmitted <- thirtyday[which(thirtyday$Readmission=="No"),]
+dim(nonreadmitted) #2142   12
+
+nrdf <- tbl_df(nonreadmitted)
+
+#Continuous variables
+nrdf.sum <- nrdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+nrdf.sum.tidy <- nrdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+nrdf.sum.tidy <- data.frame(nrdf.sum.tidy)
+colnames(nrdf.sum.tidy)[1] <- "Variable"
+nrdf.sum.tidy$Variable <- substr(nrdf.sum.tidy$Variable, 1, nchar(nrdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+nrdf.tab <- nrdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- nrdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- data.frame(nrdf.tab.tidy)
+colnames(nrdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+
+datatable(nrdf.sum.tidy)
+datatable(nrdf.tab.tidy)
+
+```
+
+## Tests
+
+```{r}
+t.test(thirtyday$Age[which(thirtyday$Readmission=="Yes")],
+       thirtyday$Age[which(thirtyday$Readmission=="No")])
+t.test(thirtyday$Length_of_stay[which(thirtyday$Readmission=="Yes")],
+       thirtyday$Length_of_stay[which(thirtyday$Readmission=="No")])
+chisq.test(thirtyday$Gender,thirtyday$Readmission)
+fisher.test(thirtyday$Race,thirtyday$Readmission)
+fisher.test(thirtyday$Ethnicity,thirtyday$Readmission)
+chisq.test(thirtyday$Diagnostic_group,thirtyday$Readmission)
+chisq.test(thirtyday$Severity_index,thirtyday$Readmission)
+
+```
+
+
+# Table of Matched Sample
+
+```{r}
+mydata <- readRDS("C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/matched.samp.rds")
+mydata <- readRDS("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/matched.samp.rds")
+
+```
+
+
+##Readmitted Group
+
+```{r}
+
+readmitted <- mydata[which(mydata$Readmission==1),]
+dim(readmitted) #245  12
+
+#Continuous variables
+rdf <- tbl_df(readmitted)
+
+rdf.sum <- rdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+rdf.sum.tidy <- rdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+rdf.sum.tidy <- data.frame(rdf.sum.tidy)
+colnames(rdf.sum.tidy)[1] <- "Variable"
+rdf.sum.tidy$Variable <- substr(rdf.sum.tidy$Variable, 1, nchar(rdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+rdf.tab <- rdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- rdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+rdf.tab.tidy <- data.frame(rdf.tab.tidy)
+colnames(rdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+datatable(rdf.sum.tidy)
+datatable(rdf.tab.tidy)
+
+
+```
+
+
+##Non-Readmitted Group
+
+```{r}
+
+nonreadmitted <- mydata[which(mydata$Readmission==0),]
+dim(nonreadmitted) #490   12
+
+nrdf <- tbl_df(nonreadmitted)
+
+#Continuous variables
+nrdf.sum <- nrdf %>%
+  select(Age, Length_of_stay, Months_to_death, followup) %>% # select variables to summarise
+  summarise_each(funs(XMean = mean, 
+                      XMedian = median, 
+                      XSD = sd))
+
+nrdf.sum.tidy <- nrdf.sum %>% gather(stat, val) %>%
+  separate(stat, into = c("var", "stat"), sep = "X") %>%
+  spread(stat, val) %>%
+  select(var, Mean, Median, SD)
+
+nrdf.sum.tidy <- data.frame(nrdf.sum.tidy)
+colnames(nrdf.sum.tidy)[1] <- "Variable"
+nrdf.sum.tidy$Variable <- substr(nrdf.sum.tidy$Variable, 1, nchar(nrdf.sum.tidy$Variable)-1)
+
+#Categorical Variables
+nrdf.tab <- nrdf %>%
+  select(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) #%>%
+  #count(Gender, Race, Ethnicity, Diagnostic_group, Severity_index, Status) %>%
+  #mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- nrdf.tab %>%
+  gather("var", "value") %>%
+  group_by(var) %>%
+  count(var, value) %>%
+  mutate(prop = prop.table(n))
+
+nrdf.tab.tidy <- data.frame(nrdf.tab.tidy)
+colnames(nrdf.tab.tidy) <- c("Variable", "Level", "N", "Percent")
+
+
+datatable(nrdf.sum.tidy)
+datatable(nrdf.tab.tidy)
+
+```
+
+
+## Performing tests
+
+```{r}
+
+t.test(mydata$Age[which(mydata$Readmission==1)],
+       mydata$Age[which(mydata$Readmission==0)])
+t.test(mydata$Length_of_stay[which(mydata$Readmission==1)],
+       mydata$Length_of_stay[which(mydata$Readmission==0)])
+chisq.test(mydata$Gender,mydata$Readmission)
+fisher.test(mydata$Race,mydata$Readmission)
+fisher.test(mydata$Ethnicity,mydata$Readmission)
+chisq.test(mydata$Diagnostic_group,mydata$Readmission)
+chisq.test(mydata$Severity_index,mydata$Readmission)
+
+```
+
+
+# KM Curves
+
+```{r}
+
+#change Status variable to numeric
+mydata$Status <- as.numeric(as.character(mydata$Status))
+
+fitread <- survfit(Surv(Months_to_death, Status) ~ Readmission, data=mydata)
+
+ggsurvplot(fitread, 
+            data = mydata, 
+            conf.int = TRUE, 
+            censor=FALSE, 
+            pval = TRUE,
+            palette = 
+     c("#000000", "#9F9F9F"), linetype = "strata",
+            #ylim=c(.5,1),
+            xlab="Time (days)",
+            risk.table = FALSE, 
+            ##break.x.by = 180,
+            #risk.table.col="strata", 
+            #risk.table.height = .35,
+            #surv.median.line = "hv",
+            legend.title="30 Day Readmission Status:",
+            legend.labs = 
+             c("No", "Yes"),
+            ggtheme = theme_bw())
+
+ggsurvplot(fitread, 
+            data = mydata,
+            conf.int = TRUE, 
+            censor=FALSE, 
+            pval = TRUE,
+            palette = c("#000000", "#9F9F9F"),
+            linetype = "strata",
+            xlab="Time (Months)",
+            risk.table = TRUE, 
+            break.x.by = 6,
+            risk.table.col="strata", 
+            risk.table.height = .35,
+            surv.median.line = "hv",
+            legend.title="30 Day Readmission Status:",
+            legend.labs = 
+             c("No", "Yes"),
+            ggtheme = theme_bw())
+
+
+```

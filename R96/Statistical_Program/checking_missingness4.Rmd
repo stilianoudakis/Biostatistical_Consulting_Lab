@@ -1,0 +1,434 @@
+---
+title: "Checking Missingness 4"
+author: "Spiro Stilianoudakis"
+date: "November 5, 2017"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(openxlsx)
+library(scales)
+library(caret)
+library(dplyr)
+library(knitr)
+```
+
+```{r include=FALSE}
+setwd("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+#setwd("T:/Biostatistics/Projects/BCL/Research Projects/Open/BCL - 2017 - R96 (Sharifzadeh - Internal Medicine)/1 - Data")
+
+med_hist <- read.xlsx("Jh QoL all 7-19-17 FINAL cleaned DEID.xlsx",
+                    sheet = 1,
+                    startRow = 1,
+                    colNames = TRUE,
+                    na.strings = c("","n/a","N/a"),
+                    detectDates = TRUE)
+quest <- read.xlsx("NeuroQoL_FINAL_YS_DEID.xlsx",
+                           sheet = 1,
+                           startRow = 1,
+                           colNames = TRUE)
+attach(med_hist)
+attach(quest)
+```
+
+
+```{r include=FALSE}
+#Removing rows where timing of the survey was after 3 months
+
+colnames(quest)[3] <- "timing_of_survey"
+
+quest2 <- quest[quest[,3] <= 3,]
+dim(quest2)
+
+#Removing all but the QoL column, the 4 uncertainty related questions, the timing, and location
+
+quest3 <- quest2[,which(colnames(quest2)=="Data.Base.ID" |
+                                          colnames(quest2)=="timing_of_survey" |
+                                          colnames(quest2)=="Location.(0.office,.1.home)" |
+                                          colnames(quest2)=="Overall.quality.of.life" |
+                                          colnames(quest2)=="Feel.uncertain.about.future?" |
+                                          colnames(quest2)=="Setbacks.in.condition?" |
+                                          colnames(quest2)=="Concerned.about.disrupting.family.life?" |
+                                          colnames(quest2)=="Outlook.on.future.worsen?")]
+dim(quest3)
+names(quest3) <- c("ID", "timing_of_survey", "location_of_survey", "QoL", "uncertainty1", "uncertainty2", "uncertainty3","uncertainty4")
+
+#Removing rows with either 999 or NA in them or others
+
+quest4 <- quest3[complete.cases(quest3), ]
+quest5 <- subset(quest4, !quest4$ID %in% quest4$ID[quest4$QoL==999 |
+                                                                   quest4$uncertainty1==999 |
+                                                                   quest4$uncertainty2==999 |
+                                                                   quest4$uncertainty3==999 |
+                                                                   quest4$uncertainty4==999])
+num <- c("1","2","3","4")
+grep(paste(num, collapse = "|"), quest5$uncertainty2,invert = TRUE)
+quest5 <- quest5[-grep(paste(num, collapse = "|"), quest5$uncertainty2,invert = TRUE),]
+dim(quest5)
+head(quest5)
+str(quest5)
+
+quest5$uncertainty2 <- as.numeric(quest5$uncertainty2)
+
+#Transforming QoL 
+
+QoL_calc <- function(x){
+  ((x-1)/(max(quest5$QoL)-min(quest5$QoL)))*100
+}
+quest5$QoL_score <- QoL_calc(quest5$QoL)
+
+#Adding scores for uncertainty
+
+quest5$raw_score <- rowMeans(quest5[,5:8])
+
+#Transforming uncertainty
+
+uncertain_calc <- function(x){
+  ((x-1)/(max(quest5$uncertainty1)-min(quest5$uncertainty1)))*100
+}
+quest5$uncertain_score <- uncertain_calc(quest5$raw_score)
+
+#removing QoL, uncertainty1-4
+quest6 <- quest5[,c(1,2,3,9,11)]
+
+
+#Determining which patients (IDs) have resposes for t=1 or 3 but no baseline
+#t3vt1 <- setdiff(quest6$ID[which(quest6$timing_of_survey==3)],quest6$ID[which(quest6$timing_of_survey==1)])
+#t3vbase <- setdiff(quest6$ID[which(quest6$timing_of_survey==3)],quest6$ID[which(quest6$timing_of_survey==0)])
+#t1vbase <- setdiff(quest6$ID[which(quest6$timing_of_survey==1)],quest6$ID[which(quest6$timing_of_survey==0)])
+#union(union(t3vt1,t3vbase),t1vbase)
+
+quest7 <- quest6
+
+#Removing patients that have response for t1 or t3 but not baseline
+#quest7 <- quest6[-which(quest6$ID %in% union(union(t3vt1,t3vbase),t1vbase)),]
+
+#Seperating by timing of survey
+baseline <- subset(quest7,quest7$timing_of_survey==0)
+t1 <- subset(quest7,quest7$timing_of_survey==1)
+t3 <- subset(quest7,quest7$timing_of_survey==3)
+
+#Adding covariates from med_hist data to the questionaiire data
+vars <- c(1,4,6,7,10,13,17,19,21,9,18,26,32)
+med_hist2 <- med_hist[,vars]
+names(med_hist2) <- c("ID", "Gender", "Age_cont", "Age_Group", "prior_brain_radiation", "radiation_type",
+                      "prior_resection", "tumor_histology", "histology", "KPS", 
+                      "concurrent_chemo", "tumor_location", "cancer_still_affecting" )
+
+#which patients have a baseline,t1,t3 response but do not appear in medical history data
+setdiff(baseline$ID, med_hist2$ID)
+setdiff(t1$ID, med_hist2$ID)
+setdiff(t3$ID, med_hist2$ID)
+
+#remove these from questionaire data
+baseline <- baseline[-which(baseline$ID==69 | baseline$ID==149),]
+t1 <- t1[-which(t1$ID==69 | t1$ID==83 | t1$ID==100),]
+
+#check that all baseline,t1,t3 responders are in medical data
+setdiff(baseline$ID, med_hist2$ID)
+setdiff(t1$ID, med_hist2$ID)
+setdiff(t3$ID, med_hist2$ID)
+
+#removing patients (IDs) from medical history data that do not appear in the final questionaire data
+
+med_hist3 <- med_hist2[which(med_hist2$ID %in% baseline$ID),]
+all.equal(med_hist3$ID,baseline$ID)
+
+#Removing patients with radiation type=4 or 5
+which(med_hist3$radiation_type==4 | med_hist3$radiation_type==5)
+med_hist4 <- med_hist3[-which(med_hist3$radiation_type==4 | med_hist3$radiation_type==5),]
+
+med_hist3$ID[which(med_hist3$radiation_type==4 | med_hist3$radiation_type==5)]
+baseline <- baseline[-which(baseline$ID %in% med_hist3$ID[which(med_hist3$radiation_type==4 | med_hist3$radiation_type==5)]),]
+t1 <- t1[-which(t1$ID %in% med_hist3$ID[which(med_hist3$radiation_type==4 | med_hist3$radiation_type==5)])]
+
+#fixing the variable classes
+med_hist4$Gender <- ifelse(med_hist4$Gender==1,0,1)
+med_hist4$Gender <- factor(med_hist4$Gender)
+
+med_hist4$Age_Group <- ifelse(med_hist4$Age_Group==1,0,1)
+med_hist4$Age_Group <- factor(med_hist4$Age_Group)
+
+med_hist4$prior_brain_radiation <- ifelse(grepl("o",med_hist4$prior_brain_radiation),0,1)
+med_hist4$prior_brain_radiation <- factor(med_hist4$prior_brain_radiation)
+
+table(med_hist4$radiation_type)
+med_hist4$radiation_type <- factor(med_hist4$radiation_type)
+
+med_hist4$prior_resection <- ifelse(grepl("o",med_hist4$prior_resection),0,1)
+med_hist4$prior_resection <- factor(med_hist4$prior_resection)
+
+med_hist4$histology <- ifelse(med_hist4$histology==5,0,1)
+med_hist4$histology <- factor(med_hist4$histology)
+
+med_hist4$concurrent_chemo <- ifelse(grepl("o",med_hist4$concurrent_chemo),0,1)
+med_hist4$concurrent_chemo <- factor(med_hist4$concurrent_chemo)
+
+med_hist4$cancer_still_affecting <- ifelse(grepl("o",med_hist4$cancer_still_affecting),0,1)
+med_hist4$cancer_still_affecting <- factor(med_hist4$cancer_still_affecting)
+
+#dropping tumor_histology and tumor_location because there are too many subgroups
+names(med_hist4)
+med_hist4 <- med_hist4[,-c(8,12)]
+
+str(med_hist4)
+
+#Adding medical history to each subset of the questionaire data
+
+base_med <- merge(baseline,med_hist4, by = "ID")
+t1_med <- merge(t1,med_hist4, by = "ID")
+t3_med <- merge(t3,med_hist4, by = "ID")
+
+#seeing if any of the data have missing values
+which(rowSums(is.na(base_med))!=0)
+which(rowSums(is.na(t1_med))!=0)
+which(rowSums(is.na(t3_med))!=0)
+
+#remove missing values from base_med data
+base_med <- base_med[-which(rowSums(is.na(base_med))!=0),]
+
+quest8 <- merge(quest7, med_hist4, by="ID")
+
+quest8 <- quest8[complete.cases(quest8), ]
+
+quest8 <- quest8[order(quest8$ID,quest8$timing_of_survey),]
+```
+
+
+# Plots of QoL vs Age at each time point
+
+```{r echo=FALSE, fig.align="center"}
+.pardefault <- par(no.readonly = T)
+par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+plot(quest8$QoL_score ~ quest8$Age_cont, 
+     pch=c(2,3,4), col=c(1,2,3), 
+     xlab="Age",
+     ylab="QoL")
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0]), lty=2, col=1)
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1]), lty=2, col=2)
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3]), lty=2, col=3)
+
+legend("topright", legend=c("Baseline", "T1", "T3"),inset=c(-0.3,0), col=c(1,2,3),box.lty=0, pch = c(2,3,4))
+
+
+```
+
+
+```{r echo=FALSE, fig.align="center"}
+par(.pardefault)
+par(mfrow=c(1,3))
+
+plot(quest8$QoL_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0],
+     ylim=c(0,100),
+     pch=2, col=1, 
+     xlab="Age",
+     ylab="QoL")
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0]), lty=2, col=1)
+base_lm <- lm(QoL_score~Age_cont, data = quest8, subset = c(timing_of_survey==0))
+abline(base_lm, col="blue")
+
+plot(quest8$QoL_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1],
+     ylim=c(0,100),
+     pch=3, col=2, 
+     xlab="Age",
+     ylab="QoL")
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1]), lty=2, col=2)
+t1_lm <- lm(QoL_score~Age_cont, data = quest8, subset = c(timing_of_survey==1))
+abline(t1_lm, col="blue")
+
+plot(quest8$QoL_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3],
+     ylim=c(0,100),
+     pch=4, col=3, 
+     xlab="Age",
+     ylab="QoL")
+
+lines(lowess(quest8$QoL_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3]), lty=2, col=3)
+t3_lm <- lm(QoL_score~Age_cont, data = quest8, subset = c(timing_of_survey==3))
+abline(t3_lm, col="blue")
+```
+
+
+# Plots of Uncertaity vs Age at each time point
+
+```{r echo=FALSE, fig.align="center"}
+par(mfrow=c(1,1))
+par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+plot(quest8$uncertain_score ~ quest8$Age_cont, 
+     pch=c(2,3,4), col=c(1,2,3), 
+     xlab="Age",
+     ylab="Uncertainty")
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0]), lty=2, col=1)
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1]), lty=2, col=2)
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3]), lty=2, col=3)
+
+legend("topright", legend=c("Baseline", "T1", "T3"), col=c(1,2,3),box.lty=0,inset=c(-0.3,0), pch = c(2,3,4))
+
+```
+
+
+```{r echo=FALSE, fig.align="center"}
+par(.pardefault)
+par(mfrow=c(1,3))
+
+plot(quest8$uncertain_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0],
+     ylim=c(0,100),
+     pch=2, col=1, 
+     xlab="Age",
+     ylab="Uncertainty")
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==0] ~ quest8$Age_cont[quest8$timing_of_survey==0]), lty=2, col=1)
+base_lm <- lm(uncertain_score~Age_cont, data = quest8, subset = c(timing_of_survey==0))
+abline(base_lm, col="blue")
+
+plot(quest8$uncertain_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1],
+     ylim=c(0,100),
+     pch=3, col=2, 
+     xlab="Age",
+     ylab="Uncertainty")
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==1] ~ quest8$Age_cont[quest8$timing_of_survey==1]), lty=2, col=2)
+t1_lm <- lm(uncertain_score~Age_cont, data = quest8, subset = c(timing_of_survey==1))
+abline(t1_lm, col="blue")
+
+plot(quest8$uncertain_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3],
+     ylim=c(0,100),
+     pch=4, col=3, 
+     xlab="Age",
+     ylab="Uncertainty")
+
+lines(lowess(quest8$uncertain_score[quest8$timing_of_survey==3] ~ quest8$Age_cont[quest8$timing_of_survey==3]), lty=2, col=3)
+t3_lm <- lm(uncertain_score~Age_cont, data = quest8[which(quest8$timing_of_survey==3),]) #, subset = c(timing_of_survey==3))
+abline(base_lm, col="blue")
+```
+
+
+# Summary table for each time point
+
+### The p-value comes from the test of association used for each variable listed. For continuous variables (QoL, Uncertainty, Age, and KPS), one-way ANOVA was used. For the categorical variables (Gender, Prior Brain Radiation, Prior Resection, Cancer Still Affecting), chi-squared test was used.
+
+
+```{r include=FALSE}
+#baseline measurements
+length(quest8$ID[quest8$timing_of_survey==0])
+##continuous variables
+mean(quest8$QoL_score[quest8$timing_of_survey==0])
+mean(quest8$uncertain_score[quest8$timing_of_survey==0])
+mean(quest8$KPS[quest8$timing_of_survey==0])
+mean(quest8$Age_cont[quest8$timing_of_survey==0])
+##dicotomous variables
+length(which(quest8$Age_Group==0 & quest8$timing_of_survey==0))
+length(which(quest8$Age_Group==1 & quest8$timing_of_survey==0))
+
+length(which(quest8$Gender==0 & quest8$timing_of_survey==0))
+length(which(quest8$Gender==1 & quest8$timing_of_survey==0))
+
+length(which(quest8$prior_brain_radiation==0 & quest8$timing_of_survey==0))
+length(which(quest8$prior_brain_radiation==1 & quest8$timing_of_survey==0))
+
+length(which(quest8$prior_resection==0 & quest8$timing_of_survey==0))
+length(which(quest8$prior_resection==1 & quest8$timing_of_survey==0))
+
+length(which(quest8$cancer_still_affecting==0 & quest8$timing_of_survey==0))
+length(which(quest8$cancer_still_affecting==1 & quest8$timing_of_survey==0))
+
+
+#t1 measurements
+length(quest8$ID[quest8$timing_of_survey==1])
+##continuous variables
+mean(quest8$QoL_score[quest8$timing_of_survey==1])
+mean(quest8$uncertain_score[quest8$timing_of_survey==1])
+mean(quest8$KPS[quest8$timing_of_survey==1])
+mean(quest8$Age_cont[quest8$timing_of_survey==1])
+##dicotomous variables
+length(which(quest8$Age_Group==0 & quest8$timing_of_survey==1))
+length(which(quest8$Age_Group==1 & quest8$timing_of_survey==1))
+
+length(which(quest8$Gender==0 & quest8$timing_of_survey==1))
+length(which(quest8$Gender==1 & quest8$timing_of_survey==1))
+
+length(which(quest8$prior_brain_radiation==0 & quest8$timing_of_survey==1))
+length(which(quest8$prior_brain_radiation==1 & quest8$timing_of_survey==1))
+
+length(which(quest8$prior_resection==0 & quest8$timing_of_survey==1))
+length(which(quest8$prior_resection==1 & quest8$timing_of_survey==1))
+
+length(which(quest8$cancer_still_affecting==0 & quest8$timing_of_survey==1))
+length(which(quest8$cancer_still_affecting==1 & quest8$timing_of_survey==1))
+
+
+#t3 measurements
+length(quest8$ID[quest8$timing_of_survey==3])
+##continuous variables
+mean(quest8$QoL_score[quest8$timing_of_survey==3])
+mean(quest8$uncertain_score[quest8$timing_of_survey==3])
+mean(quest8$KPS[quest8$timing_of_survey==3])
+mean(quest8$Age_cont[quest8$timing_of_survey==3])
+##dicotomous variables
+length(which(quest8$Age_Group==0 & quest8$timing_of_survey==3))
+length(which(quest8$Age_Group==1 & quest8$timing_of_survey==3))
+
+length(which(quest8$Gender==0 & quest8$timing_of_survey==3))
+length(which(quest8$Gender==1 & quest8$timing_of_survey==3))
+
+length(which(quest8$prior_brain_radiation==0 & quest8$timing_of_survey==3))
+length(which(quest8$prior_brain_radiation==1 & quest8$timing_of_survey==3))
+
+length(which(quest8$prior_resection==0 & quest8$timing_of_survey==3))
+length(which(quest8$prior_resection==1 & quest8$timing_of_survey==3))
+
+length(which(quest8$cancer_still_affecting==0 & quest8$timing_of_survey==3))
+length(which(quest8$cancer_still_affecting==1 & quest8$timing_of_survey==3))
+
+
+```
+
+```{r include=FALSE}
+quest8$timing_of_survey <- factor(quest8$timing_of_survey)
+summary(aov(QoL_score ~ timing_of_survey, data = quest8))[[1]][1,5]
+summary(aov(uncertain_score ~ timing_of_survey, data = quest8))[[1]][1,5]
+summary(aov(Age_cont ~ timing_of_survey, data = quest8))[[1]][1,5]
+summary(aov(KPS ~ timing_of_survey, data = quest8))[[1]][1,5]
+
+chisq.test(quest8$Gender, quest8$timing_of_survey)$p.value
+chisq.test(quest8$prior_brain_radiation, quest8$timing_of_survey)$p.value
+chisq.test(quest8$prior_resection, quest8$timing_of_survey)$p.value
+chisq.test(quest8$cancer_still_affecting, quest8$timing_of_survey)$p.value
+
+```
+
+
+
+| Variable                  | Baseline  | 1 Month   | 3 Month   |P-Value   |
+|:-------------------------:|:---------:|:---------:|:---------:|:--------:|  
+|Mean QoL Score (sd)        |61.3 (23.2)|59.9 (24.9)|65.4 (23.4)|0.2453    | 
+|Mean Uncertainty Score (sd)|38.8 (26.0)|32.0 (23.4)|26.8 (23.8)|0.0007    |
+|Mean Age  (sd)             |56.8 (13.6)|55.4 (14.6)|57.1 (14.3)|0.9187    |
+|Mean KPS  (sd)             |86.1 (12.0)|85.9 (11.8)|87.0 (9.9) |0.5870    |
+|Gender                     |           |           |           |0.947     |
+|-F                         |84         |40         |32         |          |
+|-M                         |86         |42         |36         |          |
+|Prior brain radiation      |           |           |           |0.9914    |      
+|-Yes                       |138        |66         |55         |          |
+|-No                        |32         |16         |13         |          |
+|Prior resection            |           |           |           |0.6585    |          
+|-Yes                       |99         |43         |37         |          |
+|-No                        |71         |39         |31         |          |
+|Cancer still affecting     |           |           |           |0.8955    |
+|-Yes                       |83         |38         |34         |          |
+|-No                        |87         |44         |34         |          |
+      
+
+
+
+

@@ -1,0 +1,43 @@
+Reaction,MRN,DOB,Age,Sex,Study Date,OP/IP,Type of Study,Section,Dx,Other PMH,Allergies,Prior Gad Admin,Type of Contrast,Severity of Rxn,Time after injection,Type of Rxn,Prophylaxis,Medication,Comments,,,,,,,,
+Allergic,2308111,7/20/2003,12,f,1/2/2016,OP,MRI Upper Extremity,MSK,"R arm mass, Schwannoma",None,None,No,Gadavist,mild,15 min,"itchiness, hives (face, arms, trunk)",None,,mild because limited hives - not diffuse,,,,,,,,
+Allergic,4203630,9/22/1997,18,f,10/21/2015,OP,MRI Brain,NEURO,radiologically isolated syndrome,"Multiple sclerosis, right femoral cetabular impingement","Penicillin, Diclofenac","Yes, Magnevist, no reaction",Gadavist,mild, > 15 min,"itchiness, swollen eyes",None,,"only eye symptoms, similar to rhinorrhea. No other signs.",,,,,,,,
+Allergic,2133771,2/12/1999,17,f,5/2/2016,OP,MRI Abd/Pelv,BODY,renal cysts,"polycystic ovarina syndrome, hypothyroidism, hemiplegic migraines, pseudotumor cerebri, transient ischemic attacks","Flagyl,  Glucagon",No,Gadavist,Severe,<5 min,"coughing, difficulty breathing, anaphylactic shock",,Epi given,"Occurred 1-2min after injection. Difficulty breathing, hypotenstion, tachycardia, tachypnea. Required epinephrine and positive pressure ventilation, respiratory decompensation.",,,,,,,,
+Allergic,2215173,1/5/2002,15,f,5/22/2017,OP,MRI Ankle,MSK,Partial tear w/ tenosynovitis,"eczema, allergic rhinitis",None,No,Gadavist,mild,unknown,"Itchiness, hives",,,"facial and chest hives, sneezing, itchiness inside ears, Taken beandryl 50 mg Stable vital signs",,,,,,,,
+Allergic,4894126,4/9/2010,7,m,2/15/2017,OP,MRI Upper Extremity,MSK,humeral cysts w/ associated pathologic fracture,None,None,No,Gadavist,moderate,Immediate,"Hives, vomiting",,,Hives over entire body. Stable vitals. Itchy throat and neck.,,,,,,,,
+Allergic,4865171,8/8/2005,11,m,1/25/2017,IP,MRI Brain,NEURO,Low Grade Glioma,None,"Azithromycin, Penicillins",No,Gadavist,moderate,<5 min,"itchiness, vomiting, throat tightness",,,"Throat tightness, stable vitals. ",,,,,,,,
+Allergic,4320075,10/2/1997,19,f,10/26/2016,OP,MRI Brain,NEURO,Vertigo,"positional vertigo, vestibular migraines, developmental dysplasia of hip",Isovue-370 (anaphylaxis),No,Gadavist,mild,<5 min,"chest tightness, itchiness",,,,,,,,,,,
+Allergic,4101447,10/31/1997,18,m,11/28/2015,OP,MRI Lower Extremity,MSK,"Cartilage lesion, chondromyxoid fibroma",None,"Glutens, Sulfa drugs",No,Gadavist,mild,<15 min,hives,,,"mild because hives in head,  face, arms, chest - not diffuse",,,,,,,,
+Allergic,4220664,6/17/2006,11,f,7/11/2017,OP,MRI ankle,MSK,"Pain, tenosynovitis",None,Mild food allergies,No,Gadavist,moderate,,"coughing, wheezing",,,Patient began to cough post gadavist.  Symptoms persisted and she was evaluated by the radiologist and found to have wheezing in her left upper lobe.  She was treated with benedryl and the scan was completed and she was monitored for over an hour. Wheezing resolved she was then seen by Dr Fraser prior to being discharged to home ,,,,,,,,
+Allergic,4905424,5/16/2002,16,m,11/11/2017,OP,MRI Brain,NEURO,ADEM,"Febrile Seizure at 18 months, pulmonary embolism","Iodine-based contrast media, unasyn, vancomycin (redman's)","Yes, no prior issues",Gadavist,mild,unknown,"itchiness left eye, hives above right eye, left temporal area, and upper back",,,"MRI scan completed, And I was notified by MRI technologist Kim, that patient c/o itchy left eye, and has one hive above right eye, one hive left temporal area. Sat 99%, HR 92. Further examination revealed red dry patch center of upper back (not tichy) No c/o of itchy throat or difficulty breathing. Given 50mg Benadryl oral, sat 99% HR 61",,,,,,,,
+Allergic,4691273,7/24/2006,9,m,12/30/2015,OP,MRI Cardiac,CARDIAC,atrial septal defects,"Atrial septal defects, Celiac disease","Amoxicillin, Glutens, Wheat",No,Ablavar,mild,immediate,"couging, sneezing, stridor",,,Pt remained in MRI department for 30 min post Benadryl administration. Fellow consulted prior to DC,,,,,,,,
+Allergic,4791484,5/14/1991,27,f,2/1/2018,OP,MRI Brain,Neuro,"left temporal lobe astrocytoma, s/p gross total resection at age 13 months.",None,Lamictal,Yes,Gadavist,mild,"after MRI, but exact time unknown",itchiness,,,"New symptoms of itchy and hot. Vital signs stable, PO Benadryl given ",,,,,,,,
+Physiologic,2197077,11/18/1995,20,f,2/25/2016,OP,MRI Orbits/Face/Neck,NEURO,Left IJ thrombus,"autism, mitochondrial disorder, developmental delay, and seizure disorder","Amoxicillin, Ceclor, Cisapride, Soy, Keppra, Cow's milk, Lactose, Singulair, Risperdal, Isovue-300 (hives), Tiagabine, Iron, Lorazepam, Gabapentin, pneumonia vaccine, vancomycin",No,Gadavist,mild-Phys,<15 min,"Nausea, emesis",,,Not sure if this qualifies as allergy-like reaction.  More like physiologic. ,,,,,,,,
+Physiologic,4771556,6/29/1998,18,f,2/19/2016,OP,MRI Brain,NEURO,Demyelinating disease,"Demyelinating disease, Optic neuritis, constipation, urinary incontinence","Prohance (vomit), Gammagard","Yes, vomit w/ prohance",Gadavist,mild-Phys,immediate,immediate vomiting,,,Allery screen updated to include allergy to Gadavist,,,,,,,,
+Extravasation,2296318,,,,3/9/2016,OP,,,,,,,,,,Extravasation,,,"Radiology fellow paged. Dr. Sherazad in to examine pt. 50mg Benadryl PO ordered, and given @ 14:07. Sat 99%, HR 61",,,,,EXCLUDED,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Signs and symptoms are self-limited without evidence of progression. Mild reactions include:,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Allergic-like ,,,,,,,,Physiologic
+,,,,,,,,,,,,,,,,,,,Limited urticaria / pruritis ,,,,,,,,Limited nausea / vomiting
+,,,,,,,,,,,,,,,,,,,Limited cutaneous edema ,,,,,,,,Transient flushing / warmth / chills
+,,,,,,,,,,,,,,,,,,,Limited “itchy” / “scratchy” throat ,,,,,,,,Headache / dizziness / anxiety / altered taste
+,,,,,,,,,,,,,,,,,,,Nasal congestion ,,,,,,,,Mild hypertension
+,,,,,,,,,,,,,,,,,,,Sneezing / conjunctivitis / rhinorrhea ,,,,,,,,Vasovagal reaction that resolves spontaneously
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Moderate,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Signs and symptoms are more pronounced and commonly require medical management. Some of these reactions have the,,,,,,,,
+,,,,,,,,,,,,,,,,,,,potential to become severe if not treated. Moderate reactions include:,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Allergic-like ,,,,,,,,Physiologic
+,,,,,,,,,,,,,,,,,,,Diffuse urticaria / pruritis ,,,,,,,,Protracted nausea / vomiting
+,,,,,,,,,,,,,,,,,,,"Diffuse erythema, stable vital signs ",,,,,,,,Hypertensive urgency
+,,,,,,,,,,,,,,,,,,,Facial edema without dyspnea ,,,,,,,,Isolated chest pain
+,,,,,,,,,,,,,,,,,,,Throat tightness or hoarseness without dyspnea ,,,,,,,,Vasovagal reaction that requires and is responsive to treatment
+,,,,,,,,,,,,,,,,,,,"Wheezing / bronchospasm, mild or no hypoxia",,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Severe reactions include:,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Allergic-like ,,,,,,,,Physiologic
+,,,,,,,,,,,,,,,,,,,"Diffuse edema, or facial edema with dyspnea ",,,,,,,,Vasovagal reaction resistant to treatment
+,,,,,,,,,,,,,,,,,,,Diffuse erythema with hypotension ,,,,,,,,Arrhythmia
+,,,,,,,,,,,,,,,,,,,Laryngeal edema with stridor and/or hypoxia ,,,,,,,,"Convulsions, seizures"
+,,,,,,,,,,,,,,,,,,,"Wheezing / bronchospasm, significant hypoxia ",,,,,,,,Hypertensive emergency
+,,,,,,,,,,,,,,,,,,,Anaphylactic shock (hypotension + tachycardia),,,,,,,,

@@ -1,0 +1,150 @@
+---
+title: "Survival Analysis"
+author: "Spiro Stilianoudakis"
+date: "September 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Loading Libraries
+
+```{r}
+library(survival)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(ggpubr)
+library(car)
+library(flexsurv)
+#library(KMSurv)
+library(e1071)
+library(rms)
+library(ggfortify)
+library(survminer)
+library(MASS)
+library(rms)
+library(DT)
+```
+
+# Reading in the saved data
+
+```{r}
+mydata <- readRDS("C:/Users/Spiro Stilianoudakis/Documents/BCL_R_107/matched.samp.RDS")
+mydata <- readRDS("Z:/Shares/Biostatistics/Projects/BCL/Research Projects/Closed/BCL - 2017 - R107 (Ali - VA Internal Medicine)/1 - Data/matched.samp.rds")
+head(mydata)
+dim(mydata) #735 12
+```
+
+# Kaplan-Meier curves
+
+```{r}
+
+#change Status variable to numeric
+mydata$Status <- as.numeric(as.character(mydata$Status))
+
+fitread <- survfit(Surv(Months_to_death, Status) ~ Readmission, data=mydata)
+
+ggsurvplot(fitread, 
+            data = mydata, 
+            conf.int = TRUE, 
+            censor=FALSE, 
+            pval = TRUE,
+            palette = 
+     c("#000000", "#9F9F9F"), linetype = "strata",
+            #ylim=c(.5,1),
+            xlab="Time (days)",
+            risk.table = FALSE, 
+            ##break.x.by = 180,
+            #risk.table.col="strata", 
+            #risk.table.height = .35,
+            #surv.median.line = "hv",
+            legend.title="30 Day Readmission Status:",
+            legend.labs = 
+             c("No", "Yes"),
+            ggtheme = theme_bw())
+
+ggsurvplot(fitread, 
+            data = mydata,
+            conf.int = TRUE, 
+            censor=FALSE, 
+            pval = TRUE,
+            palette = c("#000000", "#9F9F9F"),
+            linetype = "strata",
+            xlab="Time (days)",
+            risk.table = TRUE, 
+            break.x.by = 6,
+            risk.table.col="strata", 
+            risk.table.height = .35,
+            surv.median.line = "hv",
+            legend.title="30 Day Readmission Status:",
+            legend.labs = 
+             c("No", "Yes"),
+            ggtheme = theme_bw())
+
+```
+
+
+# Modeling fitting
+
+```{r}
+mydata$loglengthofstay <- log(mydata$Length_of_stay+1)
+
+coxmodel <- coxph(Surv(Months_to_death, Status) ~ Readmission + 
+                    Age + 
+                    Gender + 
+                    Race + 
+                    Ethnicity +
+                    loglengthofstay +
+                    Diagnostic_group +
+                    Severity_index, data = mydata)
+coxmodel
+summary(coxmodel)
+
+cox.zph(coxmodel)
+
+plot(cox.zph(coxmodel))
+
+myfit = npsurv(Surv(Months_to_death, Status) ~ Severity_index, data=mydata)
+survplot(myfit, loglog=T)
+
+myfit = npsurv(Surv(Months_to_death, Status) ~ Readmission, data=mydata)
+survplot(myfit, loglog=T)
+
+```
+
+# Survival Times 
+
+```{r}
+
+fit <- survfit(Surv(Months_to_death, Status) ~ Readmission, data = mydata)
+summary(fit, times = c(6, 12, 18, 24))
+
+times <- c(6, 12, 18, 24)
+pvalue <- numeric(4)
+for(i in 1:4){
+  survfunc <- function(mos){
+    x <- mydata
+    x$Months_to_death[which(x$Months_to_death >= mos)] <- mos 
+    x$Status <- ifelse(x$Months_to_death >= mos, 0,1)
+    coxmod <- coxph(Surv(Months_to_death, Status) ~ Readmission, data = x)
+    diff <- survdiff(Surv(Months_to_death, Status) ~ Readmission, data = x)
+    pval <- pchisq(diff$chisq, length(diff$n)-1, lower.tail = FALSE)
+    return(pval)
+}
+  pvalue[i] <- survfunc(times[i])
+}
+
+survprobs <- summary(fit, times = c(6, 12, 18, 24))
+survprobsdf <- cbind.data.frame(Months = survprobs$time,
+                                SurvProb = survprobs$surv,
+                                Lower = survprobs$lower,
+                                Upper = survprobs$upper)
+survprobsdf <- round(survprobsdf, 3)
+
+datatable(survprobsdf)
+
+```
+

@@ -1,0 +1,23 @@
+Reaction,MRN,Age,Sex,Study Date,OP/IP,Type of Study,Section,Dx,Other PMH,Allergies,Prior Gad Admin,Type of Contrast,Severity of Rxn,Time after injection,Type of Rxn,
+Allergic,4063363,12,M,6/10/2005,OP,MRI Brain,NEURO,R temp lobe tumor,sz,NKDA,Yes w/ h/o mild-all rxn,Prohance,mild,unknown,facial and torso hives,
+Allergic,1193343,12,F,1/9/2008,OP,MRI Spine,NEURO,Pontine Glioma,"VP shunt placement, seasonal allergies, CHD",NKDA,"yes, no reaction",Magnevist,moderate,5 min,"throat itchiness, stuffy nose, warmness, redness, facial edema ",
+Allergic,4154743,21,F,2/10/2009,OP,MRI Abd/Pelv,BODY,Crohn's Dz,irritation and erythema at injection sites of Humira; small bowel resection of terminal ileum and appendix,"penicillin, codeine, cipro, flagyl","yes, no reaction",Magnevist,mild,immediate??,hives,
+Allergic,4251408,18,F,4/6/2009,OP,MRI Brain,NEURO,Pituitary Adenoma,"migraines, PCOS",NKDA,"yes, no reaction",Magnevist,mild,5 min,"hives, itchy throat, light headedness",
+Allergic,4249981,17,F,4/14/2011,OP,MRI Orbits,NEURO,CVID,recurrent sinopulmonary infections,"bactrim, levaquin, azithromycin, ceftriaxone","yes, no reaction",Magnevist,mild,30 min,hives,
+Allergic,1175008,15,F,7/28/2011,OP,MRI Brain,NEURO,Short stature. Eval of pit gland.,mild intermittent asthma,amoxicillin,No,Magnevist,mild,<15 min,hives,
+Allergic,4492624,21,F,7/28/2011,OP,MRI Hips,MSK,DDH,none,amoxicillin,No,Magnevist,moderate,<5 min,"Facial and throat tightness, itchiness",
+Allergic,2184700,17,M,9/30/2011,OP,MRI Abd/Pelv,BODY,Crohn's Dz,bowel obstruction,none,No,Magnevist,moderate,<5 min,facial and tongue numbness and tingling,
+Allergic,4510129,17,F,10/10/2011,IP,MRI Abd/Pelv,BODY,IBD,panic attacks,amoxicillin,No,Magnevist,mild,<5 min,"itchy nose, nausea",
+Allergic,4525313,0.92,F,10/28/2011,IP,MRI Brain,NEURO,Post fossa tumor resection,none,NKDA,"yes, no reaction",Magnevist,moderate,<5 min,"HR decrease, erythematous rash",
+Allergic,4203125,17,M,10/3/2012,OP,MRI Brain,NEURO,pilocytic astrocytoma,none,NKDA,"yes, no reaction",Magnevist,mild,<5min,sneezing,
+Allergic,2126453,14,F,11/19/2012,OP,MRI Abd/Pelv,BODY,IBS/IBD,none,NKDA,No,Magnevist,mild,>20 min,"rash/hives, itchiness",
+Allergic,2260387,18,M,7/8/2009,OP,MRI Brain,NEURO,Ewing Sarcoma,none,NKDA,"yes, no reaction",Magnevist,moderate,< 5min,"throat pain, shortness of breath",
+Physiologic,4069015,6,M,7/6/2005,OP,MRI Knee,MSK,Right knee synovitis,none,NKDA,No,Magnevist,mild-phys,unknown,vomiting,excluded
+Physiologic,4098599,15,F,12/16/2005,OP,MRI Pelvis,BODY,Unicornuate uterus,pelvic pain and hematometra; ACL repair x 2,NKDA,No,Magnevist,mild-phys,unknown,burning in arm,excluded
+Physiologic,2021560,14,F,2/4/2006,OP,MRI Brain,NEURO,MS,"optic neuritis, hypertension",NKDA,"yes, no reaction",Magnevist,mild-phys,unknown,vomiting,excluded
+Physiologic,4072745,12,F,4/7/2010,OP,MRI Abd/Pelv,BODY,IBD,"regional pain syndrome, autism spectrum disorder","nitral gloves, buts, sulfides, nitrates, formaldehyde",No,Prohance,mild-phys,<5 min,"flushing, nausea, dizziness",excluded
+,,,,,,,,,,,,Magnevist,12,,,
+,,,,,,,,,,,,Prohance,1,,,
+,,,,,,,,,,,,Mild,8,,,
+,,,,,,,,,,,,Moderate,5,,,
+,,,,,,,,,,,,Severe,0,,,
