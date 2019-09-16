@@ -264,7 +264,7 @@ ggsurvplot(fittreat,
             ggtheme = theme_bw())
 ```
 
-# Time to Positive CAM-ICU
+## Time to Positive CAM-ICU
 
 ```{r}
 pwbe$PosCAM_Status <- ifelse(pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes", 1, 0)
