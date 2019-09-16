@@ -1,0 +1,190 @@
+---
+title: "Time to event analysis"
+author: "Spiro Stilianoudakis"
+date: "9/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+library(survival)
+library(ggplot2)
+library(ggfortify)
+library(survminer)
+library(gridExtra)
+library(pROC) #(for AUC)
+#library(rms)
+#library(rJava)
+#library(glmulti)
+library(leaps)
+#library(bestglm)
+#library(survivalROC)
+library(cmprsk)
+#library(aod)
+```
+
+# Patients with behavioral event
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+pwbe <- read.csv("keppra_data_with_behavior_v2.csv", 
+                header = TRUE,
+                na.strings = "N/A",
+                stringsAsFactors = FALSE,
+                nrows = 453)
+ 
+dim(pwbe)
+#453  27
+
+table(unlist(lapply(pwbe,class)))
+#character   integer   numeric 
+#       17         4         6 
+```
+
+# Patients without behavioral event
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+pwobe <- read.csv("keppra_data_without_behavior_v2.csv", 
+                header = TRUE,
+                na.strings='N/A',
+                stringsAsFactors = FALSE,
+                nrows = 512)
+
+dim(pwobe)
+#512  19
+
+table(unlist(lapply(pwobe,class)))
+#character   integer   numeric 
+#       12         3         4 
+```
+
+# Establishing a median time:
+
+## Antipsychotic administration (Column N) 
+
+```{r}
+table(pwbe$Antipsychotic.administration.while.on.Keppra, exclude = "ifany")
+
+summary(pwbe$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS.)
+```
+
+
+## Positive CAM-ICU (Column P) 
+
+```{r}
+table(pwbe$Positive.CAM.ICU.while.on.Keppra, exclude = "ifany")
+
+summary(pwbe$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS.)
+```
+
+
+## Overall median time depending on if an antipsychotic was administered first or a positive CAM-ICU was recorded first in patients who had both an antipsychotic and positive CAM-ICU
+
+```{r}
+nrow(pwbe[which(pwbe$Antipsychotic.administration.while.on.Keppra=="Yes" & pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes"),])
+
+overall_tte <- pwbe[which(!is.na(pwbe$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS.) & !is.na(pwbe$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS.)),]
+
+overall_tte$ttfo <- ifelse(overall_tte$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS. <= overall_tte$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS., overall_tte$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS., overall_tte$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS.)
+
+summary(overall_tte$ttfo)
+```
+
+# Overall time patients were observed (duration of Keppra therapy) for those who did not receive an antipsychotic or have a positive CAM-ICU. 
+
+## Time to antipsychotic
+
+```{r}
+overall_pwbe <- pwbe
+
+overall_pwbe$time_to_antpsych <- ifelse(overall_pwbe$Antipsychotic.administration.while.on.Keppra=="Yes", overall_pwbe$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS., overall_pwbe$Keppra.Duration..Days.)
+
+overall_pwbe$TTPsych_Status <- ifelse(overall_pwbe$Antipsychotic.administration.while.on.Keppra=="Yes", 1, 0)
+
+fittreat <- survfit(Surv(time_to_antpsych, TTPsych_Status) ~ 1, data=overall_pwbe)
+survfit(Surv(time_to_antpsych, TTPsych_Status) ~ 1, data=overall_pwbe) #median=11.74
+summary(overall_pwbe$time_to_antpsych) # 4.897
+ggsurvplot(fittreat, 
+            data = overall_pwbe, 
+            conf.int = TRUE, 
+            censor=TRUE, 
+            #size = 1.5,
+            surv.median.line="hv",
+            legend="none",
+            xlab="Time to antipsychotic administration (days)",
+            ylab="Probability of antipsychotic administration",
+            risk.table = FALSE,
+            fontsize = 5,
+            font.x = 20,
+            font.y = 20,
+            ggtheme = theme_bw())
+```
+
+## Time to positive CAM
+
+```{r}
+overall_pwbe$time_to_poscam <- ifelse(overall_pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes", overall_pwbe$Time.to.Positive.CAM.ICU.after.first.dose.of..Keppra..DAYS., overall_pwbe$Keppra.Duration..Days.)
+
+overall_pwbe$TTPoscam_Status <- ifelse(overall_pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes", 1, 0)
+
+fittreat <- survfit(Surv(time_to_poscam, TTPoscam_Status) ~ 1, data=overall_pwbe)
+survfit(Surv(time_to_poscam, TTPoscam_Status) ~ 1, data=overall_pwbe) #median=NA
+summary(overall_pwbe$time_to_poscam) # 5.642
+ggsurvplot(fittreat, 
+            data = overall_pwbe, 
+            conf.int = TRUE, 
+            censor=TRUE, 
+            #size = 1.5,
+            surv.median.line="hv",
+            legend="none",
+            xlab="Time to Positive CAM (days)",
+            ylab="Probability of positive CAM",
+            risk.table = FALSE,
+            fontsize = 5,
+            font.x = 20,
+            font.y = 20,
+            ggtheme = theme_bw())
+```
+
+
+## Time to first occurance
+
+```{r}
+overall_pwbe$time_to_first <- ifelse(overall_pwbe$time_to_antpsych <= overall_pwbe$time_to_poscam, overall_pwbe$time_to_antpsych, overall_pwbe$time_to_poscam)
+
+overall_pwbe$TTFO_Status <- ifelse(overall_pwbe$TTPsych_Status==1 | overall_pwbe$TTPoscam_Status==1, 1, 0)
+
+fittreat <- survfit(Surv(time_to_first, TTFO_Status) ~ 1, data=overall_pwbe)
+survfit(Surv(time_to_first, TTFO_Status) ~ 1, data=overall_pwbe) #median=5.33
+summary(overall_pwbe$time_to_first) # 3.542
+ggsurvplot(fittreat, 
+            data = overall_pwbe, 
+            conf.int = TRUE, 
+            censor=TRUE, 
+            #size = 1.5,
+            surv.median.line="hv",
+            legend="none",
+            xlab="Time to First Occurance (days)",
+            ylab="Probability of first occurance",
+            risk.table = FALSE,
+            fontsize = 5,
+            font.x = 20,
+            font.y = 20,
+            ggtheme = theme_bw())
+```
+
+
+# Evaluating for confounding variables
+
+
+
+
