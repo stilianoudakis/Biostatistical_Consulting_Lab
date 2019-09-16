@@ -1,0 +1,239 @@
+---
+title: "Logistic Regression"
+author: "Spiro Stilianoudakis"
+date: "9/16/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+library(survival)
+library(ggplot2)
+library(ggfortify)
+library(survminer)
+library(gridExtra)
+library(pROC) #(for AUC)
+#library(rms)
+#library(rJava)
+#library(glmulti)
+library(leaps)
+#library(bestglm)
+#library(survivalROC)
+library(cmprsk)
+#library(aod)
+library(caret)
+library(pscl)
+library(car)
+library(rcompanion)
+```
+
+# Setting working directory
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+```
+
+
+# Patients with behavioral event
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+pwbe <- read.csv("keppra_data_with_behavior_v2.csv", 
+                header = TRUE,
+                na.strings = "N/A",
+                stringsAsFactors = FALSE,
+                nrows = 453)
+                #colClasses = c(rep("numeric",2),
+                #               rep("character",3),
+                #               rep("numeric",1),
+                #               rep("character",1),
+                #               rep("numeric",3),
+                #               rep("character",3),
+                #               rep("numeric",1),
+                #               rep("character",1),
+                #               rep("numeric",1),
+                #               rep("character",2)))
+
+dim(pwbe)
+#453  27
+
+table(unlist(lapply(pwbe,class)))
+#character   integer   numeric 
+#       17         4         6 
+```
+
+# Patients without behavioral event
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+pwobe <- read.csv("keppra_data_without_behavior_v2.csv", 
+                header = TRUE,
+                na.strings='N/A',
+                stringsAsFactors = FALSE,
+                nrows = 512)
+                #colClasses = c(rep("numeric",2),
+                #               rep("character",3),
+                #               rep("numeric",1),
+                #               rep("character",1),
+                #               rep("numeric",3)))
+
+dim(pwobe)
+#512  19
+
+table(unlist(lapply(pwobe,class)))
+#character   integer   numeric 
+#       12         3         4 
+```
+
+#Combine with and without behavioral event with only demographics
+
+```{r}
+vars <- c("RASS....3", "Median.Keppra.Dose", "Received.Benzo", "CIWA.Orders", "Pain.Scores", "Received.IV.opioid", "Concurrent.AED")
+  
+keppra_logistic <- rbind.data.frame(pwbe[,names(pwbe) %in% vars],
+                                pwobe[,names(pwobe) %in% vars])
+
+dim(keppra_logistic)
+#965  7
+
+keppra_logistic$BehavioralEvent <- c(rep("Yes", dim(pwbe)[1]),
+                                 rep("No", dim(pwobe)[1]))
+table(keppra_logistic$BehavioralEvent)
+# No Yes 
+#512 453
+
+keppra_logistic$Behavioral_Event <- factor(keppra_logistic$Behavioral_Event)
+
+names(keppra_logistic) <- c("Rass_less_than_3",
+                        "Median_Keppra_Dose",
+                        "Received_Benzo",
+                        "CIWA_Orders",
+                        "Pain_Scores",
+                        "Received_IV_opioid",
+                        "Concurrent_AED",
+                        "Behavioral_Event")
+```
+
+# Checking missingness 
+
+```{r}
+str(keppra_logistic)
+
+#missingness
+lapply(keppra_logistic, function(x)table(is.na(x))) 
+##no missingness
+
+#summaries
+lapply(keppra_logistic, function(x)if(class(x)=="numeric" | class(x)=="integer"){summary(x)}else(table(x, exclude = "ifany")))
+##rass needs recoding
+##median keppra dose needs recoding
+
+```
+
+# Recoding variables/ changing to factors
+
+## Rass
+
+```{r}
+keppra_logistic$Rass_less_than_3[which(keppra_logistic$Rass_less_than_3=="yes")] <- "Yes" 
+table(keppra_logistic$Rass_less_than_3)
+
+keppra_logistic$Rass_less_than_3 <- factor(keppra_logistic$Rass_less_than_3)
+```
+
+## Median keppra dose needs recoding
+
+```{r}
+keppra_logistic$Median_Keppra_Dose[which(keppra_logistic$Median_Keppra_Dose=="5/14/1901")] <- "Missing"
+
+#remove missing median keppra dose
+keppra_logistic <- keppra_logistic[-which(keppra_logistic$Median_Keppra_Dose=="Missing"),]
+dim(keppra_logistic) #963   8
+table(keppra_logistic$Behavioral_Event) 
+# No Yes 
+#510 453 
+
+table(keppra_logistic$Median_Keppra_Dose)
+
+#recategorize median keppra dose
+##<=500 and >500
+keppra_logistic$Median_Keppra_Dose_cat <- ifelse(keppra_logistic$Median_Keppra_Dose %in% c("250", "500"), "<=500 mg", ">500 mg")
+
+table(keppra_logistic$Median_Keppra_Dose_cat)
+
+keppra_logistic$Median_Keppra_Dose_cat <- factor(keppra_logistic$Median_Keppra_Dose_cat, levels = c("<=500 mg", ">500 mg"))
+
+#drop original median keppra
+keppra_logistic <- keppra_logistic[, c(8, 1, 3:7, 9)]
+
+```
+
+## All other vars
+
+```{r}
+keppra_logistic$Received_Benzo <- factor(keppra_logistic$Received_Benzo)
+keppra_logistic$CIWA_Orders <- factor(keppra_logistic$CIWA_Orders)
+keppra_logistic$Pain_Scores <- factor(keppra_logistic$Pain_Scores, levels=c("0-3", "4-10"))
+keppra_logistic$Received_IV_opioid <- factor(keppra_logistic$Received_IV_opioid)
+keppra_logistic$Concurrent_AED <- factor(keppra_logistic$Concurrent_AED)
+
+str(keppra_logistic)
+```
+
+# Logistic regression
+
+```{r}
+
+model1 <- glm(Behavioral_Event ~ .,
+              family=binomial(link='logit'),
+              data=keppra_logistic)
+summary(model1)
+anova(model1, test="Chisq")
+pR2(model1)
+
+round(exp(cbind(coef(model1), confint(model1))) ,3) 
+```
+
+## Stepwise procedure
+
+```{r}
+model.null = glm(Behavioral_Event ~ 1,
+                 data=keppra_logistic,
+                 family = binomial(link="logit")
+                 )
+
+model.full = glm(Behavioral_Event ~ .,
+                 data=keppra_logistic,
+                 family = binomial(link="logit")
+                 )
+    
+step(model.null,
+     scope = list(upper=model.full),
+             direction="both",
+             test="Chisq",
+             data=keppra_logistic)
+```
+
+## Final model
+
+```{r}
+model.final = glm(Behavioral_Event ~ CIWA_Orders + Rass_less_than_3 + Concurrent_AED,
+                 data=keppra_logistic,
+                 family = binomial(link="logit")
+                 )
+
+summary(model.final)
+anova(model.final, test="Chisq")
+Anova(model.final, type="II", test="Wald")
+pR2(model.final)
+nagelkerke(model.final)
+```
+
