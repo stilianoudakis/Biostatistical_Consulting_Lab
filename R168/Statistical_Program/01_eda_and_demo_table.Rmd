@@ -205,4 +205,33 @@ tableOne <- CreateTableOne(vars = c("Age",
 
 ```
 
+# Table of only surviving patients (icu length of stay, hospital length of stay, keppra dose, and keppra duration)
+
+```{r}
+keppra_demo_survived <- keppra_demo[-which(keppra_demo$Discharge.Disposition=="Expired"),]
+
+dim(keppra_demo_survived) #805  24
+
+#log vars
+tableOne_log <- CreateTableOne(vars = c(
+                        "log_Length_of_Stay_Hospital",
+                        "log_Length_of_Stay_ICU",
+                        "log_Total_Keppra_Doses",
+                        "log_Keppra_Duration"
+                        ),
+               testNormal=oneway.test,
+               strata = "Behavioral_Event",
+               data = keppra_demo_survived)
+
+#no log vars
+tableOne_nolog <- CreateTableOne(vars = c(
+                        "Length_of_Stay_Hospital",
+                        "Length_of_Stay_ICU",
+                        "Total_Keppra_Doses",
+                        "Keppra_Duration"
+                        ),
+               testNonNormal = kruskal.test,
+               strata = "Behavioral_Event",
+               data = keppra_demo_survived)
+```
 
