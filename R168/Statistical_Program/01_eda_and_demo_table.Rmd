@@ -28,7 +28,7 @@ setwd("~/Biostatistical_Consulting_Lab/R168/Data")
 
 ```{r}
 setwd("~/Biostatistical_Consulting_Lab/R168/Data")
-pwbe <- read.csv("keppra_data_with_behavior_v2.csv", 
+pwbe <- read.csv("keppra_data_with_behavior_v3.csv", 
                 header = TRUE,
                 na.strings = "N/A",
                 stringsAsFactors = FALSE,
@@ -45,18 +45,18 @@ pwbe <- read.csv("keppra_data_with_behavior_v2.csv",
                 #               rep("character",2)))
 
 dim(pwbe)
-#453  27
+#453  30
 
 table(unlist(lapply(pwbe,class)))
 #character   integer   numeric 
-#       17         4         6 
+#       17         6         7 
 ```
 
 # Patients without behavioral event
 
 ```{r}
 setwd("~/Biostatistical_Consulting_Lab/R168/Data")
-pwobe <- read.csv("keppra_data_without_behavior_v2.csv", 
+pwobe <- read.csv("keppra_data_without_behavior_v3.csv", 
                 header = TRUE,
                 na.strings='N/A',
                 stringsAsFactors = FALSE,
@@ -68,21 +68,21 @@ pwobe <- read.csv("keppra_data_without_behavior_v2.csv",
                 #               rep("numeric",3)))
 
 dim(pwobe)
-#512  19
+#512  22
 
 table(unlist(lapply(pwobe,class)))
 #character   integer   numeric 
-#       12         3         4 
+#       11         6         5 
 ```
 
 #Combine with and without behavioral event with only demographics
 
 ```{r}
 keppra_demo <- rbind.data.frame(pwbe[,names(pwbe) %in% intersect(names(pwbe), names(pwobe))],
-                                pwobe)
+                                pwobe[,names(pwobe) %in% intersect(names(pwobe), names(pwbe))])
 
 dim(keppra_demo)
-#965  19
+#965  22
 
 keppra_demo$BehavioralEvent <- c(rep("Yes", dim(pwbe)[1]),
                                  rep("No", dim(pwobe)[1]))
@@ -109,6 +109,9 @@ names(keppra_demo) <- c("ID",
                         "Received_IV_opioid",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
+                        "Times_RASS_less_neg3",
+                        "Times_RASS_evaluated",
+                        "Percent_RASS_less_neg3",
                         "Behavioral_Event")
 ```
 
@@ -117,7 +120,10 @@ names(keppra_demo) <- c("ID",
 ```{r}
 #missingness
 lapply(keppra_demo, function(x)table(is.na(x))) 
-##only missingness is from the "AED Received while on Keppra" variable
+##missingness from the "AED Received while on Keppra" variable
+##missingness from the Times_RASS_less_neg3 variable
+##missingness from the Times_RASS_evaluated variable
+##missingness from the Percent_RASS_less_neg3 variable
 
 #summaries
 lapply(keppra_demo, function(x)if(class(x)=="numeric" | class(x)=="integer"){summary(x)}else(table(x)))
@@ -125,6 +131,7 @@ lapply(keppra_demo, function(x)if(class(x)=="numeric" | class(x)=="integer"){sum
 ##rass needs recoding
 ##median keppra dose needs recoding
 ##AED_Received_while_on_Keppra needs recoding
+##pain score needs recoding
 
 ```
 
@@ -167,6 +174,15 @@ keppra_demo$AED_Received_while_on_Keppra <- ifelse(is.na(keppra_demo$AED_Receive
 table(keppra_demo$AED_Received_while_on_Keppra)
 ```
 
+## Pain score
+
+```{r}
+table(keppra_demo$Pain_Scores, exclude = "ifany")
+keppra_demo$Pain_Scores[which(keppra_demo$Pain_Scores=="10-Apr")] <- "4-10"
+table(keppra_demo$Pain_Scores, exclude = "ifany")
+```
+
+
 #Creating table of demographics
 
 ```{r}
@@ -197,7 +213,10 @@ tableOne <- CreateTableOne(vars = c("Age",
                         "Pain_Scores",
                         "Received_IV_opioid",
                         "Concurrent_AED",
-                        "AED_Received_while_on_Keppra"
+                        "AED_Received_while_on_Keppra",
+                        "Times_RASS_less_neg3",
+                        "Times_RASS_evaluated",
+                        "Percent_RASS_less_neg3"
                         ),
                strata = "Behavioral_Event",
                data = keppra_demo)
@@ -210,28 +229,36 @@ tableOne <- CreateTableOne(vars = c("Age",
 ```{r}
 keppra_demo_survived <- keppra_demo[-which(keppra_demo$Discharge.Disposition=="Expired"),]
 
-dim(keppra_demo_survived) #805  24
+dim(keppra_demo_survived) #805  27
 
-#log vars
-tableOne_log <- CreateTableOne(vars = c(
-                        "log_Length_of_Stay_Hospital",
-                        "log_Length_of_Stay_ICU",
-                        "log_Total_Keppra_Doses",
-                        "log_Keppra_Duration"
-                        ),
-               testNormal=oneway.test,
-               strata = "Behavioral_Event",
-               data = keppra_demo_survived)
-
-#no log vars
-tableOne_nolog <- CreateTableOne(vars = c(
+tableOne_survived <- CreateTableOne(vars = c("Age",
+                        "Ethnicity",
+                        "Gender",
+                        "Diagnosis",
+                        "GCS",
+                        "Discharge.Disposition",
                         "Length_of_Stay_Hospital",
                         "Length_of_Stay_ICU",
                         "Total_Keppra_Doses",
-                        "Keppra_Duration"
+                        "Keppra_Duration",
+                        "log_Length_of_Stay_Hospital",
+                        "log_Length_of_Stay_ICU",
+                        "log_Total_Keppra_Doses",
+                        "log_Keppra_Duration",
+                        "Rass_less_than_3",
+                        "Median_Keppra_Dose",
+                        "Received_Benzo",
+                        "CIWA_Orders",
+                        "Pain_Scores",
+                        "Received_IV_opioid",
+                        "Concurrent_AED",
+                        "AED_Received_while_on_Keppra",
+                        "Times_RASS_less_neg3",
+                        "Times_RASS_evaluated",
+                        "Percent_RASS_less_neg3"
                         ),
-               testNonNormal = kruskal.test,
                strata = "Behavioral_Event",
                data = keppra_demo_survived)
+
 ```
 

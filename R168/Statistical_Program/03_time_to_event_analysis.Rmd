@@ -35,36 +35,36 @@ library(cmprsk)
 
 ```{r}
 setwd("~/Biostatistical_Consulting_Lab/R168/Data")
-pwbe <- read.csv("keppra_data_with_behavior_v2.csv", 
+pwbe <- read.csv("keppra_data_with_behavior_v3.csv", 
                 header = TRUE,
                 na.strings = "N/A",
                 stringsAsFactors = FALSE,
                 nrows = 453)
  
 dim(pwbe)
-#453  27
+#453  30
 
 table(unlist(lapply(pwbe,class)))
 #character   integer   numeric 
-#       17         4         6 
+#       17         6         7 
 ```
 
 # Patients without behavioral event
 
 ```{r}
 setwd("~/Biostatistical_Consulting_Lab/R168/Data")
-pwobe <- read.csv("keppra_data_without_behavior_v2.csv", 
+pwobe <- read.csv("keppra_data_without_behavior_v3.csv", 
                 header = TRUE,
                 na.strings='N/A',
                 stringsAsFactors = FALSE,
                 nrows = 512)
 
 dim(pwobe)
-#512  19
+#512  22
 
 table(unlist(lapply(pwobe,class)))
 #character   integer   numeric 
-#       12         3         4 
+#       11         6         5 
 ```
 
 # Establishing a median time:
@@ -101,6 +101,22 @@ summary(overall_tte$ttfo)
 
 # Overall time patients were observed (duration of Keppra therapy) for those who did not receive an antipsychotic or have a positive CAM-ICU. 
 
+```{r}
+overall_pwbe$RASS....3[which(overall_pwbe$RASS....3=="yes")] <- "Yes"
+overall_pwbe$RASS....3 <- factor(overall_pwbe$RASS....3)
+table(overall_pwbe$RASS....3)
+
+overall_pwbe$Pain.Scores[which(overall_pwbe$Pain.Scores=="10-Apr")] <- "4-10"
+overall_pwbe$Pain.Scores <- factor(overall_pwbe$Pain.Scores)
+table(overall_pwbe$Pain.Scores)
+
+overall_pwbe$Median.Keppra.Dose <- ifelse(overall_pwbe$Median.Keppra.Dose %in% c("250", "500"), "<=500 mg", ">500 mg")
+overall_pwbe$Median.Keppra.Dose <- factor(overall_pwbe$Median.Keppra.Dose, levels = c("<=500 mg", ">500 mg"))
+table(overall_pwbe$Median.Keppra.Dose)
+
+```
+
+
 ## Time to antipsychotic
 
 ```{r}
@@ -110,6 +126,7 @@ overall_pwbe$time_to_antpsych <- ifelse(overall_pwbe$Antipsychotic.administratio
 
 overall_pwbe$TTPsych_Status <- ifelse(overall_pwbe$Antipsychotic.administration.while.on.Keppra=="Yes", 1, 0)
 
+#km curve
 fittreat <- survfit(Surv(time_to_antpsych, TTPsych_Status) ~ 1, data=overall_pwbe)
 survfit(Surv(time_to_antpsych, TTPsych_Status) ~ 1, data=overall_pwbe) #median=11.74
 summary(overall_pwbe$time_to_antpsych) # 4.897
@@ -127,6 +144,11 @@ ggsurvplot(fittreat,
             font.x = 20,
             font.y = 20,
             ggtheme = theme_bw())
+
+#coxmodel
+coxmodel_psych <- coxph(Surv(time_to_antpsych, TTPsych_Status) ~ RASS....3 + Received.Benzo + Pain.Scores + Received.IV.opioid + Concurrent.AED + Median.Keppra.Dose, 
+                  data=overall_pwbe)
+summary(coxmodel_psych)
 ```
 
 ## Time to positive CAM
@@ -136,6 +158,7 @@ overall_pwbe$time_to_poscam <- ifelse(overall_pwbe$Positive.CAM.ICU.while.on.Kep
 
 overall_pwbe$TTPoscam_Status <- ifelse(overall_pwbe$Positive.CAM.ICU.while.on.Keppra=="Yes", 1, 0)
 
+#km curve
 fittreat <- survfit(Surv(time_to_poscam, TTPoscam_Status) ~ 1, data=overall_pwbe)
 survfit(Surv(time_to_poscam, TTPoscam_Status) ~ 1, data=overall_pwbe) #median=NA
 summary(overall_pwbe$time_to_poscam) # 5.642
@@ -153,6 +176,11 @@ ggsurvplot(fittreat,
             font.x = 20,
             font.y = 20,
             ggtheme = theme_bw())
+
+#coxmodel
+coxmodel_poscam <- coxph(Surv(time_to_poscam, TTPoscam_Status) ~ RASS....3 + Received.Benzo + Pain.Scores + Received.IV.opioid + Concurrent.AED + Median.Keppra.Dose, 
+                  data=overall_pwbe)
+summary(coxmodel_poscam)
 ```
 
 
@@ -183,7 +211,7 @@ ggsurvplot(fittreat,
 ```
 
 
-# Evaluating for confounding variables
+
 
 
 

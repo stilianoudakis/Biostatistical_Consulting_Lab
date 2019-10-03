@@ -41,7 +41,7 @@ library(rcompanion)
 setwd("~/Biostatistical_Consulting_Lab/R168/Data")
 ```
 
-
+<!--
 # Patients with behavioral event
 
 ```{r}
@@ -110,7 +110,7 @@ table(keppra_logistic$BehavioralEvent)
 # No Yes 
 #512 453
 
-keppra_logistic$Behavioral_Event <- factor(keppra_logistic$Behavioral_Event)
+keppra_logistic$BehavioralEvent <- factor(keppra_logistic$BehavioralEvent)
 
 names(keppra_logistic) <- c("Rass_less_than_3",
                         "Median_Keppra_Dose",
@@ -187,14 +187,32 @@ keppra_logistic$Concurrent_AED <- factor(keppra_logistic$Concurrent_AED)
 
 str(keppra_logistic)
 ```
+-->
+
+# Read in data
+
+```{r}
+keppra_demo <- readRDS("C:/Users/stili/Documents/Biostatistical_Consulting_Lab/R168/Data/keppra_demo.rds")
+
+keppra_demo$Behavioral_Event <- factor(keppra_demo$Behavioral_Event)
+
+#recategorize median keppra dose
+##<=500 and >500
+keppra_demo$Median_Keppra_Dose_cat <- ifelse(keppra_demo$Median_Keppra_Dose %in% c("250", "500"), "<=500 mg", ">500 mg")
+keppra_demo$Median_Keppra_Dose_cat <- factor(keppra_demo$Median_Keppra_Dose_cat, levels = c("<=500 mg", ">500 mg"))
+
+table(keppra_demo$Median_Keppra_Dose_cat)
+
+```
+
 
 # Logistic regression
 
 ```{r}
 
-model1 <- glm(Behavioral_Event ~ .,
+model1 <- glm(Behavioral_Event ~ Rass_less_than_3 + Received_Benzo + Pain_Scores + Received_IV_opioid + Concurrent_AED + Median_Keppra_Dose_cat,
               family=binomial(link='logit'),
-              data=keppra_logistic)
+              data=keppra_demo)
 summary(model1)
 anova(model1, test="Chisq")
 pR2(model1)
