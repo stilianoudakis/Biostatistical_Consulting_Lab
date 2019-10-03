@@ -1,0 +1,65 @@
+---
+title: "Modelling Length of Stay"
+author: "Spiro Stilianoudakis"
+date: "10/3/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+```
+
+# Reading in data
+
+```{r}
+keppra_demo <- readRDS("C:/Users/stili/Documents/Biostatistical_Consulting_Lab/R168/Data/keppra_demo.rds")
+
+keppra_demo$Behavioral_Event <- factor(keppra_demo$Behavioral_Event)
+
+#recategorize median keppra dose
+##<=500 and >500
+keppra_demo$Median_Keppra_Dose_cat <- ifelse(keppra_demo$Median_Keppra_Dose %in% c("250", "500"), "<=500 mg", ">500 mg")
+keppra_demo$Median_Keppra_Dose_cat <- factor(keppra_demo$Median_Keppra_Dose_cat, levels = c("<=500 mg", ">500 mg"))
+
+table(keppra_demo$Median_Keppra_Dose_cat)
+
+```
+
+# Modelling length of stay
+
+## Hospital
+
+```{r}
+hospital_mod <- lm(log_Length_of_Stay_Hospital ~ Behavioral_Event +
+                                                 Rass_less_than_3 + 
+                                                 Received_Benzo +
+                                                 Pain_Scores +
+                                                 Received_IV_opioid +
+                                                 Concurrent_AED +
+                                                 Median_Keppra_Dose_cat,
+                   data = keppra_demo)
+summary(hospital_mod)
+```
+
+## ICU
+
+```{r}
+icu_mod <- lm(log_Length_of_Stay_ICU ~ Behavioral_Event +
+                                                 Rass_less_than_3 + 
+                                                 Received_Benzo +
+                                                 Pain_Scores +
+                                                 Received_IV_opioid +
+                                                 Concurrent_AED +
+                                                 Median_Keppra_Dose_cat,
+                   data = keppra_demo)
+summary(icu_mod)
+```
+
