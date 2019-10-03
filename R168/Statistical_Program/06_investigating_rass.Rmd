@@ -1,0 +1,111 @@
+---
+title: "Investigating RASS"
+author: "Spiro Stilianoudakis"
+date: "10/3/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Libraries
+
+```{r}
+library(openxlsx)
+library(dplyr)
+library(tableone)
+library(survival)
+library(ggplot2)
+library(ggfortify)
+library(survminer)
+library(gridExtra)
+library(pROC) #(for AUC)
+#library(rms)
+#library(rJava)
+#library(glmulti)
+library(leaps)
+#library(bestglm)
+#library(survivalROC)
+library(cmprsk)
+#library(aod)
+library(caret)
+library(pscl)
+library(car)
+library(rcompanion)
+```
+
+# Setting working directory
+
+```{r}
+setwd("~/Biostatistical_Consulting_Lab/R168/Data")
+```
+
+# Read in data
+
+```{r}
+keppra_demo <- readRDS("C:/Users/stili/Documents/Biostatistical_Consulting_Lab/R168/Data/keppra_demo.rds")
+
+keppra_demo$Behavioral_Event <- factor(keppra_demo$Behavioral_Event)
+
+#recategorize median keppra dose
+##<=500 and >500
+keppra_demo$Median_Keppra_Dose_cat <- ifelse(keppra_demo$Median_Keppra_Dose %in% c("250", "500"), "<=500 mg", ">500 mg")
+keppra_demo$Median_Keppra_Dose_cat <- factor(keppra_demo$Median_Keppra_Dose_cat, levels = c("<=500 mg", ">500 mg"))
+
+table(keppra_demo$Median_Keppra_Dose_cat)
+
+```
+
+# Investigating RASS
+
+```{r}
+cor(na.omit(keppra_demo$Times_RASS_less_neg3), na.omit(keppra_demo$Times_RASS_evaluated)) #0.4478236
+
+hist(keppra_demo$Times_RASS_less_neg3, breaks=30)
+
+x <- ggplot(keppra_demo, aes(x=Behavioral_Event, y = Times_RASS_less_neg3, fill=Behavioral_Event))  + 
+    stat_boxplot(geom ='errorbar', width = 0.2) + 
+    geom_boxplot() +
+    xlab("Behavioral Event") +
+    ylab("Times RASS < -3") +
+    guides(fill=FALSE) +
+    geom_signif(test = "wilcox.test", 
+                comparisons = list(c("No", "Yes")),
+                vjust = 0,
+                textsize = 4,
+                size = .5,
+                step_increase = .08,
+                color="black") +
+    theme_minimal()+
+    theme_bw() +
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+
+y <- ggplot(keppra_demo, aes(x=Behavioral_Event, y = log(Times_RASS_less_neg3), fill=Behavioral_Event))  + 
+    stat_boxplot(geom ='errorbar', width = 0.2) + 
+    geom_boxplot() +
+    xlab("Behavioral Event") +
+    ylab("log(Times RASS < -3)") +
+    guides(fill=FALSE) +
+    geom_signif(test = "t.test", 
+                comparisons = list(c("No", "Yes")),
+                vjust = 0,
+                textsize = 4,
+                size = .5,
+                step_increase = .08,
+                color="black") +
+    theme_minimal()+
+    theme_bw() +
+    theme(axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 15),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))
+
+f <- ggarrange(x,y, ncol = 2)
+#annotate_figure(f, bottom = text_grob("Behavioral Event", size=20))
+
+```
+
