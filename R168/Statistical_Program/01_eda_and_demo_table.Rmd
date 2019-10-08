@@ -32,7 +32,7 @@ pwbe <- read.csv("keppra_data_with_behavior_v3.csv",
                 header = TRUE,
                 na.strings = "N/A",
                 stringsAsFactors = FALSE,
-                nrows = 453)
+                nrows = 415)
                 #colClasses = c(rep("numeric",2),
                 #               rep("character",3),
                 #               rep("numeric",1),
@@ -83,12 +83,14 @@ keppra_demo <- rbind.data.frame(pwbe[,names(pwbe) %in% intersect(names(pwbe), na
 
 dim(keppra_demo)
 #965  22
+#927  26
 
 keppra_demo$BehavioralEvent <- c(rep("Yes", dim(pwbe)[1]),
                                  rep("No", dim(pwobe)[1]))
 table(keppra_demo$BehavioralEvent)
 # No Yes 
 #512 453
+#512 415 
 
 names(keppra_demo) <- c("ID",
                         "Age",
@@ -110,7 +112,7 @@ names(keppra_demo) <- c("ID",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
                         "Times_RASS_less_neg3",
-                        "Times_RASS_evaluated",
+                        #"Times_RASS_evaluated",
                         "Percent_RASS_less_neg3",
                         "Behavioral_Event")
 ```
@@ -215,7 +217,7 @@ tableOne <- CreateTableOne(vars = c("Age",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
                         "Times_RASS_less_neg3",
-                        "Times_RASS_evaluated",
+                        #"Times_RASS_evaluated",
                         "Percent_RASS_less_neg3"
                         ),
                strata = "Behavioral_Event",
@@ -229,7 +231,9 @@ tableOne <- CreateTableOne(vars = c("Age",
 ```{r}
 keppra_demo_survived <- keppra_demo[-which(keppra_demo$Discharge.Disposition=="Expired"),]
 
-dim(keppra_demo_survived) #805  27
+dim(keppra_demo_survived) 
+#805  27
+#771  26
 
 tableOne_survived <- CreateTableOne(vars = c("Age",
                         "Ethnicity",
@@ -254,7 +258,7 @@ tableOne_survived <- CreateTableOne(vars = c("Age",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
                         "Times_RASS_less_neg3",
-                        "Times_RASS_evaluated",
+                        #"Times_RASS_evaluated",
                         "Percent_RASS_less_neg3"
                         ),
                strata = "Behavioral_Event",

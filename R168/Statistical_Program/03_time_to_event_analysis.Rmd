@@ -39,10 +39,10 @@ pwbe <- read.csv("keppra_data_with_behavior_v3.csv",
                 header = TRUE,
                 na.strings = "N/A",
                 stringsAsFactors = FALSE,
-                nrows = 453)
+                nrows = 415)
  
 dim(pwbe)
-#453  30
+#415  30
 
 table(unlist(lapply(pwbe,class)))
 #character   integer   numeric 
@@ -102,6 +102,8 @@ summary(overall_tte$ttfo)
 # Overall time patients were observed (duration of Keppra therapy) for those who did not receive an antipsychotic or have a positive CAM-ICU. 
 
 ```{r}
+overall_pwbe <- pwbe
+
 overall_pwbe$RASS....3[which(overall_pwbe$RASS....3=="yes")] <- "Yes"
 overall_pwbe$RASS....3 <- factor(overall_pwbe$RASS....3)
 table(overall_pwbe$RASS....3)
@@ -120,7 +122,6 @@ table(overall_pwbe$Median.Keppra.Dose)
 ## Time to antipsychotic
 
 ```{r}
-overall_pwbe <- pwbe
 
 overall_pwbe$time_to_antpsych <- ifelse(overall_pwbe$Antipsychotic.administration.while.on.Keppra=="Yes", overall_pwbe$Time.to.Antipsyhotic.Administration.after.first.dose.of.Keppra..DAYS., overall_pwbe$Keppra.Duration..Days.)
 
