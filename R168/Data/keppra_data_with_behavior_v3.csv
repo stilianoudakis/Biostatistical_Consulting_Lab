@@ -1,453 +1,416 @@
-Patient ID,Age on arrival,Ethnicity,Gender,Admission Diagnosis,GCS on Admission,Discharge Disposition,Hospital Length of Stay (DAYS),ICU length of stay (DAYS),Total Keppra Doses,Delirium diagnosis,Antipsychotic administration while on Keppra,Antipsychotic received while on Keppra,Time to Antipsyhotic Administration after first dose of Keppra (DAYS),Positive CAM-ICU while on Keppra,Time to Positive CAM-ICU after first dose of  Keppra (DAYS),Keppra Duration (Days),Adverse event diagnosis code,Physical Restraints,RASS < -3,Median Keppra Dose,Received Benzo,CIWA Orders,Pain Scores,Received IV opioid,Concurrent AED,AED Received while on Keppra,# Times RASS <= -3,# Times RASS Evaluated,% of RASS scores as <= -3
+Patient ID,Age on arrival,Ethnicity,Gender,Admission Diagnosis,GCS on Admission,Discharge Disposition,Hospital Length of Stay (DAYS),ICU length of stay (DAYS),Total Keppra Doses,Delirium diagnosis,Antipsychotic administration while on Keppra,Antipsychotic received while on Keppra,Time to Antipsyhotic Administration after first dose of Keppra (DAYS),Positive CAM-ICU while on Keppra,Time to Positive CAM-ICU after first dose of  Keppra (DAYS),Keppra Duration (Days),Adverse event diagnosis code,Physical Restraints,RASS < -3,Median Keppra Dose,Received Benzo,CIWA Orders,Pain Scores,Received IV opioid,Concurrent AED,AED Received while on Keppra,# Times RASS <= -3,# Times RASS evaluated,% of RASS scores as <= -3
 1,50.8,Black or African American,F,Traumatic intracranial injury,15,Home,7.29,6.1,12,Yes,No,None,N/A,No,N/A,5.431,No,No,No,500,No,Yes,0-3,No,No,N/A,,,
 2,85.7,White,F,Traumatic intracranial injury,15,Disch to SNF,18.75,4.7,26,Yes,No,None,N/A,No,N/A,17.574,No,No,No,500,No,No,0-3,No,No,N/A,,,
-3,83.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,6.75,1.7,6,No,Yes,Q,1.559,No,N/A,2.500,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
-4,72.8,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,18.19,9.2,37,Yes,No,None,N/A,No,N/A,17.688,No,No,Yes,1000,Yes,Yes,4-10,Yes,Yes,VPA,7,79,8.86
-5,30.4,White,M,INTRACEREBRAL HEMORRHAGE,8,Disch to Rehab Unit/Facility,10.83,6.0,21,No,Yes,Q,0.500,No,N/A,10.000,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
+3,83.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,6.75,1.7,6,No,Yes,Q,1.559,No,N/A,2.5,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
+4,72.8,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,18.19,9.2,37,Yes,No,None,N/A,No,N/A,17.688,No,No,Yes,1000,Yes,Yes,10-Apr,Yes,Yes,VPA,7,79,8.86
+5,30.4,White,M,INTRACEREBRAL HEMORRHAGE,8,Disch to Rehab Unit/Facility,10.83,6,21,No,Yes,Q,0.5,No,N/A,10,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 6,80.8,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,46.08,30.1,87,No,Yes,Q,5.362,No,N/A,45.449,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
 7,59.8,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,27.18,25.2,20,No,Yes,Q,7.142,No,N/A,8.135,Yes,No,No,500,No,No,0-3,Yes,Yes,VPA,,,
 8,86.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Hospice,4.78,1.9,10,No,Yes,H,2.042,No,N/A,4.265,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,1,13,7.69
 9,78.8,White,F,INTRACEREBRAL HEMORRHAGE,13,Disch to SNF,28.06,4.1,19,No,Yes,H,4.355,No,N/A,8.855,No,No,Yes,500,No,No,0-3,Yes,No,N/A,4,51,7.84
-10,56.0,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,21.02,19.6,27,No,Yes,Q,15.104,No,N/A,19.706,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-11,66.9,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,7.70,0.9,14,No,No,None,N/A,No,N/A,6.556,Yes,No,No,750,No,No,0-3,No,No,N/A,,,
-12,71.0,White,F,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,6.77,3.7,4,Yes,Yes,Z,0.000,No,N/A,1.491,Yes,No,No,500,Yes,No,4-10,No,Yes,Lamotrigine,,,
-13,79.2,White,M,Traumatic intracranial injury,15,Home,5.62,1.5,11,No,No,None,N/A,No,N/A,5.018,Yes,No,No,750,No,No,4-10,No,No,N/A,,,
-14,52.9,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,10.20,8.0,8,No,Yes,R,0.265,No,N/A,6.347,No,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
-15,64.4,Black or African American,M,CEREBRAL INFARCTION,7,Disch to Rehab Unit/Facility,33.77,18.0,16,No,No,None,N/A,No,N/A,6.857,No,Yes,Yes,500,No,No,0-3,Yes,No,N/A,20,130,15.38
+10,56,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,21.02,19.6,27,No,Yes,Q,15.104,No,N/A,19.706,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+11,66.9,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,7.7,0.9,14,No,No,None,N/A,No,N/A,6.556,Yes,No,No,750,No,No,0-3,No,No,N/A,,,
+12,71,White,F,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,6.77,3.7,4,Yes,Yes,Z,0,No,N/A,1.491,Yes,No,No,500,Yes,No,10-Apr,No,Yes,Lamotrigine,,,
+13,79.2,White,M,Traumatic intracranial injury,15,Home,5.62,1.5,11,No,No,None,N/A,No,N/A,5.018,Yes,No,No,750,No,No,10-Apr,No,No,N/A,,,
+14,52.9,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,10.2,8,8,No,Yes,R,0.265,No,N/A,6.347,No,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+15,64.4,Black or African American,M,CEREBRAL INFARCTION,7,Disch to Rehab Unit/Facility,33.77,18,16,No,No,None,N/A,No,N/A,6.857,No,Yes,Yes,500,No,No,0-3,Yes,No,N/A,20,130,15.38
 16,72.7,White,M,INTRACEREBRAL HEMORRHAGE,12,Expired,29.72,26.8,49,No,Yes,H,23.749,No,N/A,23.509,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,61,85,71.76
-17,74.4,White,F,Traumatic intracranial injury,15,Disch to SNF,13.20,4.1,27,Yes,No,None,N/A,No,N/A,12.714,Yes,No,No,500,Yes,No,4-10,No,Yes,Primidone,,,
+17,74.4,White,F,Traumatic intracranial injury,15,Disch to SNF,13.2,4.1,27,Yes,No,None,N/A,No,N/A,12.714,Yes,No,No,500,Yes,No,10-Apr,No,Yes,Primidone,,,
 18,58.5,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,16.67,6.6,32,No,Yes,Q,3.397,No,N/A,15.894,No,No,Yes,500,No,No,0-3,Yes,No,N/A,2,110,1.82
 19,89.5,White,F,Traumatic intracranial injury,14,Disch to SNF,4.84,2.4,9,No,Yes,H,1.938,No,N/A,4.488,No,No,No,500,No,Yes,0-3,Yes,No,N/A,,,
-20,78.9,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,26.28,5.1,46,No,No,None,N/A,No,N/A,25.312,Yes,No,No,1000,No,No,4-10,Yes,No,N/A,,,
-21,36.2,White,F,CEREBRAL INFARCTION,7,Home,26.50,17.3,47,No,No,None,N/A,No,N/A,22.884,Yes,No,No,750,Yes,No,0-3,Yes,Yes,VPA,,,
-22,36.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,37.79,36.0,1,No,No,None,N/A,No,N/A,0.000,Yes,No,Yes,2000,No,No,0-3,Yes,No,N/A,125,193,64.77
-23,76.2,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,8.89,4.7,14,No,Yes,QH,0.995,No,N/A,6.849,No,Yes,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,80,2.50
-24,57.8,Black or African American,M,Traumatic intracranial injury,5,Expired,10.04,5.8,21,No,Yes,H,6.601,No,N/A,9.401,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,9,72,12.50
-25,63.7,White,M,INTRACEREBRAL HEMORRHAGE,11,Disch to Rehab Unit/Facility,24.27,14.2,49,No,Yes,QH,0.539,No,N/A,23.540,No,No,Yes,1500,Yes,Yes,0-3,Yes,Yes,Phenytoin,9,158,5.70
-26,57.8,Black or African American,M,SUBARACHNOID HEMORRHAGE,13,Home,17.21,7.7,35,No,Yes,Q,1.163,No,N/A,16.590,No,No,No,500,Yes,Yes,4-10,Yes,No,N/A,,,
+20,78.9,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,26.28,5.1,46,No,No,None,N/A,No,N/A,25.312,Yes,No,No,1000,No,No,10-Apr,Yes,No,N/A,,,
+21,36.2,White,F,CEREBRAL INFARCTION,7,Home,26.5,17.3,47,No,No,None,N/A,No,N/A,22.884,Yes,No,No,750,Yes,No,0-3,Yes,Yes,VPA,,,
+22,36.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,37.79,36,1,No,No,None,N/A,No,N/A,0,Yes,No,Yes,2000,No,No,0-3,Yes,No,N/A,125,193,64.77
+23,76.2,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,8.89,4.7,14,No,Yes,QH,0.995,No,N/A,6.849,No,Yes,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,80,2.5
+24,57.8,Black or African American,M,Traumatic intracranial injury,5,Expired,10.04,5.8,21,No,Yes,H,6.601,No,N/A,9.401,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,9,72,12.5
+25,63.7,White,M,INTRACEREBRAL HEMORRHAGE,11,Disch to Rehab Unit/Facility,24.27,14.2,49,No,Yes,QH,0.539,No,N/A,23.54,No,No,Yes,1500,Yes,Yes,0-3,Yes,Yes,Phenytoin,9,158,5.7
+26,57.8,Black or African American,M,SUBARACHNOID HEMORRHAGE,13,Home,17.21,7.7,35,No,Yes,Q,1.163,No,N/A,16.59,No,No,No,500,Yes,Yes,10-Apr,Yes,No,N/A,,,
 28,88.8,White,F,INTRACEREBRAL HEMORRHAGE,10,Disch to SNF,15.38,4.6,15,Yes,Yes,HQ,1.415,No,N/A,13.955,No,No,Yes,250,No,No,0-3,Yes,No,N/A,5,87,5.75
-29,75.9,White,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,25.02,24.3,12,No,Yes,Q,5.806,No,N/A,6.319,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,19,145,13.10
+29,75.9,White,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,25.02,24.3,12,No,Yes,Q,5.806,No,N/A,6.319,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,19,145,13.1
 30,30.9,Black or African American,F,CEREBRAL INFARCTION,14,Disch to SNF,51.06,16.9,10,Yes,No,None,N/A,No,N/A,4.463,Yes,No,Yes,1000,Yes,No,0-3,Yes,Yes,VPA,4,337,1.19
-31,58.3,White,F,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,11.89,5.0,22,Yes,Yes,QHZ,2.301,No,N/A,10.583,Yes,No,No,750,Yes,No,0-3,Yes,Yes,VPA,,,
-34,78.6,White,F,INTRACEREBRAL HEMORRHAGE,13,Disch to SNF,27.11,25.7,15,No,Yes,Q,4.460,No,N/A,6.524,No,No,Yes,500,No,No,0-3,Yes,No,N/A,5,119,4.20
+31,58.3,White,F,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,11.89,5,22,Yes,Yes,QHZ,2.301,No,N/A,10.583,Yes,No,No,750,Yes,No,0-3,Yes,Yes,VPA,,,
+34,78.6,White,F,INTRACEREBRAL HEMORRHAGE,13,Disch to SNF,27.11,25.7,15,No,Yes,Q,4.46,No,N/A,6.524,No,No,Yes,500,No,No,0-3,Yes,No,N/A,5,119,4.2
 35,78.1,Black or African American,M,CEREBRAL INFARCTION,7,Disch to SNF,31.29,19.2,61,Yes,No,None,N/A,No,N/A,30.193,No,No,Yes,1000,Yes,No,0-3,Yes,Yes,"Phenytoin, lacosamide, topiramate",69,205,33.66
-36,63.0,White,M,INTRACEREBRAL HEMORRHAGE,7,Expired,5.21,5.2,11,No,Yes,Q,0.217,No,N/A,4.719,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,11,18,61.11
+36,63,White,M,INTRACEREBRAL HEMORRHAGE,7,Expired,5.21,5.2,11,No,Yes,Q,0.217,No,N/A,4.719,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,11,18,61.11
 37,78.1,White,M,Traumatic intracranial injury,14,Home,7.72,7.6,12,Yes,Yes,HQ,0.019,No,N/A,5.322,Yes,No,No,500,Yes,No,0-3,No,No,N/A,,,
-38,50.0,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Disch to Rehab Unit/Facility,4.02,3.0,8,No,No,None,N/A,No,N/A,3.497,No,Yes,No,1000,No,No,0-3,Yes,No,N/A,,,
+38,50,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Disch to Rehab Unit/Facility,4.02,3,8,No,No,None,N/A,No,N/A,3.497,No,Yes,No,1000,No,No,0-3,Yes,No,N/A,,,
 39,56.8,Black or African American,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,13.14,3.2,24,No,No,None,N/A,No,N/A,12.542,No,Yes,Yes,1000,Yes,No,0-3,Yes,Yes,Phenytoin,2,70,2.86
 40,78.7,White,M,INTRACEREBRAL HEMORRHAGE,12,Disch to SNF,15.75,7.1,15,No,No,None,N/A,No,N/A,6.485,No,Yes,No,500,Yes,No,0-3,Yes,No,N/A,,,
-41,78.0,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,5.30,3.1,11,Yes,Yes,QH,0.979,No,N/A,4.899,No,No,No,500,No,No,4-10,No,No,N/A,,,
-42,44.9,White,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,17.15,7.0,17,No,Yes,Q,2.709,No,N/A,7.683,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-43,45.3,White,M,CEREBRAL INFARCTION,7,Other,5.94,4.4,11,No,Yes,Q,1.932,No,N/A,4.989,Yes,No,Yes,2000,No,No,0-3,Yes,Yes,"Lacosamide, VPA",5,49,10.20
-44,87.9,White,F,Traumatic intracranial injury,15,Disch to SNF,9.85,4.0,19,Yes,No,None,N/A,No,N/A,8.735,No,No,No,500,No,No,4-10,Yes,No,N/A,,,
-45,38.0,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Expired,19.48,19.3,16,No,No,None,N/A,Yes,1.45,7.035,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,71,71,100.00
+41,78,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,5.3,3.1,11,Yes,Yes,QH,0.979,No,N/A,4.899,No,No,No,500,No,No,10-Apr,No,No,N/A,,,
+42,44.9,White,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,17.15,7,17,No,Yes,Q,2.709,No,N/A,7.683,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+43,45.3,White,M,CEREBRAL INFARCTION,7,Other,5.94,4.4,11,No,Yes,Q,1.932,No,N/A,4.989,Yes,No,Yes,2000,No,No,0-3,Yes,Yes,"Lacosamide, VPA",5,49,10.2
+44,87.9,White,F,Traumatic intracranial injury,15,Disch to SNF,9.85,4,19,Yes,No,None,N/A,No,N/A,8.735,No,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+45,38,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Expired,19.48,19.3,16,No,No,None,N/A,Yes,1.45,7.035,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,71,71,100
 46,77.4,White,M,INTRACEREBRAL HEMORRHAGE,6,Disch to SNF,23.72,8.1,13,No,Yes,Q,5.019,Yes,0.298611111,6.992,No,No,No,500,No,Yes,0-3,Yes,No,N/A,,,
-47,74.7,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,15.30,13.1,16,No,No,None,N/A,No,N/A,6.833,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,60,13.33
-48,51.9,White,M,INTRACEREBRAL HEMORRHAGE,11,Home,8.80,4.7,18,No,Yes,Q,1.739,No,N/A,8.561,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-49,66.1,White,F,SUBARACHNOID HEMORRHAGE,15,Home,2.93,2.0,6,No,Yes,R,0.438,No,N/A,2.407,No,No,No,500,No,No,4-10,Yes,Yes,Lamotrigine,,,
-50,78.4,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,15.44,6.4,15,Yes,Yes,Q,0.738,No,N/A,6.762,No,No,No,500,No,No,4-10,Yes,No,N/A,,,
+47,74.7,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,15.3,13.1,16,No,No,None,N/A,No,N/A,6.833,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,60,13.33
+48,51.9,White,M,INTRACEREBRAL HEMORRHAGE,11,Home,8.8,4.7,18,No,Yes,Q,1.739,No,N/A,8.561,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
+49,66.1,White,F,SUBARACHNOID HEMORRHAGE,15,Home,2.93,2,6,No,Yes,R,0.438,No,N/A,2.407,No,No,No,500,No,No,10-Apr,Yes,Yes,Lamotrigine,,,
+50,78.4,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,15.44,6.4,15,Yes,Yes,Q,0.738,No,N/A,6.762,No,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
 51,83.7,Unknown-Unable to Communicate,F,CEREBRAL INFARCTION,12,Expired,10.05,9.6,14,Yes,No,None,N/A,No,N/A,6.456,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,17,37,45.95
 52,74.9,Unknown-Unable to Communicate,M,INTRACEREBRAL HEMORRHAGE,10,Disch to SNF,20.94,13.9,16,No,No,None,N/A,Yes,2.165277778,7.168,No,No,Yes,500,No,No,0-3,Yes,No,N/A,8,98,8.16
-53,41.5,White,F,SUBARACHNOID HEMORRHAGE,14,Home,13.00,12.7,15,No,No,None,N/A,No,N/A,6.747,Yes,No,No,500,No,No,4-10,Yes,No,N/A,,,
-54,30.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,7,Other,32.38,22.3,21,No,Yes,ZQ,5.640,Yes,0.855555556,9.935,Yes,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,7,267,2.62
+53,41.5,White,F,SUBARACHNOID HEMORRHAGE,14,Home,13,12.7,15,No,No,None,N/A,No,N/A,6.747,Yes,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+54,30.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,7,Other,32.38,22.3,21,No,Yes,ZQ,5.64,Yes,0.855555556,9.935,Yes,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,7,267,2.62
 55,63.9,Black or African American,F,INTRACEREBRAL HEMORRHAGE,5,Expired,10.82,3.5,21,No,Yes,H,7.295,No,N/A,9.856,No,No,Yes,250,Yes,No,0-3,Yes,No,N/A,42,43,97.67
-57,45.2,White,F,INTRACEREBRAL HEMORRHAGE,10,Home,35.93,3.6,18,No,Yes,Q,1.464,No,N/A,8.954,Yes,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
+57,45.2,White,F,INTRACEREBRAL HEMORRHAGE,10,Home,35.93,3.6,18,No,Yes,Q,1.464,No,N/A,8.954,Yes,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
 58,56.1,White,F,CEREBRAL INFARCTION,13,Disch to SNF,128.24,42.6,14,No,No,None,N/A,No,N/A,6.139,No,Yes,Yes,750,No,No,0-3,Yes,No,N/A,23,737,3.12
-59,59.0,White,M,Traumatic intracranial injury,15,Disch to SNF,29.15,3.2,15,No,No,None,N/A,No,N/A,6.619,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-60,66.7,White,F,INTRACEREBRAL HEMORRHAGE,14,Home,13.12,12.0,11,No,No,None,N/A,No,N/A,4.978,Yes,No,No,500,No,No,4-10,Yes,No,N/A,,,
-61,57.5,Black or African American,M,Traumatic intracranial injury,9,Home,3.64,2.4,8,No,No,None,N/A,No,N/A,3.320,Yes,Yes,Yes,1000,No,Yes,0-3,Yes,No,N/A,3,23,13.04
-62,46.0,White,F,SUBARACHNOID HEMORRHAGE,15,Home,14.55,14.3,31,No,Yes,Q,1.197,No,N/A,14.078,Yes,No,No,1000,Yes,Yes,4-10,Yes,Yes,Phenytoin,,,
-63,69.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,4.11,3.0,8,No,No,None,N/A,No,N/A,3.550,Yes,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
+59,59,White,M,Traumatic intracranial injury,15,Disch to SNF,29.15,3.2,15,No,No,None,N/A,No,N/A,6.619,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+60,66.7,White,F,INTRACEREBRAL HEMORRHAGE,14,Home,13.12,12,11,No,No,None,N/A,No,N/A,4.978,Yes,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+61,57.5,Black or African American,M,Traumatic intracranial injury,9,Home,3.64,2.4,8,No,No,None,N/A,No,N/A,3.32,Yes,Yes,Yes,1000,No,Yes,0-3,Yes,No,N/A,3,23,13.04
+62,46,White,F,SUBARACHNOID HEMORRHAGE,15,Home,14.55,14.3,31,No,Yes,Q,1.197,No,N/A,14.078,Yes,No,No,1000,Yes,Yes,10-Apr,Yes,Yes,Phenytoin,,,
+63,69.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,4.11,3,8,No,No,None,N/A,No,N/A,3.55,Yes,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
 64,71.9,Black or African American,F,CEREBRAL INFARCTION,3,Disch to SNF,37.97,6.1,67,Yes,No,None,N/A,No,N/A,36.974,Yes,No,Yes,500,No,No,0-3,Yes,Yes,VPA,2,233,0.86
 65,48.9,White,F,CEREBRAL INFARCTION,3,Disch to Rehab Unit/Facility,14.03,12.4,15,No,Yes,Q,4.393,No,N/A,6.747,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,13,94,13.83
 66,74.8,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,10.96,2.6,15,Yes,Yes,Q,2.158,Yes,5.026388889,6.946,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,7,62,11.29
-67,58.3,White,F,Traumatic intracranial injury,15,Home,3.88,1.5,1,Yes,No,None,N/A,No,N/A,0.000,No,No,No,1000,No,No,4-10,No,No,N/A,,,
-69,57.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,12,Disch to Rehab Unit/Facility,12.15,4.9,16,No,Yes,R,0.640,Yes,2.038888889,7.101,No,No,No,500,No,No,0-3,No,No,N/A,,,
-70,88.0,White,M,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,5.11,3.9,10,No,No,None,N/A,No,N/A,4.449,Yes,No,No,750,No,No,0-3,Yes,No,N/A,,,
-71,70.2,White,F,CEREBRAL INFARCTION,7,Expired,10.51,10.4,10,No,No,None,N/A,Yes,0.486111111,4.606,No,No,Yes,250,Yes,No,0-3,Yes,No,N/A,15,60,25.00
+67,58.3,White,F,Traumatic intracranial injury,15,Home,3.88,1.5,1,Yes,No,None,N/A,No,N/A,0,No,No,No,1000,No,No,10-Apr,No,No,N/A,,,
+69,57.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,12,Disch to Rehab Unit/Facility,12.15,4.9,16,No,Yes,R,0.64,Yes,2.038888889,7.101,No,No,No,500,No,No,0-3,No,No,N/A,,,
+70,88,White,M,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,5.11,3.9,10,No,No,None,N/A,No,N/A,4.449,Yes,No,No,750,No,No,0-3,Yes,No,N/A,,,
+71,70.2,White,F,CEREBRAL INFARCTION,7,Expired,10.51,10.4,10,No,No,None,N/A,Yes,0.486111111,4.606,No,No,Yes,250,Yes,No,0-3,Yes,No,N/A,15,60,25
 72,82.2,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,9.52,1.3,15,Yes,No,None,N/A,No,N/A,6.803,Yes,No,No,500,No,Yes,0-3,No,No,N/A,,,
-73,50.0,White,F,CEREBRAL INFARCTION,15,Expired,13.64,13.2,25,No,No,None,N/A,Yes,11.15416667,12.558,No,No,Yes,750,Yes,No,4-10,Yes,No,N/A,9,73,12.33
+73,50,White,F,CEREBRAL INFARCTION,15,Expired,13.64,13.2,25,No,No,None,N/A,Yes,11.15416667,12.558,No,No,Yes,750,Yes,No,10-Apr,Yes,No,N/A,9,73,12.33
 74,39.5,Black or African American,M,CEREBRAL INFARCTION,15,Expired,3.97,1.2,3,No,No,None,N/A,Yes,0.291666667,0.926,No,No,Yes,500,No,No,0-3,Yes,No,N/A,1,42,2.38
 75,68.1,White,F,CEREBRAL INFARCTION,8,Disch to SNF,41.79,25.3,84,Yes,No,None,N/A,Yes,2.540277778,41.635,No,No,Yes,750,No,No,0-3,Yes,No,N/A,14,262,5.34
 76,68.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,7,Expired,19.69,15.3,16,Yes,No,None,N/A,No,N/A,6.939,No,No,Yes,500,No,No,0-3,Yes,No,N/A,74,75,98.67
 77,80.1,White,M,INTRACEREBRAL HEMORRHAGE,12,Disch to Rehab Unit/Facility,9.79,4.5,20,Yes,No,None,N/A,No,N/A,9.326,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,1,63,1.59
-78,55.5,White,F,SUBARACHNOID HEMORRHAGE,14,Home,18.29,15.0,15,Yes,No,None,N/A,No,N/A,6.907,Yes,No,No,750,No,Yes,4-10,Yes,No,N/A,,,
-79,34.3,White,M,SUBARACHNOID HEMORRHAGE,15,Home,10.39,7.0,12,No,No,None,N/A,No,N/A,5.584,Yes,Yes,No,500,Yes,No,4-10,Yes,No,N/A,,,
-80,17.7,White,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,35.80,35.2,40,Yes,No,None,N/A,Yes,17.07361111,33.726,Yes,No,Yes,750,Yes,No,4-10,Yes,No,N/A,31,185,16.76
-81,48.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,10.30,8.0,8,No,No,None,N/A,No,N/A,3.294,Yes,No,No,500,No,No,4-10,Yes,No,N/A,,,
-82,45.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,12.98,11.0,26,Yes,Yes,Q,1.599,No,N/A,12.509,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,2,124,1.61
+78,55.5,White,F,SUBARACHNOID HEMORRHAGE,14,Home,18.29,15,15,Yes,No,None,N/A,No,N/A,6.907,Yes,No,No,750,No,Yes,10-Apr,Yes,No,N/A,,,
+79,34.3,White,M,SUBARACHNOID HEMORRHAGE,15,Home,10.39,7,12,No,No,None,N/A,No,N/A,5.584,Yes,Yes,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+80,17.7,White,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,35.8,35.2,40,Yes,No,None,N/A,Yes,17.07361111,33.726,Yes,No,Yes,750,Yes,No,10-Apr,Yes,No,N/A,31,185,16.76
+81,48.7,White,F,SUBARACHNOID HEMORRHAGE,15,Home,10.3,8,8,No,No,None,N/A,No,N/A,3.294,Yes,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+82,45.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Home,12.98,11,26,Yes,Yes,Q,1.599,No,N/A,12.509,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,2,124,1.61
 83,44.4,White,F,SUBARACHNOID HEMORRHAGE,7,Expired,12.26,9.7,24,Yes,Yes,QO,4.943,No,N/A,11.514,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,13,68,19.12
-86,55.5,Unknown-Unable to Communicate,F,CEREBRAL INFARCTION,11,Expired,8.33,8.2,13,No,No,None,N/A,Yes,0.134027778,6.556,No,No,Yes,1000,No,No,4-10,Yes,No,N/A,30,43,69.77
+86,55.5,Unknown-Unable to Communicate,F,CEREBRAL INFARCTION,11,Expired,8.33,8.2,13,No,No,None,N/A,Yes,0.134027778,6.556,No,No,Yes,1000,No,No,10-Apr,Yes,No,N/A,30,43,69.77
 87,70.8,Asian,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,7.74,6.9,14,No,No,None,N/A,Yes,3.177083333,6.334,No,Yes,No,500,Yes,No,0-3,No,No,N/A,,,
-89,54.5,White,M,Traumatic intracranial injury,14,Disch to SNF,24.02,8.5,14,Yes,No,None,N/A,No,N/A,6.570,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-90,39.1,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,16.15,16.1,34,No,Yes,Q,1.528,No,N/A,15.504,Yes,No,No,750,No,No,4-10,Yes,No,N/A,,,
+89,54.5,White,M,Traumatic intracranial injury,14,Disch to SNF,24.02,8.5,14,Yes,No,None,N/A,No,N/A,6.57,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+90,39.1,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Home,16.15,16.1,34,No,Yes,Q,1.528,No,N/A,15.504,Yes,No,No,750,No,No,10-Apr,Yes,No,N/A,,,
 91,25.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,10.32,7.2,11,No,No,None,N/A,No,N/A,4.897,Yes,No,Yes,750,No,Yes,0-3,Yes,No,N/A,3,67,4.48
-92,38.2,Black or African American,M,Traumatic intracranial injury,15,Home,97.90,23.4,15,No,No,None,N/A,No,N/A,6.897,Yes,No,No,1500,No,No,0-3,Yes,Yes,Topiramate,,,
-93,57.4,Black or African American,M,CEREBRAL INFARCTION,13,Disch to SNF,16.81,12.9,3,Yes,Yes,O,0.000,No,N/A,0.973,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,4,133,3.01
-94,84.2,White,M,CEREBRAL INFARCTION,14,Disch to SNF,17.77,12.0,39,Yes,Yes,HO,13.083,Yes,3.882638889,17.487,No,No,Yes,1500,Yes,No,0-3,No,Yes,"Lacosamide, VPA",5,78,6.41
+92,38.2,Black or African American,M,Traumatic intracranial injury,15,Home,97.9,23.4,15,No,No,None,N/A,No,N/A,6.897,Yes,No,No,1500,No,No,0-3,Yes,Yes,Topiramate,,,
+93,57.4,Black or African American,M,CEREBRAL INFARCTION,13,Disch to SNF,16.81,12.9,3,Yes,Yes,O,0,No,N/A,0.973,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,4,133,3.01
+94,84.2,White,M,CEREBRAL INFARCTION,14,Disch to SNF,17.77,12,39,Yes,Yes,HO,13.083,Yes,3.882638889,17.487,No,No,Yes,1500,Yes,No,0-3,No,Yes,"Lacosamide, VPA",5,78,6.41
 95,55.3,Black or African American,M,CEREBRAL INFARCTION,9,Disch to SNF,35.24,11.2,22,No,No,None,N/A,No,N/A,10.116,No,Yes,Yes,750,Yes,Yes,0-3,Yes,Yes,"Phenytoin, VPA",7,213,3.29
 96,59.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Expired,3.11,3.1,6,No,Yes,QH,0.222,Yes,0.545138889,2.458,No,No,Yes,750,No,No,0-3,No,No,N/A,42,64,65.63
 97,83.1,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,12.57,12.3,12,Yes,No,None,N/A,No,N/A,5.757,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-98,58.3,White,F,CEREBRAL INFARCTION,7,Home,13.91,11.2,27,No,No,None,N/A,Yes,2.343055556,13.433,Yes,No,Yes,750,Yes,Yes,0-3,Yes,Yes,Lacosamide,2,77,2.60
-100,86.0,White,M,SUBARACHNOID HEMORRHAGE,12,Disch to SNF,9.25,3.4,20,No,Yes,QH,0.933,Yes,0.171527778,8.744,Yes,No,No,750,No,No,0-3,No,No,N/A,,,
+98,58.3,White,F,CEREBRAL INFARCTION,7,Home,13.91,11.2,27,No,No,None,N/A,Yes,2.343055556,13.433,Yes,No,Yes,750,Yes,Yes,0-3,Yes,Yes,Lacosamide,2,77,2.6
+100,86,White,M,SUBARACHNOID HEMORRHAGE,12,Disch to SNF,9.25,3.4,20,No,Yes,QH,0.933,Yes,0.171527778,8.744,Yes,No,No,750,No,No,0-3,No,No,N/A,,,
 101,27.5,White,F,Traumatic intracranial injury,6,Home,41.02,29.5,14,No,No,None,N/A,Yes,3.763888889,6.467,No,No,Yes,500,No,No,0-3,Yes,No,N/A,46,303,15.18
-102,86.2,Other,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,26.92,26.2,56,Yes,Yes,OQ,10.819,Yes,7.317361111,26.340,Yes,No,Yes,750,Yes,No,0-3,Yes,Yes,"Phenytoin, VPA",1,159,0.63
-103,70.7,Black or African American,F,CEREBRAL INFARCTION,9,Disch to Rehab Unit/Facility,27.38,23.2,23,No,No,None,N/A,Yes,5.1125,11.090,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,87,148,58.78
-104,76.0,White,F,INTRACEREBRAL HEMORRHAGE,7,Disch to SNF,27.42,27.0,12,No,No,None,N/A,Yes,3.210416667,5.299,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,76,143,53.15
+102,86.2,Other,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,26.92,26.2,56,Yes,Yes,OQ,10.819,Yes,7.317361111,26.34,Yes,No,Yes,750,Yes,No,0-3,Yes,Yes,"Phenytoin, VPA",1,159,0.63
+103,70.7,Black or African American,F,CEREBRAL INFARCTION,9,Disch to Rehab Unit/Facility,27.38,23.2,23,No,No,None,N/A,Yes,5.1125,11.09,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,87,148,58.78
+104,76,White,F,INTRACEREBRAL HEMORRHAGE,7,Disch to SNF,27.42,27,12,No,No,None,N/A,Yes,3.210416667,5.299,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,76,143,53.15
 105,76.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,12,Hospice,16.28,4.1,12,Yes,Yes,OH,0.785,No,N/A,15.783,Yes,No,Yes,500,No,No,0-3,Yes,Yes,Oxcarbazepine,3,80,3.75
 106,58.8,White,F,CEREBRAL INFARCTION,9,Hospice,15.97,6.3,29,No,No,None,N/A,No,N/A,13.916,Yes,No,Yes,750,No,No,0-3,No,No,N/A,13,72,18.06
-107,56.3,Black or African American,F,CEREBRAL INFARCTION,14,Expired,35.86,22.3,65,No,Yes,H,25.558,No,N/A,35.238,No,No,Yes,1000,Yes,No,4-10,Yes,No,N/A,62,174,35.63
+107,56.3,Black or African American,F,CEREBRAL INFARCTION,14,Expired,35.86,22.3,65,No,Yes,H,25.558,No,N/A,35.238,No,No,Yes,1000,Yes,No,10-Apr,Yes,No,N/A,62,174,35.63
 108,31.2,Black or African American,M,CEREBRAL INFARCTION,13,Disch to Rehab Unit/Facility,24.87,3.2,30,No,No,None,N/A,Yes,22.45,22.551,No,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,2,187,1.07
-109,84.6,Black or African American,F,CEREBRAL INFARCTION,6,Expired,8.81,4.1,15,No,No,None,N/A,Yes,1.456944444,6.993,No,Yes,Yes,500,No,No,0-3,Yes,No,N/A,42,60,70.00
+109,84.6,Black or African American,F,CEREBRAL INFARCTION,6,Expired,8.81,4.1,15,No,No,None,N/A,Yes,1.456944444,6.993,No,Yes,Yes,500,No,No,0-3,Yes,No,N/A,42,60,70
 110,28.1,Other,M,INTRACEREBRAL HEMORRHAGE,7,Disch to Rehab Unit/Facility,14.83,10.6,16,Yes,No,None,N/A,No,N/A,7.607,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,12,72,16.67
 111,54.2,Black or African American,M,Traumatic intracranial injury,10,Disch to SNF,11.81,11.5,22,Yes,Yes,RQ,0.485,No,N/A,11.016,No,Yes,Yes,1000,No,No,0-3,Yes,No,N/A,17,86,19.77
-112,87.0,Other,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,10.97,9.2,1,Yes,No,None,N/A,Yes,0.076388889,0.000,No,No,Yes,500,No,No,0-3,No,Yes,Lamotrigine,2,84,2.38
-113,37.0,White,M,INTRACEREBRAL HEMORRHAGE,13,Home,5.54,1.2,15,No,Yes,H,1.459,No,N/A,4.961,No,No,No,2000,No,No,4-10,No,Yes,Lamotrigine,,,
-114,76.5,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,14.57,10.8,8,Yes,No,None,N/A,Yes,0.869444444,6.298,Yes,No,No,500,No,No,4-10,No,Yes,Lamotrigine,,,
+112,87,Other,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,10.97,9.2,1,Yes,No,None,N/A,Yes,0.076388889,0,No,No,Yes,500,No,No,0-3,No,Yes,Lamotrigine,2,84,2.38
+113,37,White,M,INTRACEREBRAL HEMORRHAGE,13,Home,5.54,1.2,15,No,Yes,H,1.459,No,N/A,4.961,No,No,No,2000,No,No,10-Apr,No,Yes,Lamotrigine,,,
+114,76.5,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,14.57,10.8,8,Yes,No,None,N/A,Yes,0.869444444,6.298,Yes,No,No,500,No,No,10-Apr,No,Yes,Lamotrigine,,,
 115,61.4,White,M,CEREBRAL INFARCTION,3,Disch to Rehab Unit/Facility,8.15,5.3,16,No,No,None,N/A,No,N/A,7.617,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,2,59,3.39
 116,84.7,White,M,INTRACEREBRAL HEMORRHAGE,12,Hospice,4.75,4.6,10,No,No,None,N/A,Yes,0.923611111,4.466,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
 117,73.5,Black or African American,F,CEREBRAL INFARCTION,14,Disch to SNF,18.37,5.3,36,Yes,No,None,N/A,Yes,0.934027778,17.507,No,No,Yes,500,No,No,0-3,No,Yes,VPA,4,112,3.57
-118,80.4,White,M,Traumatic intracranial injury,14,Disch to SNF,7.72,2.3,11,Yes,Yes,QH,1.288,Yes,1.184027778,4.763,Yes,No,No,500,No,No,4-10,No,No,N/A,,,
+118,80.4,White,M,Traumatic intracranial injury,14,Disch to SNF,7.72,2.3,11,Yes,Yes,QH,1.288,Yes,1.184027778,4.763,Yes,No,No,500,No,No,10-Apr,No,No,N/A,,,
 119,18.7,White,M,Traumatic intracranial injury,14,Home,14.32,1.1,2,No,No,None,N/A,No,N/A,0.502,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-120,52.3,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,13.11,12.6,14,No,No,None,N/A,Yes,3.638194444,6.740,No,Yes,Yes,500,No,No,4-10,Yes,No,N/A,10,123,8.13
-121,50.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Expired,0.72,0.5,1,No,No,None,N/A,No,N/A,0.000,Yes,No,Yes,1000,No,No,0-3,Yes,No,N/A,9,12,75.00
+120,52.3,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,13.11,12.6,14,No,No,None,N/A,Yes,3.638194444,6.74,No,Yes,Yes,500,No,No,10-Apr,Yes,No,N/A,10,123,8.13
+121,50.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Expired,0.72,0.5,1,No,No,None,N/A,No,N/A,0,Yes,No,Yes,1000,No,No,0-3,Yes,No,N/A,9,12,75
 122,63.8,White,M,SUBARACHNOID HEMORRHAGE,15,Home,17.34,14.4,12,Yes,Yes,Q,4.684,No,N/A,5.535,Yes,Yes,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-123,73.9,Black or African American,M,CEREBRAL INFARCTION,10,Disch to SNF,10.07,3.4,18,No,Yes,Q,5.000,No,N/A,8.403,No,No,Yes,1000,Yes,No,0-3,No,Yes,Phenytoin,6,94,6.38
-124,67.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,7,Disch to SNF,27.14,17.0,16,No,No,None,N/A,No,N/A,7.144,No,No,Yes,500,No,No,0-3,Yes,No,N/A,29,205,14.15
+123,73.9,Black or African American,M,CEREBRAL INFARCTION,10,Disch to SNF,10.07,3.4,18,No,Yes,Q,5,No,N/A,8.403,No,No,Yes,1000,Yes,No,0-3,No,Yes,Phenytoin,6,94,6.38
+124,67.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,7,Disch to SNF,27.14,17,16,No,No,None,N/A,No,N/A,7.144,No,No,Yes,500,No,No,0-3,Yes,No,N/A,29,205,14.15
 126,67.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,6.78,4.7,13,No,Yes,QH,0.002,No,N/A,6.089,No,No,No,1500,No,No,0-3,No,Yes,Lacosamide,,,
 127,46.6,White,M,INTRACEREBRAL HEMORRHAGE,15,Other,38.15,27.9,17,Yes,No,None,N/A,No,N/A,9.066,Yes,Yes,Yes,750,No,No,0-3,Yes,No,N/A,79,379,20.84
-128,29.0,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,17.29,17.1,12,No,No,None,N/A,Yes,5.630555556,6.254,No,Yes,Yes,500,Yes,Yes,0-3,Yes,No,N/A,12,137,8.76
-129,77.2,White,M,SUBARACHNOID HEMORRHAGE,14,Home,18.80,1.7,4,No,No,None,N/A,No,N/A,1.506,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
+128,29,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,17.29,17.1,12,No,No,None,N/A,Yes,5.630555556,6.254,No,Yes,Yes,500,Yes,Yes,0-3,Yes,No,N/A,12,137,8.76
+129,77.2,White,M,SUBARACHNOID HEMORRHAGE,14,Home,18.8,1.7,4,No,No,None,N/A,No,N/A,1.506,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
 130,65.8,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,37.93,32.6,15,Yes,No,None,N/A,No,N/A,6.797,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,17,337,5.04
-131,51.9,Unknown-Pt Refusal,F,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,56.70,39.0,15,No,No,None,N/A,No,N/A,6.910,No,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,31,317,9.78
+131,51.9,Unknown-Pt Refusal,F,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,56.7,39,15,No,No,None,N/A,No,N/A,6.91,No,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,31,317,9.78
 132,27.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,231.88,231.5,38,No,No,None,N/A,No,N/A,231.517,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,35,963,3.63
 133,54.8,White,M,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,10.05,9.6,12,No,Yes,Q,5.332,No,N/A,6.103,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,8,44,18.18
-134,61.4,Black or African American,M,CEREBRAL INFARCTION,15,Home,7.20,2.1,16,No,Yes,HQ,3.288,No,N/A,6.736,No,No,Yes,500,Yes,Yes,0-3,No,Yes,"Phenytoin, lacosamide",1,36,2.78
-135,48.4,White,F,Traumatic intracranial injury,13,Hospice,4.06,1.0,4,No,Yes,H,1.128,No,N/A,2.951,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-136,60.0,Black or African American,M,Traumatic intracranial injury,13,Disch to Rehab Unit/Facility,9.04,8.9,7,No,No,None,N/A,No,N/A,3.083,No,Yes,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+134,61.4,Black or African American,M,CEREBRAL INFARCTION,15,Home,7.2,2.1,16,No,Yes,HQ,3.288,No,N/A,6.736,No,No,Yes,500,Yes,Yes,0-3,No,Yes,"Phenytoin, lacosamide",1,36,2.78
+135,48.4,White,F,Traumatic intracranial injury,13,Hospice,4.06,1,4,No,Yes,H,1.128,No,N/A,2.951,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
+136,60,Black or African American,M,Traumatic intracranial injury,13,Disch to Rehab Unit/Facility,9.04,8.9,7,No,No,None,N/A,No,N/A,3.083,No,Yes,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
 137,61.6,Black or African American,F,Traumatic intracranial injury,13,Home,11.15,4.6,21,Yes,Yes,Q,1.552,No,N/A,10.052,No,Yes,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-138,76.4,White,F,Traumatic intracranial injury,4,Disch to SNF,32.69,22.5,15,Yes,No,None,N/A,No,N/A,6.851,No,No,Yes,500,Yes,Yes,4-10,Yes,No,N/A,1,119,0.84
-139,78.1,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,5.97,2.0,11,No,Yes,Q,0.000,No,N/A,5.000,Yes,No,No,1000,No,No,0-3,Yes,No,N/A,,,
-140,52.1,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,45.14,33.7,11,No,Yes,Q,3.575,No,N/A,4.905,No,No,Yes,500,Yes,Yes,0-3,Yes,Yes,Phenytoin,61,245,24.90
+138,76.4,White,F,Traumatic intracranial injury,4,Disch to SNF,32.69,22.5,15,Yes,No,None,N/A,No,N/A,6.851,No,No,Yes,500,Yes,Yes,10-Apr,Yes,No,N/A,1,119,0.84
+139,78.1,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,5.97,2,11,No,Yes,Q,0,No,N/A,5,Yes,No,No,1000,No,No,0-3,Yes,No,N/A,,,
+140,52.1,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,45.14,33.7,11,No,Yes,Q,3.575,No,N/A,4.905,No,No,Yes,500,Yes,Yes,0-3,Yes,Yes,Phenytoin,61,245,24.9
 141,24.6,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,35.19,25.4,34,No,No,None,N/A,No,N/A,16.763,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,53,142,37.32
-142,55.5,Black or African American,M,Traumatic intracranial injury,7,Disch to SNF,29.31,18.8,20,No,Yes,QH,1.736,No,N/A,10.565,Yes,No,Yes,750,Yes,Yes,4-10,Yes,No,N/A,24,151,15.89
+142,55.5,Black or African American,M,Traumatic intracranial injury,7,Disch to SNF,29.31,18.8,20,No,Yes,QH,1.736,No,N/A,10.565,Yes,No,Yes,750,Yes,Yes,10-Apr,Yes,No,N/A,24,151,15.89
 143,78.9,Black or African American,M,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,14.16,12.7,2,No,No,None,N/A,No,N/A,0.456,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-144,83.0,Black or African American,M,Traumatic intracranial injury,15,Disch to SNF,12.80,3.9,19,No,Yes,Q,2.206,No,N/A,8.610,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,3,54,5.56
-145,63.0,White,F,CEREBRAL INFARCTION,15,Hospice,7.77,4.3,8,No,No,None,N/A,No,N/A,3.559,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,17,22,77.27
-146,54.3,White,M,INTRACEREBRAL HEMORRHAGE,15,Other,7.03,3.1,15,No,Yes,HO,0.656,No,N/A,6.649,No,No,No,1000,Yes,No,4-10,No,No,N/A,,,
+144,83,Black or African American,M,Traumatic intracranial injury,15,Disch to SNF,12.8,3.9,19,No,Yes,Q,2.206,No,N/A,8.61,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,3,54,5.56
+145,63,White,F,CEREBRAL INFARCTION,15,Hospice,7.77,4.3,8,No,No,None,N/A,No,N/A,3.559,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,17,22,77.27
+146,54.3,White,M,INTRACEREBRAL HEMORRHAGE,15,Other,7.03,3.1,15,No,Yes,HO,0.656,No,N/A,6.649,No,No,No,1000,Yes,No,10-Apr,No,No,N/A,,,
 147,40.8,Black or African American,M,Traumatic intracranial injury,15,Home,8.27,6.8,17,Yes,Yes,OQZ,1.398,No,N/A,7.542,No,No,No,1000,Yes,Yes,0-3,Yes,No,N/A,,,
-148,47.0,Black or African American,M,Traumatic intracranial injury,11,Home,9.05,4.0,4,No,Yes,Q,1.096,No,N/A,1.631,No,No,No,500,Yes,Yes,4-10,Yes,Yes,Phenytoin,,,
-149,54.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,4,Home,22.25,2.2,33,No,Yes,Q,1.867,No,N/A,22.040,No,No,Yes,500,Yes,Yes,4-10,Yes,No,N/A,3,92,3.26
-150,57.0,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,6.83,3.9,14,No,Yes,QZ,2.140,No,N/A,6.535,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+148,47,Black or African American,M,Traumatic intracranial injury,11,Home,9.05,4,4,No,Yes,Q,1.096,No,N/A,1.631,No,No,No,500,Yes,Yes,10-Apr,Yes,Yes,Phenytoin,,,
+149,54.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,4,Home,22.25,2.2,33,No,Yes,Q,1.867,No,N/A,22.04,No,No,Yes,500,Yes,Yes,10-Apr,Yes,No,N/A,3,92,3.26
+150,57,Black or African American,M,CEREBRAL INFARCTION,14,Disch to Rehab Unit/Facility,6.83,3.9,14,No,Yes,QZ,2.14,No,N/A,6.535,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
 151,56.9,Black or African American,M,Traumatic intracranial injury,15,Disch to SNF,16.99,10.4,35,Yes,Yes,Q,7.982,No,N/A,16.514,No,No,Yes,750,Yes,Yes,0-3,Yes,Yes,"Phenytoin, lacosamide",3,62,4.84
-152,72.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,7.31,5.1,10,Yes,No,None,N/A,No,N/A,4.472,Yes,No,No,500,No,No,4-10,No,No,N/A,,,
-153,53.5,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,28.10,26.5,54,No,No,None,N/A,No,N/A,27.992,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,17,103,16.50
-154,84.6,White,M,INTRACEREBRAL HEMORRHAGE,11,Disch to SNF,12.92,6.9,25,No,No,None,N/A,No,N/A,12.484,Yes,No,No,1000,Yes,No,4-10,Yes,No,N/A,,,
-155,54.1,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,8.96,3.6,15,No,Yes,Q,2.017,No,N/A,6.974,Yes,No,No,750,Yes,Yes,4-10,Yes,Yes,Topiramate,,,
-156,56.5,Black or African American,M,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,16.05,15.9,15,No,Yes,HZQ,0.960,No,N/A,6.662,Yes,No,Yes,250,Yes,Yes,4-10,Yes,No,N/A,26,94,27.66
-157,30.5,Black or African American,F,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,35.40,31.9,65,No,Yes,QH,7.532,No,N/A,33.162,No,No,Yes,750,Yes,Yes,0-3,Yes,Yes,VPA,27,305,8.85
-158,18.3,White,M,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,20.16,19.6,14,Yes,Yes,Q,6.044,No,N/A,6.269,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,13,100,13.00
+152,72.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,7.31,5.1,10,Yes,No,None,N/A,No,N/A,4.472,Yes,No,No,500,No,No,10-Apr,No,No,N/A,,,
+153,53.5,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,28.1,26.5,54,No,No,None,N/A,No,N/A,27.992,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,17,103,16.5
+154,84.6,White,M,INTRACEREBRAL HEMORRHAGE,11,Disch to SNF,12.92,6.9,25,No,No,None,N/A,No,N/A,12.484,Yes,No,No,1000,Yes,No,10-Apr,Yes,No,N/A,,,
+155,54.1,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,8.96,3.6,15,No,Yes,Q,2.017,No,N/A,6.974,Yes,No,No,750,Yes,Yes,10-Apr,Yes,Yes,Topiramate,,,
+156,56.5,Black or African American,M,CEREBRAL INFARCTION,6,Disch to Rehab Unit/Facility,16.05,15.9,15,No,Yes,HZQ,0.96,No,N/A,6.662,Yes,No,Yes,250,Yes,Yes,10-Apr,Yes,No,N/A,26,94,27.66
+157,30.5,Black or African American,F,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,35.4,31.9,65,No,Yes,QH,7.532,No,N/A,33.162,No,No,Yes,750,Yes,Yes,0-3,Yes,Yes,VPA,27,305,8.85
+158,18.3,White,M,Traumatic intracranial injury,7,Disch to Rehab Unit/Facility,20.16,19.6,14,Yes,Yes,Q,6.044,No,N/A,6.269,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,13,100,13
 159,83.2,White,M,INTRACEREBRAL HEMORRHAGE,6,Disch to SNF,27.53,12.1,19,No,Yes,HRQ,6.444,No,N/A,10.149,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,9,131,6.87
-160,52.7,Black or African American,M,CEREBRAL INFARCTION,7,Home,19.14,2.4,36,No,Yes,H,11.740,No,N/A,18.090,No,No,No,500,Yes,Yes,4-10,No,Yes,"Carbamazepine, lacosamide",,,
+160,52.7,Black or African American,M,CEREBRAL INFARCTION,7,Home,19.14,2.4,36,No,Yes,H,11.74,No,N/A,18.09,No,No,No,500,Yes,Yes,10-Apr,No,Yes,"Carbamazepine, lacosamide",,,
 161,54.6,White,M,Traumatic intracranial injury,13,Disch to Rehab Unit/Facility,23.85,4.8,39,No,Yes,HQ,1.163,No,N/A,22.699,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,4,101,3.96
 162,22.1,Other,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,12.86,11.8,14,No,Yes,QH,1.559,No,N/A,6.519,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,6,64,9.38
-163,76.7,White,M,Traumatic intracranial injury,9,Disch to SNF,17.98,14.0,14,No,No,None,N/A,No,N/A,6.434,No,Yes,No,500,No,No,0-3,Yes,No,N/A,,,
-164,89.5,White,M,CEREBRAL INFARCTION,3,Expired,22.26,18.9,30,Yes,Yes,QH,2.910,No,N/A,21.883,Yes,No,Yes,1000,Yes,No,4-10,Yes,Yes,Phenytoin,11,86,12.79
+163,76.7,White,M,Traumatic intracranial injury,9,Disch to SNF,17.98,14,14,No,No,None,N/A,No,N/A,6.434,No,Yes,No,500,No,No,0-3,Yes,No,N/A,,,
+164,89.5,White,M,CEREBRAL INFARCTION,3,Expired,22.26,18.9,30,Yes,Yes,QH,2.91,No,N/A,21.883,Yes,No,Yes,1000,Yes,No,10-Apr,Yes,Yes,Phenytoin,11,86,12.79
 165,52.8,Black or African American,M,Traumatic intracranial injury,11,Home,8.46,5.1,17,No,Yes,Q,6.286,No,N/A,7.997,No,No,No,500,Yes,Yes,0-3,No,Yes,"Carbamazepine, lacosamide",,,
 166,27.4,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,32.77,14.7,21,No,No,None,N/A,No,N/A,9.599,Yes,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,48,187,25.67
-167,26.7,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,14.80,12.5,31,No,Yes,Q,4.340,No,N/A,14.324,Yes,Yes,Yes,500,Yes,Yes,4-10,Yes,No,N/A,9,83,10.84
-168,87.2,White,M,Traumatic intracranial injury,15,Disch to SNF,22.89,8.4,33,No,Yes,Q,7.154,No,N/A,18.160,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,3,121,2.48
-169,72.7,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,23.62,21.7,20,No,No,None,N/A,No,N/A,9.780,No,Yes,Yes,1500,Yes,No,4-10,Yes,No,N/A,5,124,4.03
-170,63.4,Black or African American,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,76.01,26.0,152,Yes,Yes,Q,29.219,No,N/A,75.779,No,No,Yes,500,No,No,0-3,Yes,No,N/A,22,329,6.69
+167,26.7,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,14.8,12.5,31,No,Yes,Q,4.34,No,N/A,14.324,Yes,Yes,Yes,500,Yes,Yes,10-Apr,Yes,No,N/A,9,83,10.84
+168,87.2,White,M,Traumatic intracranial injury,15,Disch to SNF,22.89,8.4,33,No,Yes,Q,7.154,No,N/A,18.16,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,3,121,2.48
+169,72.7,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,23.62,21.7,20,No,No,None,N/A,No,N/A,9.78,No,Yes,Yes,1500,Yes,No,10-Apr,Yes,No,N/A,5,124,4.03
+170,63.4,Black or African American,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,76.01,26,152,Yes,Yes,Q,29.219,No,N/A,75.779,No,No,Yes,500,No,No,0-3,Yes,No,N/A,22,329,6.69
 171,36.9,Other,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,16.85,12.5,15,No,Yes,HQ,0.382,No,N/A,7.033,No,Yes,Yes,750,Yes,Yes,0-3,Yes,No,N/A,2,96,2.08
 172,53.1,Black or African American,F,Traumatic intracranial injury,6,Hospice,9.97,4.9,8,No,No,None,N/A,No,N/A,5.621,Yes,No,No,500,Yes,No,0-3,No,No,N/A,,,
-173,72.0,White,F,INTRACEREBRAL HEMORRHAGE,15,Other,21.90,10.9,43,Yes,Yes,HQ,1.010,No,N/A,21.389,Yes,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
-174,51.9,Black or African American,M,Traumatic intracranial injury,7,Home,41.61,26.0,19,No,Yes,QH,3.791,No,N/A,9.681,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,28,196,14.29
-175,64.1,White,M,Traumatic intracranial injury,3,Expired,0.84,0.6,4,No,No,None,N/A,No,N/A,1.191,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,10,10,100.00
-176,76.2,White,M,CEREBRAL INFARCTION,15,Expired,5.96,5.8,11,No,Yes,H,4.920,No,N/A,4.760,No,No,Yes,500,No,No,0-3,Yes,No,N/A,14,27,51.85
-177,69.0,Black or African American,F,CEREBRAL INFARCTION,12,Disch to SNF,22.38,8.7,44,No,No,None,N/A,No,N/A,21.569,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,7,140,5.00
+173,72,White,F,INTRACEREBRAL HEMORRHAGE,15,Other,21.9,10.9,43,Yes,Yes,HQ,1.01,No,N/A,21.389,Yes,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+174,51.9,Black or African American,M,Traumatic intracranial injury,7,Home,41.61,26,19,No,Yes,QH,3.791,No,N/A,9.681,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,28,196,14.29
+175,64.1,White,M,Traumatic intracranial injury,3,Expired,0.84,0.6,4,No,No,None,N/A,No,N/A,1.191,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,10,10,100
+176,76.2,White,M,CEREBRAL INFARCTION,15,Expired,5.96,5.8,11,No,Yes,H,4.92,No,N/A,4.76,No,No,Yes,500,No,No,0-3,Yes,No,N/A,14,27,51.85
+177,69,Black or African American,F,CEREBRAL INFARCTION,12,Disch to SNF,22.38,8.7,44,No,No,None,N/A,No,N/A,21.569,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,7,140,5
 178,63.6,Other,M,Traumatic intracranial injury,11,Disch to SNF,33.96,29.5,15,No,No,None,N/A,No,N/A,6.889,Yes,Yes,Yes,1000,Yes,No,0-3,Yes,No,N/A,45,129,34.88
-179,65.4,White,M,Traumatic intracranial injury,2,Other,22.50,16.1,45,No,Yes,Q,1.972,No,N/A,21.935,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,3,128,2.34
-180,58.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Home,41.35,16.2,80,Yes,No,None,N/A,No,N/A,39.020,Yes,No,No,750,No,No,4-10,No,No,N/A,,,
-181,67.4,Black or African American,M,CEREBRAL INFARCTION,8,Disch to SNF,35.73,14.5,76,No,Yes,Q,0.833,No,N/A,35.240,No,Yes,Yes,750,Yes,Yes,0-3,Yes,Yes,"Lacosamide, topiramate, VPA",34,204,16.67
-182,74.3,Black or African American,M,Traumatic intracranial injury,15,Home,3.27,3.2,5,No,No,None,N/A,No,N/A,2.019,No,Yes,Yes,750,No,No,0-3,Yes,Yes,Phenytoin,4,16,25.00
+179,65.4,White,M,Traumatic intracranial injury,2,Other,22.5,16.1,45,No,Yes,Q,1.972,No,N/A,21.935,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,3,128,2.34
+180,58.4,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Home,41.35,16.2,80,Yes,No,None,N/A,No,N/A,39.02,Yes,No,No,750,No,No,10-Apr,No,No,N/A,,,
+181,67.4,Black or African American,M,CEREBRAL INFARCTION,8,Disch to SNF,35.73,14.5,76,No,Yes,Q,0.833,No,N/A,35.24,No,Yes,Yes,750,Yes,Yes,0-3,Yes,Yes,"Lacosamide, topiramate, VPA",34,204,16.67
+182,74.3,Black or African American,M,Traumatic intracranial injury,15,Home,3.27,3.2,5,No,No,None,N/A,No,N/A,2.019,No,Yes,Yes,750,No,No,0-3,Yes,Yes,Phenytoin,4,16,25
 183,89.4,White,F,CEREBRAL INFARCTION,15,Disch to SNF,33.93,29.2,14,Yes,Yes,Q,6.201,No,N/A,6.201,No,No,Yes,1500,No,No,0-3,Yes,No,N/A,6,186,3.23
-184,75.1,White,F,Traumatic intracranial injury,11,Expired,22.87,16.1,47,No,Yes,Q,13.249,No,N/A,22.267,No,No,Yes,1500,Yes,No,4-10,Yes,Yes,Lacosamide,16,129,12.40
-185,27.0,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,301.47,277.1,79,No,No,None,N/A,No,N/A,39.078,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,205,3.90
-187,70.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,38.82,21.4,15,Yes,Yes,Q,6.724,No,N/A,6.960,Yes,Yes,Yes,1000,Yes,Yes,0-3,Yes,Yes,Carbamazepine,17,223,7.62
+184,75.1,White,F,Traumatic intracranial injury,11,Expired,22.87,16.1,47,No,Yes,Q,13.249,No,N/A,22.267,No,No,Yes,1500,Yes,No,10-Apr,Yes,Yes,Lacosamide,16,129,12.4
+185,27,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,301.47,277.1,79,No,No,None,N/A,No,N/A,39.078,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,205,3.9
+187,70.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,38.82,21.4,15,Yes,Yes,Q,6.724,No,N/A,6.96,Yes,Yes,Yes,1000,Yes,Yes,0-3,Yes,Yes,Carbamazepine,17,223,7.62
 188,73.5,Black or African American,M,Traumatic intracranial injury,15,Other,5.19,3.2,10,No,Yes,Q,1.272,No,N/A,4.694,No,No,No,1500,No,No,0-3,No,Yes,Phenytoin,,,
-189,62.7,White,M,Traumatic intracranial injury,15,Home,11.89,5.6,1,Yes,Yes,Q,0.106,No,N/A,0.000,No,Yes,No,500,No,Yes,4-10,Yes,No,N/A,,,
+189,62.7,White,M,Traumatic intracranial injury,15,Home,11.89,5.6,1,Yes,Yes,Q,0.106,No,N/A,0,No,Yes,No,500,No,Yes,10-Apr,Yes,No,N/A,,,
 190,68.9,Asian,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,9.95,7.3,14,No,No,None,N/A,No,N/A,9.083,Yes,No,No,750,Yes,No,0-3,Yes,No,N/A,,,
 191,92.7,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,16.17,8.1,18,No,No,None,N/A,No,N/A,7.905,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,1,105,0.95
 194,47.4,White,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,23.08,19.8,19,Yes,No,None,N/A,No,N/A,9.066,Yes,No,Yes,1250,No,No,0-3,Yes,No,N/A,8,143,5.59
-196,26.6,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,5.70,5.4,12,No,No,None,N/A,No,N/A,5.231,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+196,26.6,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,5.7,5.4,12,No,No,None,N/A,No,N/A,5.231,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
 197,19.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,28.76,12.6,58,No,Yes,Q,20.879,No,N/A,28.499,No,No,Yes,500,Yes,No,0-3,Yes,Yes,Phenytoin,18,159,11.32
 199,67.6,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,39.88,22.2,10,Yes,No,None,N/A,No,N/A,5.788,Yes,Yes,Yes,500,No,No,0-3,Yes,No,N/A,1,235,0.43
-200,37.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Home,3.88,1.5,8,No,Yes,H,0.988,No,N/A,3.455,No,No,No,500,No,Yes,4-10,Yes,No,N/A,,,
-201,86.5,White,F,Traumatic intracranial injury,15,Expired,30.33,29.4,15,No,No,None,N/A,No,N/A,6.967,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,4,154,2.60
-203,77.7,White,M,INTRACEREBRAL HEMORRHAGE,10,Hospice,4.07,3.7,7,Yes,No,None,N/A,No,N/A,2.840,No,No,No,1000,No,No,0-3,Yes,No,N/A,,,
-205,79.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Disch to SNF,17.90,2.8,15,Yes,Yes,Q,2.193,No,N/A,6.910,No,No,No,1000,No,No,4-10,No,No,N/A,,,
-206,58.8,Black or African American,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,25.30,21.5,2,No,No,None,N/A,No,N/A,0.444,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-207,41.4,White,F,INTRACEREBRAL HEMORRHAGE,12,Home,3.64,2.3,5,No,No,None,N/A,No,N/A,1.899,Yes,No,No,750,No,No,4-10,Yes,No,N/A,,,
-208,68.4,White,M,SUBARACHNOID HEMORRHAGE,15,Home,15.05,5.0,15,Yes,Yes,H,0.492,No,N/A,6.815,No,No,Yes,500,No,No,0-3,Yes,No,N/A,1,83,1.20
-209,64.1,Black or African American,F,Traumatic intracranial injury,12,Disch to Rehab Unit/Facility,9.92,8.4,9,Yes,No,None,N/A,No,N/A,3.996,No,No,No,500,No,No,4-10,Yes,No,N/A,,,
-210,24.8,Other,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,8.77,8.7,16,Yes,Yes,HQ,1.789,No,N/A,7.506,Yes,Yes,Yes,500,Yes,No,4-10,Yes,No,N/A,3,87,3.45
+200,37.8,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Home,3.88,1.5,8,No,Yes,H,0.988,No,N/A,3.455,No,No,No,500,No,Yes,10-Apr,Yes,No,N/A,,,
+201,86.5,White,F,Traumatic intracranial injury,15,Expired,30.33,29.4,15,No,No,None,N/A,No,N/A,6.967,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,4,154,2.6
+203,77.7,White,M,INTRACEREBRAL HEMORRHAGE,10,Hospice,4.07,3.7,7,Yes,No,None,N/A,No,N/A,2.84,No,No,No,1000,No,No,0-3,Yes,No,N/A,,,
+205,79.8,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Disch to SNF,17.9,2.8,15,Yes,Yes,Q,2.193,No,N/A,6.91,No,No,No,1000,No,No,10-Apr,No,No,N/A,,,
+206,58.8,Black or African American,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,25.3,21.5,2,No,No,None,N/A,No,N/A,0.444,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
+207,41.4,White,F,INTRACEREBRAL HEMORRHAGE,12,Home,3.64,2.3,5,No,No,None,N/A,No,N/A,1.899,Yes,No,No,750,No,No,10-Apr,Yes,No,N/A,,,
+208,68.4,White,M,SUBARACHNOID HEMORRHAGE,15,Home,15.05,5,15,Yes,Yes,H,0.492,No,N/A,6.815,No,No,Yes,500,No,No,0-3,Yes,No,N/A,1,83,1.2
+209,64.1,Black or African American,F,Traumatic intracranial injury,12,Disch to Rehab Unit/Facility,9.92,8.4,9,Yes,No,None,N/A,No,N/A,3.996,No,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+210,24.8,Other,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,8.77,8.7,16,Yes,Yes,HQ,1.789,No,N/A,7.506,Yes,Yes,Yes,500,Yes,No,10-Apr,Yes,No,N/A,3,87,3.45
 211,35.3,White,M,INTRACEREBRAL HEMORRHAGE,8,Disch to Rehab Unit/Facility,17.67,15.5,15,No,No,None,N/A,No,N/A,6.858,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,20,159,12.58
-212,20.1,White,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,22.91,17.9,16,No,No,None,N/A,No,N/A,7.463,Yes,No,Yes,500,Yes,No,4-10,Yes,No,N/A,25,104,24.04
-214,87.3,White,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,7.10,4.3,14,No,No,None,N/A,No,N/A,6.100,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-215,20.2,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,25.02,8.1,13,No,Yes,Q,3.130,No,N/A,6.451,No,No,Yes,500,No,Yes,0-3,Yes,Yes,Lamotrigine,15,190,7.89
-216,74.1,White,F,Traumatic intracranial injury,13,Disch to SNF,14.76,9.6,16,Yes,Yes,OQ,3.385,No,N/A,7.401,Yes,No,Yes,750,Yes,No,4-10,Yes,No,N/A,4,93,4.30
+212,20.1,White,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,22.91,17.9,16,No,No,None,N/A,No,N/A,7.463,Yes,No,Yes,500,Yes,No,10-Apr,Yes,No,N/A,25,104,24.04
+214,87.3,White,M,Traumatic intracranial injury,14,Disch to Rehab Unit/Facility,7.1,4.3,14,No,No,None,N/A,No,N/A,6.1,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
+215,20.2,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,25.02,8.1,13,No,Yes,Q,3.13,No,N/A,6.451,No,No,Yes,500,No,Yes,0-3,Yes,Yes,Lamotrigine,15,190,7.89
+216,74.1,White,F,Traumatic intracranial injury,13,Disch to SNF,14.76,9.6,16,Yes,Yes,OQ,3.385,No,N/A,7.401,Yes,No,Yes,750,Yes,No,10-Apr,Yes,No,N/A,4,93,4.3
 217,53.4,White,F,CEREBRAL INFARCTION,13,Disch to Rehab Unit/Facility,43.79,31.8,86,No,Yes,Q,4.352,No,N/A,43.306,No,No,Yes,1000,Yes,Yes,0-3,Yes,Yes,Phenytoin,23,267,8.61
-218,64.9,White,M,Traumatic intracranial injury,6,Disch to SNF,17.01,9.7,33,No,Yes,Q,7.637,No,N/A,16.372,No,No,Yes,1000,Yes,Yes,0-3,Yes,No,N/A,1,91,1.10
-220,75.2,White,M,SUBARACHNOID HEMORRHAGE,14,Hospice,25.12,17.0,15,Yes,No,None,N/A,No,N/A,6.956,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,38,82,46.34
-221,94.4,White,F,Traumatic intracranial injury,15,Disch to SNF,5.65,3.6,1,Yes,No,None,N/A,No,N/A,0.000,No,No,No,500,No,No,0-3,No,No,N/A,,,
-222,45.6,Black or African American,M,CEREBRAL INFARCTION,15,Home,2.32,2.1,4,No,No,None,N/A,No,N/A,1.533,Yes,No,No,1500,No,No,4-10,No,No,N/A,,,
+218,64.9,White,M,Traumatic intracranial injury,6,Disch to SNF,17.01,9.7,33,No,Yes,Q,7.637,No,N/A,16.372,No,No,Yes,1000,Yes,Yes,0-3,Yes,No,N/A,1,91,1.1
+220,75.2,White,M,SUBARACHNOID HEMORRHAGE,14,Hospice,25.12,17,15,Yes,No,None,N/A,No,N/A,6.956,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,38,82,46.34
+221,94.4,White,F,Traumatic intracranial injury,15,Disch to SNF,5.65,3.6,1,Yes,No,None,N/A,No,N/A,0,No,No,No,500,No,No,0-3,No,No,N/A,,,
+222,45.6,Black or African American,M,CEREBRAL INFARCTION,15,Home,2.32,2.1,4,No,No,None,N/A,No,N/A,1.533,Yes,No,No,1500,No,No,10-Apr,No,No,N/A,,,
 223,57.3,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,8.86,5.3,19,Yes,No,None,N/A,No,N/A,8.182,No,No,No,750,Yes,Yes,0-3,No,Yes,Lacosamide,,,
 224,46.3,White,M,Traumatic intracranial injury,6,Disch to Rehab Unit/Facility,48.27,18.4,14,Yes,No,None,N/A,No,N/A,6.303,No,No,Yes,500,No,No,0-3,Yes,No,N/A,41,293,13.99
 225,77.4,White,M,Traumatic intracranial injury,5,Disch to SNF,12.84,5.2,14,Yes,Yes,OH,0.903,No,N/A,6.041,Yes,Yes,No,1000,No,No,0-3,Yes,No,N/A,,,
 226,46.6,White,M,INTRACEREBRAL HEMORRHAGE,3,Expired,28.42,19.6,5,No,No,None,N/A,No,N/A,27.922,Yes,Yes,Yes,500,No,Yes,0-3,Yes,No,N/A,11,184,5.98
 227,62.7,Black or African American,F,CEREBRAL INFARCTION,15,Hospice,4.85,4.7,10,Yes,Yes,O,1.078,No,N/A,4.533,No,No,No,2000,Yes,No,0-3,No,No,N/A,,,
-228,55.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,4.44,2.2,9,No,No,None,N/A,No,N/A,3.856,Yes,No,No,1000,Yes,No,4-10,Yes,No,N/A,,,
+228,55.4,White,F,SUBARACHNOID HEMORRHAGE,15,Home,4.44,2.2,9,No,No,None,N/A,No,N/A,3.856,Yes,No,No,1000,Yes,No,10-Apr,Yes,No,N/A,,,
 229,53.8,White,F,CEREBRAL INFARCTION,15,Disch to SNF,42.87,23.8,17,No,Yes,H,2.933,No,N/A,7.975,No,No,Yes,750,Yes,No,0-3,Yes,Yes,Topiramate,9,313,2.88
 231,23.6,Black or African American,M,CEREBRAL INFARCTION,15,Home,16.56,8.5,14,No,Yes,Q,4.587,No,N/A,6.152,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,89,2.25
-232,71.0,White,M,SUBARACHNOID HEMORRHAGE,3,Disch to SNF,48.13,28.4,98,Yes,Yes,QHO,1.406,No,N/A,47.950,Yes,Yes,Yes,500,Yes,Yes,4-10,Yes,Yes,Lacosamide,13,307,4.23
+232,71,White,M,SUBARACHNOID HEMORRHAGE,3,Disch to SNF,48.13,28.4,98,Yes,Yes,QHO,1.406,No,N/A,47.95,Yes,Yes,Yes,500,Yes,Yes,10-Apr,Yes,Yes,Lacosamide,13,307,4.23
 233,87.6,White,F,CEREBRAL INFARCTION,4,Disch to SNF,4.12,2.3,8,Yes,No,None,N/A,No,N/A,3.548,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
-234,78.5,White,M,Traumatic intracranial injury,15,Disch to SNF,17.93,14.0,14,Yes,Yes,H,1.953,No,N/A,6.224,No,No,Yes,500,No,No,0-3,Yes,No,N/A,15,145,10.34
-235,38.5,Black or African American,M,Traumatic intracranial injury,7,Home,3.13,2.2,7,No,No,None,N/A,No,N/A,2.688,Yes,No,No,500,Yes,Yes,4-10,Yes,No,N/A,,,
-237,88.6,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,21.28,13.4,40,Yes,Yes,H,16.353,No,N/A,20.480,No,No,Yes,2000,Yes,No,4-10,Yes,Yes,"Phenytoin, lacosamide, VPA",13,94,13.83
-238,73.1,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,26.66,26.3,57,No,Yes,QH,22.960,Yes,8.246527778,26.356,No,No,Yes,1000,Yes,No,0-3,Yes,Yes,"Clobazam, lacosamide, primidone, VPA",48,145,33.10
+234,78.5,White,M,Traumatic intracranial injury,15,Disch to SNF,17.93,14,14,Yes,Yes,H,1.953,No,N/A,6.224,No,No,Yes,500,No,No,0-3,Yes,No,N/A,15,145,10.34
+235,38.5,Black or African American,M,Traumatic intracranial injury,7,Home,3.13,2.2,7,No,No,None,N/A,No,N/A,2.688,Yes,No,No,500,Yes,Yes,10-Apr,Yes,No,N/A,,,
+237,88.6,White,F,INTRACEREBRAL HEMORRHAGE,3,Expired,21.28,13.4,40,Yes,Yes,H,16.353,No,N/A,20.48,No,No,Yes,2000,Yes,No,10-Apr,Yes,Yes,"Phenytoin, lacosamide, VPA",13,94,13.83
+238,73.1,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,26.66,26.3,57,No,Yes,QH,22.96,Yes,8.246527778,26.356,No,No,Yes,1000,Yes,No,0-3,Yes,Yes,"Clobazam, lacosamide, primidone, VPA",48,145,33.1
 239,86.7,Black or African American,F,Traumatic intracranial injury,6,Disch to SNF,49.04,17.3,74,No,Yes,H,7.187,No,N/A,37.489,No,No,Yes,500,No,No,0-3,Yes,Yes,Lacosamide,6,221,2.71
 240,50.5,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Home,6.98,2.6,14,No,No,None,N/A,No,N/A,6.704,Yes,No,No,500,No,No,0-3,Yes,Yes,Phenytoin,,,
-241,20.4,White,M,Traumatic intracranial injury,15,Other,9.79,9.7,15,No,Yes,Q,7.434,Yes,0.348611111,7.044,No,No,Yes,500,No,No,4-10,Yes,No,N/A,18,132,13.64
-242,63.5,Black or African American,F,SUBARACHNOID HEMORRHAGE,8,Home,3.10,2.4,7,No,Yes,H,0.460,No,N/A,2.665,No,No,Yes,500,Yes,No,0-3,No,No,N/A,42,19,221.05
-243,54.8,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,3.98,0.8,7,No,No,None,N/A,No,N/A,3.048,Yes,No,No,1000,Yes,No,4-10,No,No,N/A,,,
-244,76.2,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,14.00,11.1,16,Yes,Yes,Q,1.901,Yes,1.395833333,13.594,Yes,No,No,500,Yes,No,4-10,No,Yes,"Lacosamide, VPA",,,
+241,20.4,White,M,Traumatic intracranial injury,15,Other,9.79,9.7,15,No,Yes,Q,7.434,Yes,0.348611111,7.044,No,No,Yes,500,No,No,10-Apr,Yes,No,N/A,18,132,13.64
+242,63.5,Black or African American,F,SUBARACHNOID HEMORRHAGE,8,Home,3.1,2.4,7,No,Yes,H,0.46,No,N/A,2.665,No,No,Yes,500,Yes,No,0-3,No,No,N/A,42,19,221.05
+243,54.8,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,3.98,0.8,7,No,No,None,N/A,No,N/A,3.048,Yes,No,No,1000,Yes,No,10-Apr,No,No,N/A,,,
+244,76.2,Black or African American,F,Traumatic intracranial injury,15,Disch to SNF,14,11.1,16,Yes,Yes,Q,1.901,Yes,1.395833333,13.594,Yes,No,No,500,Yes,No,10-Apr,No,Yes,"Lacosamide, VPA",,,
 245,75.5,White,F,Traumatic intracranial injury,15,Disch to SNF,3.99,3.9,8,No,Yes,Q,0.247,No,N/A,3.569,No,No,No,500,No,No,0-3,No,Yes,Phenytoin,,,
 246,58.2,White,M,Traumatic intracranial injury,15,Other,21.92,21.9,14,Yes,Yes,HQ,6.894,Yes,3.557638889,6.788,Yes,Yes,No,500,No,No,0-3,Yes,No,N/A,,,
-247,70.9,Black or African American,M,Traumatic intracranial injury,6,Other,9.51,5.7,17,No,No,None,N/A,No,N/A,8.963,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,69,2.90
-248,22.2,White,M,CEREBRAL INFARCTION,11,Home,20.64,16.3,14,No,Yes,QH,1.463,No,N/A,6.478,Yes,No,Yes,500,Yes,Yes,4-10,Yes,No,N/A,20,146,13.70
+247,70.9,Black or African American,M,Traumatic intracranial injury,6,Other,9.51,5.7,17,No,No,None,N/A,No,N/A,8.963,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,69,2.9
+248,22.2,White,M,CEREBRAL INFARCTION,11,Home,20.64,16.3,14,No,Yes,QH,1.463,No,N/A,6.478,Yes,No,Yes,500,Yes,Yes,10-Apr,Yes,No,N/A,20,146,13.7
 249,81.5,White,M,CEREBRAL INFARCTION,15,Other,18.25,5.1,36,No,Yes,Q,16.404,No,N/A,17.806,No,No,Yes,500,No,No,0-3,Yes,No,N/A,10,117,8.55
 250,84.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,12.94,6.9,18,Yes,No,None,N/A,Yes,1.520833333,12.456,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,5,109,4.59
-251,60.7,White,M,CEREBRAL INFARCTION,4,Home,5.51,2.3,12,Yes,Yes,Q,0.513,No,N/A,5.001,Yes,No,No,750,No,No,4-10,No,No,N/A,,,
-252,60.3,White,M,CEREBRAL INFARCTION,15,Home,8.32,6.6,1,Yes,No,None,N/A,No,N/A,0.000,Yes,Yes,Yes,500,No,Yes,0-3,Yes,No,N/A,3,75,4.00
-255,61.2,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,11.20,3.4,17,No,Yes,QH,2.181,No,N/A,7.926,Yes,Yes,No,750,No,No,0-3,Yes,No,N/A,,,
+251,60.7,White,M,CEREBRAL INFARCTION,4,Home,5.51,2.3,12,Yes,Yes,Q,0.513,No,N/A,5.001,Yes,No,No,750,No,No,10-Apr,No,No,N/A,,,
+252,60.3,White,M,CEREBRAL INFARCTION,15,Home,8.32,6.6,1,Yes,No,None,N/A,No,N/A,0,Yes,Yes,Yes,500,No,Yes,0-3,Yes,No,N/A,3,75,4
+255,61.2,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,11.2,3.4,17,No,Yes,QH,2.181,No,N/A,7.926,Yes,Yes,No,750,No,No,0-3,Yes,No,N/A,,,
 256,30.1,Black or African American,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,27.44,27.1,57,No,Yes,Q,23.749,Yes,18.71597222,27.153,No,No,Yes,750,Yes,No,0-3,Yes,No,N/A,40,161,24.84
 257,73.3,Black or African American,M,Traumatic intracranial injury,3,Disch to SNF,9.92,3.7,20,Yes,No,None,N/A,No,N/A,9.503,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 258,68.8,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,43.89,37.6,76,No,Yes,O,10.078,Yes,8.458333333,43.515,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,218,0.92
 259,94.1,White,F,Traumatic intracranial injury,6,Hospice,17.94,13.8,14,Yes,No,None,N/A,Yes,3.143055556,6.885,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,44,103,42.72
-260,83.5,Black or African American,M,SUBARACHNOID HEMORRHAGE,3,Disch to SNF,9.90,3.3,14,No,Yes,Q,1.534,No,N/A,6.547,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
+260,83.5,Black or African American,M,SUBARACHNOID HEMORRHAGE,3,Disch to SNF,9.9,3.3,14,No,Yes,Q,1.534,No,N/A,6.547,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
 261,54.1,White,F,Traumatic intracranial injury,15,Disch to SNF,39.72,37.5,13,No,No,None,N/A,Yes,2.78125,5.882,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,69,198,34.85
 262,65.8,White,F,INTRACEREBRAL HEMORRHAGE,3,Home,8.83,8.6,16,Yes,No,None,N/A,No,N/A,7.127,No,No,No,1000,No,No,0-3,Yes,No,N/A,,,
-263,60.5,White,F,CEREBRAL INFARCTION,15,Home,3.20,2.3,7,No,No,None,N/A,No,N/A,2.994,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,28,7.14
+263,60.5,White,F,CEREBRAL INFARCTION,15,Home,3.2,2.3,7,No,No,None,N/A,No,N/A,2.994,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,2,28,7.14
 264,85.3,White,M,Traumatic intracranial injury,13,Expired,5.34,3.9,7,Yes,Yes,Q,1.874,Yes,2.327083333,4.612,No,Yes,Yes,500,No,No,0-3,Yes,Yes,VPA,1,29,3.45
 265,65.1,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to SNF,6.82,1.8,14,Yes,No,None,N/A,No,N/A,6.556,Yes,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
 266,83.3,Black or African American,F,Traumatic intracranial injury,3,Home,5.54,3.3,12,No,No,None,N/A,Yes,0.152777778,5.188,No,No,Yes,500,Yes,Yes,0-3,Yes,Yes,VPA,6,33,18.18
 267,68.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,7,Disch to SNF,16.67,6.8,29,No,No,None,N/A,No,N/A,13.956,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-268,58.9,Black or African American,F,CEREBRAL INFARCTION,10,Disch to SNF,6.23,4.2,14,No,No,None,N/A,Yes,0.16875,5.784,No,No,Yes,500,Yes,No,4-10,No,No,N/A,1,30,3.33
+268,58.9,Black or African American,F,CEREBRAL INFARCTION,10,Disch to SNF,6.23,4.2,14,No,No,None,N/A,Yes,0.16875,5.784,No,No,Yes,500,Yes,No,10-Apr,No,No,N/A,1,30,3.33
 269,71.9,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,48.05,34.8,7,No,No,None,N/A,No,N/A,2.933,Yes,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,5,303,1.65
-270,59.1,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,26.89,10.7,14,Yes,No,None,N/A,No,N/A,6.567,No,No,Yes,500,Yes,Yes,4-10,Yes,No,N/A,25,166,15.06
-271,53.0,Black or African American,M,CEREBRAL INFARCTION,4,Disch to Rehab Unit/Facility,15.13,12.9,4,No,Yes,Q,1.727,Yes,0.206944444,1.299,Yes,No,Yes,750,Yes,Yes,0-3,No,No,N/A,3,127,2.36
-272,19.8,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,10.78,5.7,15,No,No,None,N/A,Yes,3.635416667,6.770,No,No,Yes,250,Yes,No,0-3,Yes,No,N/A,3,64,4.69
-273,75.5,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,5.78,5.7,12,Yes,No,None,N/A,Yes,0.222916667,5.310,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
+270,59.1,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,26.89,10.7,14,Yes,No,None,N/A,No,N/A,6.567,No,No,Yes,500,Yes,Yes,10-Apr,Yes,No,N/A,25,166,15.06
+271,53,Black or African American,M,CEREBRAL INFARCTION,4,Disch to Rehab Unit/Facility,15.13,12.9,4,No,Yes,Q,1.727,Yes,0.206944444,1.299,Yes,No,Yes,750,Yes,Yes,0-3,No,No,N/A,3,127,2.36
+272,19.8,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,10.78,5.7,15,No,No,None,N/A,Yes,3.635416667,6.77,No,No,Yes,250,Yes,No,0-3,Yes,No,N/A,3,64,4.69
+273,75.5,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,5.78,5.7,12,Yes,No,None,N/A,Yes,0.222916667,5.31,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 274,67.8,Black or African American,F,CEREBRAL INFARCTION,15,Disch to SNF,361.43,354.5,14,No,No,None,N/A,Yes,0.434722222,6.589,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
-275,51.2,White,M,CEREBRAL INFARCTION,11,Home,9.86,9.7,14,No,No,None,N/A,No,N/A,6.125,Yes,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
-277,50.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,8.62,8.5,16,No,Yes,Q,5.755,No,N/A,7.803,No,No,No,500,Yes,Yes,4-10,No,No,N/A,,,
-278,46.9,Other,M,INTRACEREBRAL HEMORRHAGE,15,Home,17.91,3.7,14,No,Yes,HQZ,1.790,Yes,1.914583333,6.583,Yes,Yes,Yes,1500,Yes,Yes,0-3,Yes,No,N/A,2,106,1.89
-279,41.0,Black or African American,M,Traumatic intracranial injury,6,Other,6.64,1.4,13,No,Yes,H,0.667,No,N/A,5.978,No,No,No,500,No,No,0-3,No,Yes,"Phenytoin, VPA",,,
-280,93.8,White,M,Traumatic intracranial injury,3,Expired,4.90,1.4,10,No,No,None,N/A,No,N/A,4.206,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-282,52.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,29.19,22.9,15,Yes,No,None,N/A,No,N/A,6.736,Yes,Yes,Yes,500,No,No,4-10,Yes,No,N/A,10,171,5.85
-283,54.4,White,M,SUBARACHNOID HEMORRHAGE,13,Home,4.72,1.5,9,No,No,None,N/A,No,N/A,4.199,Yes,No,No,500,Yes,Yes,4-10,No,No,N/A,,,
-284,35.6,White,M,Traumatic intracranial injury,15,Disch to SNF,50.28,26.5,49,Yes,No,None,N/A,Yes,24.21180556,49.220,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,80,334,23.95
+275,51.2,White,M,CEREBRAL INFARCTION,11,Home,9.86,9.7,14,No,No,None,N/A,No,N/A,6.125,Yes,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+277,50.6,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,8.62,8.5,16,No,Yes,Q,5.755,No,N/A,7.803,No,No,No,500,Yes,Yes,10-Apr,No,No,N/A,,,
+278,46.9,Other,M,INTRACEREBRAL HEMORRHAGE,15,Home,17.91,3.7,14,No,Yes,HQZ,1.79,Yes,1.914583333,6.583,Yes,Yes,Yes,1500,Yes,Yes,0-3,Yes,No,N/A,2,106,1.89
+279,41,Black or African American,M,Traumatic intracranial injury,6,Other,6.64,1.4,13,No,Yes,H,0.667,No,N/A,5.978,No,No,No,500,No,No,0-3,No,Yes,"Phenytoin, VPA",,,
+280,93.8,White,M,Traumatic intracranial injury,3,Expired,4.9,1.4,10,No,No,None,N/A,No,N/A,4.206,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
+282,52.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,29.19,22.9,15,Yes,No,None,N/A,No,N/A,6.736,Yes,Yes,Yes,500,No,No,10-Apr,Yes,No,N/A,10,171,5.85
+283,54.4,White,M,SUBARACHNOID HEMORRHAGE,13,Home,4.72,1.5,9,No,No,None,N/A,No,N/A,4.199,Yes,No,No,500,Yes,Yes,10-Apr,No,No,N/A,,,
+284,35.6,White,M,Traumatic intracranial injury,15,Disch to SNF,50.28,26.5,49,Yes,No,None,N/A,Yes,24.21180556,49.22,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,80,334,23.95
 285,63.1,White,F,CEREBRAL INFARCTION,15,Home,11.15,6.3,22,Yes,Yes,OQH,3.766,No,N/A,10.487,No,Yes,No,750,Yes,Yes,0-3,No,No,N/A,,,
-286,28.7,Black or African American,M,CEREBRAL INFARCTION,13,Disch to SNF,97.50,48.4,190,No,Yes,Q,83.866,Yes,17.46111111,96.544,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,162,575,28.17
-287,83.0,Black or African American,M,Traumatic intracranial injury,13,Home,4.10,1.6,6,Yes,No,None,N/A,No,N/A,3.003,No,No,No,500,No,No,4-10,No,No,N/A,,,
-288,90.0,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,14.83,3.7,11,No,No,None,N/A,No,N/A,4.783,Yes,No,No,1500,No,No,0-3,Yes,No,N/A,,,
+286,28.7,Black or African American,M,CEREBRAL INFARCTION,13,Disch to SNF,97.5,48.4,190,No,Yes,Q,83.866,Yes,17.46111111,96.544,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,162,575,28.17
+287,83,Black or African American,M,Traumatic intracranial injury,13,Home,4.1,1.6,6,Yes,No,None,N/A,No,N/A,3.003,No,No,No,500,No,No,10-Apr,No,No,N/A,,,
+288,90,White,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,14.83,3.7,11,No,No,None,N/A,No,N/A,4.783,Yes,No,No,1500,No,No,0-3,Yes,No,N/A,,,
 289,79.1,White,M,INTRACEREBRAL HEMORRHAGE,15,Expired,13.12,9.7,21,No,Yes,H,1.983,No,N/A,12.644,Yes,No,Yes,1000,Yes,Yes,0-3,Yes,No,N/A,17,71,23.94
-290,59.5,White,M,Traumatic intracranial injury,15,Disch to SNF,19.25,10.1,40,No,Yes,Q,6.100,Yes,3.724305556,18.897,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
-292,84.7,White,F,CEREBRAL INFARCTION,15,Hospice,5.40,3.3,12,No,No,None,N/A,No,N/A,5.208,Yes,No,No,750,Yes,No,0-3,No,No,N/A,,,
+290,59.5,White,M,Traumatic intracranial injury,15,Disch to SNF,19.25,10.1,40,No,Yes,Q,6.1,Yes,3.724305556,18.897,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
+292,84.7,White,F,CEREBRAL INFARCTION,15,Hospice,5.4,3.3,12,No,No,None,N/A,No,N/A,5.208,Yes,No,No,750,Yes,No,0-3,No,No,N/A,,,
 293,63.9,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Home,8.67,5.6,18,Yes,Yes,Q,2.828,No,N/A,8.236,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,1,64,1.56
 294,63.8,White,M,Traumatic intracranial injury,5,Disch to SNF,5.74,5.6,10,No,Yes,Q,0.786,Yes,1.401388889,4.525,No,No,No,500,Yes,Yes,0-3,Yes,No,N/A,,,
 295,70.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Hospice,17.75,4.3,15,Yes,Yes,Q,1.649,Yes,3.527777778,6.715,No,Yes,No,1500,Yes,Yes,0-3,Yes,No,N/A,,,
 296,57.2,White,M,INTRACEREBRAL HEMORRHAGE,12,Expired,20.81,2.2,36,Yes,Yes,HO,2.075,Yes,0.678472222,20.208,Yes,No,Yes,750,No,No,0-3,Yes,Yes,"Carbamazepine, lacosamide",32,77,41.56
-297,55.6,Black or African American,F,Traumatic intracranial injury,7,Other,9.04,6.6,9,Yes,No,None,N/A,No,N/A,4.038,Yes,No,No,750,No,Yes,4-10,Yes,No,N/A,,,
+297,55.6,Black or African American,F,Traumatic intracranial injury,7,Other,9.04,6.6,9,Yes,No,None,N/A,No,N/A,4.038,Yes,No,No,750,No,Yes,10-Apr,Yes,No,N/A,,,
 298,53.3,White,M,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,41.45,34.4,14,No,No,None,N/A,No,N/A,6.403,Yes,No,Yes,1500,Yes,Yes,0-3,Yes,No,N/A,15,231,6.49
-299,51.5,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,77.03,22.2,158,Yes,Yes,Q,2.901,Yes,1.772916667,76.616,Yes,No,Yes,750,Yes,Yes,4-10,Yes,Yes,Lamotrigine,1,475,0.21
+299,51.5,Black or African American,F,Traumatic intracranial injury,10,Disch to SNF,77.03,22.2,158,Yes,Yes,Q,2.901,Yes,1.772916667,76.616,Yes,No,Yes,750,Yes,Yes,10-Apr,Yes,Yes,Lamotrigine,1,475,0.21
 300,66.5,Black or African American,M,Traumatic intracranial injury,15,Disch to SNF,9.61,3.9,9,Yes,No,None,N/A,Yes,0.165277778,6.027,No,No,Yes,500,No,No,0-3,No,No,N/A,9,64,14.06
-301,65.4,White,F,Traumatic intracranial injury,3,Disch to SNF,11.83,2.5,23,Yes,No,None,N/A,No,N/A,11.140,Yes,No,No,2000,No,Yes,0-3,No,Yes,VPA,,,
+301,65.4,White,F,Traumatic intracranial injury,3,Disch to SNF,11.83,2.5,23,Yes,No,None,N/A,No,N/A,11.14,Yes,No,No,2000,No,Yes,0-3,No,Yes,VPA,,,
 303,72.6,White,M,Traumatic intracranial injury,14,Disch to SNF,30.21,16.1,17,No,Yes,Q,5.782,Yes,2.638194444,7.697,No,Yes,Yes,500,Yes,Yes,0-3,Yes,No,N/A,4,206,1.94
-304,26.1,Black or African American,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,50.02,10.4,14,No,No,None,N/A,Yes,4.486805556,6.492,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,20,290,6.90
+304,26.1,Black or African American,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,50.02,10.4,14,No,No,None,N/A,Yes,4.486805556,6.492,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,20,290,6.9
 306,19.4,White,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,26.97,26.9,15,No,No,None,N/A,No,N/A,7.002,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,70,168,41.67
 307,55.6,White,M,Traumatic intracranial injury,15,Other,6.95,3.7,15,No,No,None,N/A,No,N/A,6.678,Yes,No,Yes,500,Yes,No,0-3,Yes,Yes,Topiramate,2,36,5.56
-308,80.1,White,F,CEREBRAL INFARCTION,14,Disch to SNF,12.88,11.1,15,No,No,None,N/A,No,N/A,6.930,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
+308,80.1,White,F,CEREBRAL INFARCTION,14,Disch to SNF,12.88,11.1,15,No,No,None,N/A,No,N/A,6.93,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
 309,84.6,White,M,INTRACEREBRAL HEMORRHAGE,6,Expired,7.05,6.9,14,No,Yes,QH,1.424,Yes,0.410416667,6.405,No,No,Yes,500,No,No,0-3,Yes,No,N/A,13,55,23.64
-310,63.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,34.30,32.1,15,No,No,None,N/A,Yes,1.7625,6.586,No,No,No,750,No,No,0-3,Yes,No,N/A,,,
-311,41.1,Black or African American,M,CEREBRAL INFARCTION,7,Expired,51.60,49.5,62,Yes,Yes,QRH,12.038,Yes,1.997222222,51.292,No,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-312,86.9,Asian,F,CEREBRAL INFARCTION,6,Hospice,15.69,4.1,16,No,Yes,H,5.744,No,N/A,7.194,No,No,Yes,750,No,No,0-3,Yes,No,N/A,3,77,3.90
-313,62.9,Black or African American,M,Traumatic intracranial injury,14,Home,33.04,22.0,66,No,Yes,Q,12.540,Yes,14.27569444,32.911,Yes,Yes,No,1000,Yes,Yes,0-3,Yes,No,N/A,,,
+310,63.1,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,34.3,32.1,15,No,No,None,N/A,Yes,1.7625,6.586,No,No,No,750,No,No,0-3,Yes,No,N/A,,,
+311,41.1,Black or African American,M,CEREBRAL INFARCTION,7,Expired,51.6,49.5,62,Yes,Yes,QRH,12.038,Yes,1.997222222,51.292,No,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
+312,86.9,Asian,F,CEREBRAL INFARCTION,6,Hospice,15.69,4.1,16,No,Yes,H,5.744,No,N/A,7.194,No,No,Yes,750,No,No,0-3,Yes,No,N/A,3,77,3.9
+313,62.9,Black or African American,M,Traumatic intracranial injury,14,Home,33.04,22,66,No,Yes,Q,12.54,Yes,14.27569444,32.911,Yes,Yes,No,1000,Yes,Yes,0-3,Yes,No,N/A,,,
 314,70.8,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,3.03,2.2,6,No,No,None,N/A,No,N/A,2.497,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-315,85.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Hospice,4.17,1.3,9,No,Yes,H,1.581,No,N/A,3.801,No,No,Yes,500,No,No,0-3,No,No,N/A,14,16,87.50
-316,79.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Disch to SNF,18.10,7.1,16,No,No,None,N/A,Yes,2.493055556,7.451,No,No,Yes,500,No,No,0-3,Yes,No,N/A,5,115,4.35
-317,49.2,Black or African American,M,CEREBRAL INFARCTION,10,Home,2.97,1.6,5,No,Yes,Q,0.656,No,N/A,2.185,No,No,No,500,No,No,4-10,No,No,N/A,,,
-318,85.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,5.10,4.8,11,Yes,No,None,N/A,No,N/A,4.819,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
-319,50.6,White,F,CEREBRAL INFARCTION,14,Home,198.14,168.2,50,Yes,No,None,N/A,Yes,2.794444444,24.349,Yes,No,No,750,No,No,4-10,Yes,Yes,Lamotrigine,,,
+315,85.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Hospice,4.17,1.3,9,No,Yes,H,1.581,No,N/A,3.801,No,No,Yes,500,No,No,0-3,No,No,N/A,14,16,87.5
+316,79.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Disch to SNF,18.1,7.1,16,No,No,None,N/A,Yes,2.493055556,7.451,No,No,Yes,500,No,No,0-3,Yes,No,N/A,5,115,4.35
+317,49.2,Black or African American,M,CEREBRAL INFARCTION,10,Home,2.97,1.6,5,No,Yes,Q,0.656,No,N/A,2.185,No,No,No,500,No,No,10-Apr,No,No,N/A,,,
+318,85.2,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,5.1,4.8,11,Yes,No,None,N/A,No,N/A,4.819,No,No,No,500,Yes,No,0-3,No,No,N/A,,,
+319,50.6,White,F,CEREBRAL INFARCTION,14,Home,198.14,168.2,50,Yes,No,None,N/A,Yes,2.794444444,24.349,Yes,No,No,750,No,No,10-Apr,Yes,Yes,Lamotrigine,,,
 320,83.2,Black or African American,F,CEREBRAL INFARCTION,15,Hospice,52.71,12.5,76,Yes,No,None,N/A,Yes,3.619444444,37.683,No,No,yes,1000,No,No,0-3,Yes,No,N/A,25,300,8.33
-321,33.5,White,M,SUBARACHNOID HEMORRHAGE,14,Home,46.67,37.6,15,Yes,Yes,HQ,4.696,Yes,5.211111111,6.817,Yes,No,No,2000,Yes,Yes,4-10,Yes,No,N/A,,,
-322,51.9,Black or African American,F,Traumatic intracranial injury,9,Disch to Rehab Unit/Facility,23.24,20.5,1,Yes,No,None,N/A,No,N/A,0.000,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
+321,33.5,White,M,SUBARACHNOID HEMORRHAGE,14,Home,46.67,37.6,15,Yes,Yes,HQ,4.696,Yes,5.211111111,6.817,Yes,No,No,2000,Yes,Yes,10-Apr,Yes,No,N/A,,,
+322,51.9,Black or African American,F,Traumatic intracranial injury,9,Disch to Rehab Unit/Facility,23.24,20.5,1,Yes,No,None,N/A,No,N/A,0,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 323,55.3,Black or African American,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,13.01,7.8,26,Yes,Yes,Q,6.952,No,N/A,12.458,Yes,No,Yes,750,Yes,No,0-3,No,Yes,Lacosamide,2,86,2.33
 324,74.4,White,F,CEREBRAL INFARCTION,15,Disch to SNF,17.88,12.5,37,No,No,None,N/A,Yes,0.617083333,17.601,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,5,109,4.59
-325,66.7,Black or African American,M,CEREBRAL INFARCTION,15,Disch to SNF,6.13,4.1,12,No,Yes,QH,0.090,No,N/A,5.487,No,No,No,500,No,No,0-3,No,No,N/A,,,
-326,86.9,Other,F,CEREBRAL INFARCTION,14,Disch to SNF,23.92,22.7,9,No,No,None,N/A,Yes,0.059027778,6.138,No,No,Yes,2000,No,No,4-10,Yes,No,N/A,78,126,61.90
-327,64.0,White,M,Traumatic intracranial injury,15,Hospice,1.92,1.8,1,No,No,None,N/A,No,N/A,0.000,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,8,9,88.89
+325,66.7,Black or African American,M,CEREBRAL INFARCTION,15,Disch to SNF,6.13,4.1,12,No,Yes,QH,0.09,No,N/A,5.487,No,No,No,500,No,No,0-3,No,No,N/A,,,
+326,86.9,Other,F,CEREBRAL INFARCTION,14,Disch to SNF,23.92,22.7,9,No,No,None,N/A,Yes,0.059027778,6.138,No,No,Yes,2000,No,No,10-Apr,Yes,No,N/A,78,126,61.9
+327,64,White,M,Traumatic intracranial injury,15,Hospice,1.92,1.8,1,No,No,None,N/A,No,N/A,0,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,8,9,88.89
 328,44.2,White,F,CEREBRAL INFARCTION,13,Home,2.94,2.8,7,No,No,None,N/A,No,N/A,2.476,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-329,61.9,White,M,CEREBRAL INFARCTION,3,Expired,38.12,5.0,45,Yes,Yes,HQ,2.037,No,N/A,21.533,No,Yes,Yes,1500,Yes,No,0-3,Yes,No,N/A,10,211,4.74
-330,72.2,White,F,SUBARACHNOID HEMORRHAGE,3,Hospice,18.30,18.2,38,No,No,None,N/A,No,N/A,17.767,Yes,No,Yes,750,No,Yes,0-3,Yes,Yes,Lacosamide,47,69,68.12
-331,44.6,White,M,SUBARACHNOID HEMORRHAGE,3,Other,20.23,12.7,37,No,Yes,QH,5.730,No,N/A,19.517,Yes,No,Yes,500,No,No,4-10,Yes,No,N/A,30,146,20.55
+329,61.9,White,M,CEREBRAL INFARCTION,3,Expired,38.12,5,45,Yes,Yes,HQ,2.037,No,N/A,21.533,No,Yes,Yes,1500,Yes,No,0-3,Yes,No,N/A,10,211,4.74
+330,72.2,White,F,SUBARACHNOID HEMORRHAGE,3,Hospice,18.3,18.2,38,No,No,None,N/A,No,N/A,17.767,Yes,No,Yes,750,No,Yes,0-3,Yes,Yes,Lacosamide,47,69,68.12
+331,44.6,White,M,SUBARACHNOID HEMORRHAGE,3,Other,20.23,12.7,37,No,Yes,QH,5.73,No,N/A,19.517,Yes,No,Yes,500,No,No,10-Apr,Yes,No,N/A,30,146,20.55
 332,76.6,White,M,INTRACEREBRAL HEMORRHAGE,15,Other,3.47,3.2,5,Yes,No,None,N/A,No,N/A,2.897,No,No,No,500,No,No,0-3,No,No,N/A,,,
-333,55.0,Black or African American,M,Traumatic intracranial injury,15,Other,4.98,3.2,10,No,No,None,N/A,Yes,0.2625,4.335,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,1,29,3.45
+333,55,Black or African American,M,Traumatic intracranial injury,15,Other,4.98,3.2,10,No,No,None,N/A,Yes,0.2625,4.335,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,1,29,3.45
 334,61.8,Black or African American,F,Traumatic intracranial injury,14,Home,39.15,23.9,78,Yes,Yes,Q,18.296,Yes,0.723611111,38.852,Yes,Yes,Yes,500,Yes,No,0-3,Yes,No,N/A,41,212,19.34
-335,51.8,Other,M,INTRACEREBRAL HEMORRHAGE,8,Disch to Rehab Unit/Facility,7.26,7.2,14,Yes,Yes,Q,5.484,Yes,4.384027778,6.440,No,Yes,No,500,No,No,4-10,Yes,No,N/A,,,
-336,22.1,Other,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,24.36,10.3,15,No,Yes,Q,4.024,Yes,3.952083333,6.960,Yes,No,Yes,750,No,No,0-3,Yes,No,N/A,23,129,17.83
+335,51.8,Other,M,INTRACEREBRAL HEMORRHAGE,8,Disch to Rehab Unit/Facility,7.26,7.2,14,Yes,Yes,Q,5.484,Yes,4.384027778,6.44,No,Yes,No,500,No,No,10-Apr,Yes,No,N/A,,,
+336,22.1,Other,M,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,24.36,10.3,15,No,Yes,Q,4.024,Yes,3.952083333,6.96,Yes,No,Yes,750,No,No,0-3,Yes,No,N/A,23,129,17.83
 337,86.7,White,F,SUBARACHNOID HEMORRHAGE,7,Hospice,3.82,2.7,3,No,No,None,N/A,Yes,0.292361111,0.961,Yes,No,No,750,No,Yes,0-3,Yes,No,N/A,,,
 338,73.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Disch to Rehab Unit/Facility,16.62,6.8,34,No,No,None,N/A,No,N/A,16.022,Yes,No,No,1500,Yes,No,0-3,Yes,No,N/A,,,
 339,67.7,Black or African American,M,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,13.04,12.8,14,No,No,None,N/A,Yes,4.417361111,6.158,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,5,64,7.81
-340,26.7,Other,M,CEREBRAL INFARCTION,11,Disch to Rehab Unit/Facility,17.62,12.7,15,No,Yes,Q,5.213,No,N/A,7.026,Yes,No,Yes,500,Yes,No,4-10,Yes,No,N/A,22,141,15.60
-341,83.0,White,M,SUBARACHNOID HEMORRHAGE,15,Expired,19.38,7.8,13,Yes,No,None,N/A,No,N/A,5.978,No,No,Yes,500,No,No,4-10,Yes,No,N/A,10,98,10.20
-342,77.7,White,F,CEREBRAL INFARCTION,14,Other,12.21,2.0,16,Yes,Yes,Q,2.910,Yes,0.464583333,7.475,Yes,No,No,1000,No,No,0-3,Yes,No,N/A,,,
+340,26.7,Other,M,CEREBRAL INFARCTION,11,Disch to Rehab Unit/Facility,17.62,12.7,15,No,Yes,Q,5.213,No,N/A,7.026,Yes,No,Yes,500,Yes,No,10-Apr,Yes,No,N/A,22,141,15.6
+341,83,White,M,SUBARACHNOID HEMORRHAGE,15,Expired,19.38,7.8,13,Yes,No,None,N/A,No,N/A,5.978,No,No,Yes,500,No,No,10-Apr,Yes,No,N/A,10,98,10.2
+342,77.7,White,F,CEREBRAL INFARCTION,14,Other,12.21,2,16,Yes,Yes,Q,2.91,Yes,0.464583333,7.475,Yes,No,No,1000,No,No,0-3,Yes,No,N/A,,,
 343,76.8,White,F,CEREBRAL INFARCTION,15,Disch to SNF,15.34,6.2,15,Yes,No,None,N/A,Yes,2.327777778,6.938,No,No,Yes,750,No,No,0-3,Yes,No,N/A,4,92,4.35
 344,62.8,Black or African American,M,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,3.79,1.3,7,No,No,None,N/A,No,N/A,3.003,Yes,No,No,500,No,Yes,0-3,Yes,No,N/A,,,
-345,71.0,White,M,CEREBRAL INFARCTION,9,Disch to SNF,38.21,23.0,77,No,Yes,Q,9.492,Yes,5.909027778,37.936,Yes,No,Yes,750,Yes,Yes,4-10,Yes,Yes,VPA,50,258,19.38
+345,71,White,M,CEREBRAL INFARCTION,9,Disch to SNF,38.21,23,77,No,Yes,Q,9.492,Yes,5.909027778,37.936,Yes,No,Yes,750,Yes,Yes,10-Apr,Yes,Yes,VPA,50,258,19.38
 347,43.5,Black or African American,F,SUBARACHNOID HEMORRHAGE,14,Disch to Rehab Unit/Facility,30.53,28.1,60,Yes,No,None,N/A,No,N/A,30.123,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,4,176,2.27
 348,88.2,White,F,INTRACEREBRAL HEMORRHAGE,3,Disch to SNF,12.06,1.2,24,Yes,Yes,H,1.183,No,N/A,11.298,No,No,Yes,500,No,No,0-3,Yes,No,N/A,6,42,14.29
 349,74.9,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,7.35,3.5,4,Yes,No,None,N/A,No,N/A,1.255,No,No,No,250,No,No,0-3,No,No,N/A,,,
-350,45.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,4.88,3.0,10,No,No,None,N/A,Yes,0.760416667,4.490,No,No,Yes,500,Yes,No,0-3,Yes,Yes,Phenytoin,2,59,3.39
-351,95.6,White,M,CEREBRAL INFARCTION,7,Home,4.97,4.0,10,Yes,Yes,Q,1.995,Yes,0.920138889,4.591,No,No,No,500,No,No,0-3,No,No,N/A,,,
+350,45.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Disch to Rehab Unit/Facility,4.88,3,10,No,No,None,N/A,Yes,0.760416667,4.49,No,No,Yes,500,Yes,No,0-3,Yes,Yes,Phenytoin,2,59,3.39
+351,95.6,White,M,CEREBRAL INFARCTION,7,Home,4.97,4,10,Yes,Yes,Q,1.995,Yes,0.920138889,4.591,No,No,No,500,No,No,0-3,No,No,N/A,,,
 352,87.3,White,F,Traumatic intracranial injury,12,Disch to SNF,13.19,7.4,17,No,No,None,N/A,No,N/A,7.901,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-353,54.0,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,24.09,18.6,15,No,Yes,RQ,3.268,No,N/A,6.793,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
-355,89.1,White,F,INTRACEREBRAL HEMORRHAGE,10,Home,5.83,1.6,2,No,Yes,Q,0.655,No,N/A,0.440,No,No,No,500,No,No,0-3,No,No,N/A,,,
+353,54,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,24.09,18.6,15,No,Yes,RQ,3.268,No,N/A,6.793,Yes,No,No,500,No,No,0-3,Yes,No,N/A,,,
+355,89.1,White,F,INTRACEREBRAL HEMORRHAGE,10,Home,5.83,1.6,2,No,Yes,Q,0.655,No,N/A,0.44,No,No,No,500,No,No,0-3,No,No,N/A,,,
 356,72.9,White,F,INTRACEREBRAL HEMORRHAGE,13,Hospice,4.98,1.3,11,No,Yes,H,2.603,No,N/A,4.604,No,No,Yes,1000,No,No,0-3,Yes,No,N/A,5,15,33.33
 357,63.3,Black or African American,F,Traumatic intracranial injury,7,Disch to SNF,24.87,15.1,50,Yes,Yes,Q,11.245,Yes,0.6125,24.753,Yes,Yes,Yes,750,No,No,0-3,No,No,N/A,15,144,10.42
 358,69.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,5,Home,5.22,2.1,10,No,Yes,HQ,0.799,Yes,0.916666667,4.528,Yes,No,Yes,1000,Yes,Yes,0-3,No,No,N/A,1,49,2.04
-359,66.5,White,F,INTRACEREBRAL HEMORRHAGE,13,Expired,3.22,0.4,1,Yes,No,None,N/A,No,N/A,0.000,Yes,No,Yes,2000,No,No,4-10,Yes,No,N/A,5,25,20.00
-360,66.1,Black or African American,M,CEREBRAL INFARCTION,6,Home,6.18,3.1,14,Yes,Yes,H,0.513,No,N/A,5.960,No,Yes,No,500,No,No,0-3,No,No,N/A,,,
-361,25.2,White,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,40.17,39.7,39,No,Yes,OQ,14.301,Yes,8.45763889,19.520,No,No,Yes,500,Yes,No,0-3,Yes,Yes,VPA,101,466,21.67
+359,66.5,White,F,INTRACEREBRAL HEMORRHAGE,13,Expired,3.22,0.4,1,Yes,No,None,N/A,No,N/A,0,Yes,No,Yes,2000,No,No,10-Apr,Yes,No,N/A,5,25,20
+360,66.1,Black or African American,M,CEREBRAL INFARCTION,6,Home,6.18,3.1,14,Yes,Yes,H,0.513,No,N/A,5.96,No,Yes,No,500,No,No,0-3,No,No,N/A,,,
+361,25.2,White,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,40.17,39.7,39,No,Yes,OQ,14.301,Yes,8.45763889,19.52,No,No,Yes,500,Yes,No,0-3,Yes,Yes,VPA,101,466,21.67
 362,85.7,White,F,INTRACEREBRAL HEMORRHAGE,15,Hospice,16.62,0.5,30,Yes,Yes,HO,2.081,No,N/A,16.061,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,1,56,1.79
-363,82.8,White,F,INTRACEREBRAL HEMORRHAGE,10,Hospice,2.14,2.0,2,Yes,No,None,N/A,No,N/A,1.571,No,No,Yes,500,No,No,4-10,No,No,N/A,2,8,25.00
+363,82.8,White,F,INTRACEREBRAL HEMORRHAGE,10,Hospice,2.14,2,2,Yes,No,None,N/A,No,N/A,1.571,No,No,Yes,500,No,No,10-Apr,No,No,N/A,2,8,25
 364,84.8,Other,M,INTRACEREBRAL HEMORRHAGE,14,Hospice,4.78,4.7,9,Yes,No,None,N/A,No,N/A,4.028,No,Yes,No,1000,No,No,0-3,Yes,No,N/A,,,
 365,59.2,White,M,INTRACEREBRAL HEMORRHAGE,7,Expired,11.85,9.2,16,Yes,No,None,N/A,No,N/A,8.135,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,26,71,36.62
-366,19.2,White,M,CEREBRAL INFARCTION,12,Home,12.46,8.4,14,No,Yes,QH,2.263,Yes,0.008333333,6.550,Yes,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,27,198,13.64
+366,19.2,White,M,CEREBRAL INFARCTION,12,Home,12.46,8.4,14,No,Yes,QH,2.263,Yes,0.008333333,6.55,Yes,No,Yes,1000,Yes,No,0-3,Yes,No,N/A,27,198,13.64
 367,56.7,Black or African American,F,SUBARACHNOID HEMORRHAGE,14,Disch to SNF,11.32,8.2,17,Yes,Yes,Q,6.531,Yes,0.052777778,11.009,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,14,60,23.33
-368,57.7,White,F,CEREBRAL INFARCTION,10,Home,2.63,2.1,6,No,Yes,R,0.447,No,N/A,2.113,No,No,No,1500,No,No,4-10,Yes,No,N/A,,,
-369,55.0,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Expired,15.88,15.8,28,Yes,No,None,N/A,No,N/A,12.966,No,No,Yes,750,Yes,No,0-3,Yes,No,N/A,78,84,92.86
-370,55.3,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,11.86,6.8,24,No,Yes,Q,3.542,Yes,5.390277778,11.480,Yes,No,Yes,1000,Yes,Yes,0-3,Yes,No,N/A,3,86,3.49
-371,60.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Home,11.27,5.1,6,No,Yes,Q,1.885,No,N/A,2.520,Yes,Yes,Yes,500,Yes,Yes,0-3,Yes,Yes,"Phenytoin, VPA",13,83,15.66
+368,57.7,White,F,CEREBRAL INFARCTION,10,Home,2.63,2.1,6,No,Yes,R,0.447,No,N/A,2.113,No,No,No,1500,No,No,10-Apr,Yes,No,N/A,,,
+369,55,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Expired,15.88,15.8,28,Yes,No,None,N/A,No,N/A,12.966,No,No,Yes,750,Yes,No,0-3,Yes,No,N/A,78,84,92.86
+370,55.3,White,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,11.86,6.8,24,No,Yes,Q,3.542,Yes,5.390277778,11.48,Yes,No,Yes,1000,Yes,Yes,0-3,Yes,No,N/A,3,86,3.49
+371,60.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Home,11.27,5.1,6,No,Yes,Q,1.885,No,N/A,2.52,Yes,Yes,Yes,500,Yes,Yes,0-3,Yes,Yes,"Phenytoin, VPA",13,83,15.66
 372,64.2,Black or African American,M,INTRACEREBRAL HEMORRHAGE,6,Other,6.11,3.9,5,No,Yes,HQ,0.565,No,N/A,5.485,No,No,No,500,No,No,0-3,No,No,N/A,,,
-374,24.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Other,44.43,35.0,31,No,No,None,N/A,No,N/A,14.733,No,Yes,Yes,1500,Yes,No,0-3,Yes,No,N/A,67,231,29.00
-375,76.4,White,F,Traumatic intracranial injury,4,Expired,1.58,1.5,3,No,No,None,N/A,No,N/A,1.038,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,6,6,100.00
-376,75.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Hospice,14.44,11.8,6,No,No,None,N/A,No,N/A,2.410,Yes,No,Yes,500,No,No,4-10,Yes,No,N/A,30,72,41.67
-377,59.8,Black or African American,M,Traumatic intracranial injury,7,Disch to SNF,7.60,2.3,16,Yes,Yes,H,1.082,No,N/A,7.281,No,No,No,1000,Yes,No,0-3,No,No,N/A,,,
+374,24.1,Black or African American,M,INTRACEREBRAL HEMORRHAGE,3,Other,44.43,35,31,No,No,None,N/A,No,N/A,14.733,No,Yes,Yes,1500,Yes,No,0-3,Yes,No,N/A,67,231,29
+375,76.4,White,F,Traumatic intracranial injury,4,Expired,1.58,1.5,3,No,No,None,N/A,No,N/A,1.038,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,6,6,100
+376,75.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Hospice,14.44,11.8,6,No,No,None,N/A,No,N/A,2.41,Yes,No,Yes,500,No,No,10-Apr,Yes,No,N/A,30,72,41.67
+377,59.8,Black or African American,M,Traumatic intracranial injury,7,Disch to SNF,7.6,2.3,16,Yes,Yes,H,1.082,No,N/A,7.281,No,No,No,1000,Yes,No,0-3,No,No,N/A,,,
 378,16.5,White,F,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,20.88,6.4,15,No,No,None,N/A,Yes,4.299305556,6.936,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,18,162,11.11
 379,81.3,White,M,INTRACEREBRAL HEMORRHAGE,3,Expired,5.55,3.7,12,No,Yes,H,3.868,No,N/A,5.372,No,No,Yes,500,No,No,0-3,Yes,No,N/A,9,14,64.29
-380,59.6,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,17.00,16.7,14,No,Yes,Q,3.049,Yes,0.213194444,6.262,Yes,No,Yes,1000,No,No,4-10,Yes,No,N/A,15,161,9.32
-381,35.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,59.68,33.5,15,No,No,None,N/A,Yes,6.324305556,51.931,No,No,Yes,1000,No,No,4-10,Yes,No,N/A,135,441,30.61
+380,59.6,Black or African American,F,Traumatic intracranial injury,3,Disch to Rehab Unit/Facility,17,16.7,14,No,Yes,Q,3.049,Yes,0.213194444,6.262,Yes,No,Yes,1000,No,No,10-Apr,Yes,No,N/A,15,161,9.32
+381,35.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,59.68,33.5,15,No,No,None,N/A,Yes,6.324305556,51.931,No,No,Yes,1000,No,No,10-Apr,Yes,No,N/A,135,441,30.61
 382,76.7,White,F,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,18.71,18.6,14,No,No,None,N/A,Yes,5.285416667,6.857,No,No,Yes,500,No,No,0-3,No,No,N/A,49,99,49.49
 383,67.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,2,Expired,21.42,14.2,20,No,Yes,Q,1.739,No,N/A,9.223,No,No,Yes,750,Yes,No,0-3,Yes,Yes,Lacosamide,23,136,16.91
 384,81.2,Black or African American,M,Traumatic intracranial injury,7,Expired,17.51,10.5,20,No,No,None,N/A,Yes,3.184027778,9.629,No,No,Yes,750,No,No,0-3,Yes,No,N/A,48,124,38.71
-385,57.6,White,F,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,17.79,17.4,22,No,No,None,N/A,No,N/A,9.436,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,46,122,37.70
-386,53.3,White,M,CEREBRAL INFARCTION,15,Home,3.07,2.9,1,No,No,None,N/A,No,N/A,0.000,No,Yes,No,500,No,Yes,4-10,No,Yes,Lamotrigine,,,
-387,70.8,Black or African American,M,Traumatic intracranial injury,14,Home,4.12,2.4,1,Yes,No,None,N/A,No,N/A,0.000,No,No,No,1000,No,No,0-3,Yes,No,N/A,,,
-388,40.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Home,4.30,1.7,4,No,No,None,N/A,No,N/A,1.669,Yes,No,No,500,Yes,No,4-10,No,No,N/A,,,
+385,57.6,White,F,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,17.79,17.4,22,No,No,None,N/A,No,N/A,9.436,Yes,No,Yes,750,Yes,No,0-3,Yes,No,N/A,46,122,37.7
+386,53.3,White,M,CEREBRAL INFARCTION,15,Home,3.07,2.9,1,No,No,None,N/A,No,N/A,0,No,Yes,No,500,No,Yes,10-Apr,No,Yes,Lamotrigine,,,
+387,70.8,Black or African American,M,Traumatic intracranial injury,14,Home,4.12,2.4,1,Yes,No,None,N/A,No,N/A,0,No,No,No,1000,No,No,0-3,Yes,No,N/A,,,
+388,40.7,Black or African American,F,INTRACEREBRAL HEMORRHAGE,3,Home,4.3,1.7,4,No,No,None,N/A,No,N/A,1.669,Yes,No,No,500,Yes,No,10-Apr,No,No,N/A,,,
 389,76.1,Unknown-Unable to Communicate,M,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,6.06,5.2,13,Yes,Yes,Q,1.278,Yes,1.761805556,5.386,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
-390,27.4,White,M,Traumatic intracranial injury,11,Home,10.04,6.9,16,No,No,None,N/A,Yes,1.972222222,7.701,No,No,Yes,1000,No,No,4-10,Yes,No,N/A,3,58,5.17
+390,27.4,White,M,Traumatic intracranial injury,11,Home,10.04,6.9,16,No,No,None,N/A,Yes,1.972222222,7.701,No,No,Yes,1000,No,No,10-Apr,Yes,No,N/A,3,58,5.17
 391,65.3,White,F,Traumatic intracranial injury,6,Hospice,20.69,17.1,43,No,No,None,N/A,Yes,16.31319444,20.428,No,No,Yes,500,Yes,Yes,0-3,Yes,Yes,"Topiramate, VPA",66,123,53.66
-392,83.0,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,8.85,8.4,5,No,No,None,N/A,No,N/A,1.962,Yes,No,No,500,No,No,4-10,Yes,No,N/A,,,
+392,83,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,8.85,8.4,5,No,No,None,N/A,No,N/A,1.962,Yes,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
 393,83.4,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Home,6.15,1.9,12,Yes,No,None,N/A,No,N/A,5.642,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 394,41.2,Black or African American,F,Traumatic intracranial injury,15,Home,34.06,13.8,14,No,No,None,N/A,No,N/A,6.198,Yes,No,No,1750,No,No,0-3,Yes,No,N/A,,,
-395,58.6,Black or African American,M,SUBARACHNOID HEMORRHAGE,11,Home,1.80,1.7,1,No,No,None,N/A,No,N/A,0.000,Yes,No,No,500,No,Yes,0-3,Yes,No,N/A,,,
-396,60.5,White,M,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,16.34,7.3,18,No,Yes,QH,0.842,Yes,0.665972222,8.220,Yes,No,No,750,Yes,Yes,4-10,Yes,Yes,Topiramate,,,
-397,63.2,Black or African American,F,Traumatic intracranial injury,14,Disch to SNF,38.37,12.0,13,No,No,None,N/A,No,N/A,5.963,Yes,No,Yes,500,No,Yes,0-3,Yes,No,N/A,3,250,1.20
-398,16.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,9,Disch to Rehab Unit/Facility,24.32,20.0,18,No,No,None,N/A,Yes,4.132638889,7.483,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,146,5.48
-399,66.8,Black or African American,M,Traumatic intracranial injury,4,Expired,1.68,1.6,4,No,No,None,N/A,No,N/A,2.525,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,16,16,100.00
-400,20.0,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,25.96,16.7,14,No,Yes,Q,4.836,No,N/A,6.247,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,14,259,5.41
-401,71.3,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,3.95,3.8,5,Yes,No,None,N/A,No,N/A,1.767,Yes,No,No,500,Yes,No,4-10,No,Yes,Phenytoin,,,
-402,28.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,7.80,7.8,15,No,Yes,HQ,3.185,No,N/A,6.984,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,18,116,15.52
-403,16.8,White,F,INTRACEREBRAL HEMORRHAGE,10,Disch to Rehab Unit/Facility,54.42,30.9,111,No,Yes,QR,14.621,Yes,1.236805556,54.276,No,No,Yes,500,Yes,No,4-10,Yes,No,N/A,38,437,8.70
-404,71.3,White,F,Traumatic intracranial injury,6,Home,7.07,6.0,6,Yes,Yes,Q,0.197,No,N/A,2.190,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-406,31.5,Black or African American,F,CEREBRAL INFARCTION,9,Hospice,38.03,26.7,14,Yes,No,None,N/A,No,N/A,6.561,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,133,152,87.50
+395,58.6,Black or African American,M,SUBARACHNOID HEMORRHAGE,11,Home,1.8,1.7,1,No,No,None,N/A,No,N/A,0,Yes,No,No,500,No,Yes,0-3,Yes,No,N/A,,,
+396,60.5,White,M,CEREBRAL INFARCTION,10,Disch to Rehab Unit/Facility,16.34,7.3,18,No,Yes,QH,0.842,Yes,0.665972222,8.22,Yes,No,No,750,Yes,Yes,10-Apr,Yes,Yes,Topiramate,,,
+397,63.2,Black or African American,F,Traumatic intracranial injury,14,Disch to SNF,38.37,12,13,No,No,None,N/A,No,N/A,5.963,Yes,No,Yes,500,No,Yes,0-3,Yes,No,N/A,3,250,1.2
+398,16.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,9,Disch to Rehab Unit/Facility,24.32,20,18,No,No,None,N/A,Yes,4.132638889,7.483,No,No,Yes,500,Yes,No,0-3,Yes,No,N/A,8,146,5.48
+399,66.8,Black or African American,M,Traumatic intracranial injury,4,Expired,1.68,1.6,4,No,No,None,N/A,No,N/A,2.525,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,16,16,100
+400,20,Black or African American,F,INTRACEREBRAL HEMORRHAGE,6,Disch to Rehab Unit/Facility,25.96,16.7,14,No,Yes,Q,4.836,No,N/A,6.247,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,14,259,5.41
+401,71.3,White,F,INTRACEREBRAL HEMORRHAGE,15,Home,3.95,3.8,5,Yes,No,None,N/A,No,N/A,1.767,Yes,No,No,500,Yes,No,10-Apr,No,Yes,Phenytoin,,,
+402,28.7,Black or African American,M,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,7.8,7.8,15,No,Yes,HQ,3.185,No,N/A,6.984,Yes,No,Yes,750,Yes,Yes,0-3,Yes,No,N/A,18,116,15.52
+403,16.8,White,F,INTRACEREBRAL HEMORRHAGE,10,Disch to Rehab Unit/Facility,54.42,30.9,111,No,Yes,QR,14.621,Yes,1.236805556,54.276,No,No,Yes,500,Yes,No,10-Apr,Yes,No,N/A,38,437,8.7
+404,71.3,White,F,Traumatic intracranial injury,6,Home,7.07,6,6,Yes,Yes,Q,0.197,No,N/A,2.19,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
+406,31.5,Black or African American,F,CEREBRAL INFARCTION,9,Hospice,38.03,26.7,14,Yes,No,None,N/A,No,N/A,6.561,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,133,152,87.5
 407,61.8,Black or African American,M,Traumatic intracranial injury,6,Home,19.84,11.8,14,No,Yes,HQ,5.174,No,N/A,6.131,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,3,134,2.24
-408,24.0,Black or African American,F,Traumatic intracranial injury,14,Home,13.15,12.9,15,No,No,None,N/A,No,N/A,6.597,Yes,No,No,500,Yes,No,4-10,Yes,Yes,VPA,,,
+408,24,Black or African American,F,Traumatic intracranial injury,14,Home,13.15,12.9,15,No,No,None,N/A,No,N/A,6.597,Yes,No,No,500,Yes,No,10-Apr,Yes,Yes,VPA,,,
 409,54.5,White,F,Traumatic intracranial injury,15,Expired,16.27,16.2,30,No,No,None,N/A,No,N/A,15.786,Yes,No,Yes,1250,Yes,No,0-3,Yes,No,N/A,64,66,96.97
 410,60.5,Black or African American,F,Traumatic intracranial injury,4,Home,20.45,11.5,15,No,Yes,Q,5.466,No,N/A,6.981,No,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,4,162,2.47
-411,82.8,White,F,CEREBRAL INFARCTION,15,Disch to SNF,12.38,4.2,14,Yes,No,None,N/A,No,N/A,6.585,No,No,Yes,500,No,No,4-10,Yes,No,N/A,8,94,8.51
-412,92.0,White,M,Traumatic intracranial injury,6,Disch to SNF,10.30,9.4,4,Yes,No,None,N/A,No,N/A,0.968,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
-413,30.3,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Expired,0.50,0.4,3,No,No,None,N/A,Yes,0.09375,0.694,Yes,No,Yes,500,No,No,0-3,No,No,N/A,7,7,100.00
-415,41.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Expired,0.53,0.4,2,No,No,None,N/A,Yes,0.099305556,0.281,No,No,Yes,500,No,No,0-3,No,No,N/A,18,18,100.00
-417,58.0,Black or African American,F,CEREBRAL INFARCTION,11,Disch to Rehab Unit/Facility,20.80,16.2,13,Yes,No,None,N/A,No,N/A,5.953,No,No,No,500,No,No,4-10,Yes,No,N/A,,,
+411,82.8,White,F,CEREBRAL INFARCTION,15,Disch to SNF,12.38,4.2,14,Yes,No,None,N/A,No,N/A,6.585,No,No,Yes,500,No,No,10-Apr,Yes,No,N/A,8,94,8.51
+412,92,White,M,Traumatic intracranial injury,6,Disch to SNF,10.3,9.4,4,Yes,No,None,N/A,No,N/A,0.968,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
+413,30.3,Black or African American,M,INTRACEREBRAL HEMORRHAGE,13,Expired,0.5,0.4,3,No,No,None,N/A,Yes,0.09375,0.694,Yes,No,Yes,500,No,No,0-3,No,No,N/A,7,7,100
+415,41.9,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Expired,0.53,0.4,2,No,No,None,N/A,Yes,0.099305556,0.281,No,No,Yes,500,No,No,0-3,No,No,N/A,18,18,100
+417,58,Black or African American,F,CEREBRAL INFARCTION,11,Disch to Rehab Unit/Facility,20.8,16.2,13,Yes,No,None,N/A,No,N/A,5.953,No,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
 418,46.6,Black or African American,F,CEREBRAL INFARCTION,7,Disch to Rehab Unit/Facility,20.87,20.6,13,No,Yes,Q,5.001,Yes,4.913194444,6.005,Yes,Yes,No,750,Yes,No,0-3,Yes,No,N/A,,,
 419,82.3,Black or African American,M,SUBARACHNOID HEMORRHAGE,7,Disch to Rehab Unit/Facility,2.29,1.1,5,Yes,No,None,N/A,No,N/A,2.026,No,No,No,500,No,No,0-3,No,No,N/A,,,
-420,64.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,15.80,11.1,24,Yes,No,None,N/A,No,N/A,11.392,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,4,102,3.92
+420,64.2,White,F,INTRACEREBRAL HEMORRHAGE,14,Disch to Rehab Unit/Facility,15.8,11.1,24,Yes,No,None,N/A,No,N/A,11.392,No,No,Yes,500,No,No,0-3,Yes,Yes,VPA,4,102,3.92
 421,68.7,White,F,Traumatic intracranial injury,10,Disch to SNF,30.66,20.2,12,Yes,No,None,N/A,Yes,1.434027778,5.513,Yes,No,Yes,500,No,No,0-3,Yes,No,N/A,44,231,19.05
-422,56.7,White,F,SUBARACHNOID HEMORRHAGE,10,Home,15.29,12.5,14,No,No,None,N/A,No,N/A,6.460,Yes,No,Yes,500,No,No,4-10,Yes,No,N/A,1,128,0.78
-423,66.0,White,M,CEREBRAL INFARCTION,15,Other,5.84,3.1,12,No,Yes,Q,2.147,No,N/A,5.465,No,No,No,500,Yes,Yes,4-10,No,No,N/A,,,
+422,56.7,White,F,SUBARACHNOID HEMORRHAGE,10,Home,15.29,12.5,14,No,No,None,N/A,No,N/A,6.46,Yes,No,Yes,500,No,No,10-Apr,Yes,No,N/A,1,128,0.78
+423,66,White,M,CEREBRAL INFARCTION,15,Other,5.84,3.1,12,No,Yes,Q,2.147,No,N/A,5.465,No,No,No,500,Yes,Yes,10-Apr,No,No,N/A,,,
 424,76.9,White,M,Traumatic intracranial injury,15,Disch to Rehab Unit/Facility,16.77,9.7,24,Yes,Yes,H,1.769,No,N/A,16.276,Yes,No,Yes,1000,No,No,0-3,Yes,No,N/A,6,131,4.58
 425,63.7,White,M,Traumatic intracranial injury,3,Hospice,13.01,12.9,28,No,No,None,N/A,Yes,0.395833333,12.544,Yes,No,Yes,500,Yes,No,0-3,Yes,Yes,Carbamazepine,15,57,26.32
-426,74.2,White,M,Traumatic intracranial injury,10,Disch to SNF,33.13,16.5,28,Yes,Yes,HQ,2.123,No,N/A,32.739,Yes,No,No,500,Yes,No,4-10,Yes,Yes,VPA,,,
+426,74.2,White,M,Traumatic intracranial injury,10,Disch to SNF,33.13,16.5,28,Yes,Yes,HQ,2.123,No,N/A,32.739,Yes,No,No,500,Yes,No,10-Apr,Yes,Yes,VPA,,,
 427,60.5,White,M,SUBARACHNOID HEMORRHAGE,15,Home,7.04,5.7,14,Yes,No,None,N/A,Yes,2.249305556,6.317,Yes,No,No,250,Yes,Yes,0-3,No,No,N/A,,,
-430,27.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,98.01,22.2,17,No,No,None,N/A,Yes,6.002083333,7.505,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,147,642,22.90
+430,27.2,Black or African American,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,98.01,22.2,17,No,No,None,N/A,Yes,6.002083333,7.505,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,147,642,22.9
 431,19.4,Other,M,Traumatic intracranial injury,4,Expired,14.73,14.3,31,No,No,None,N/A,No,N/A,14.549,Yes,No,No,500,Yes,No,0-3,Yes,No,N/A,,,
-432,38.7,Other,M,Traumatic intracranial injury,7,Home,6.25,3.8,11,No,Yes,O,0.000,No,N/A,5.517,No,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
-433,57.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Hospice,21.20,21.1,14,Yes,No,None,N/A,Yes,5.834722222,6.425,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,22,223,9.87
-434,55.6,White,M,INTRACEREBRAL HEMORRHAGE,3,Home,23.61,23.1,14,No,No,None,N/A,No,N/A,6.499,Yes,No,No,1000,No,No,4-10,Yes,Yes,Lamotrigine,,,
-436,60.0,White,F,INTRACEREBRAL HEMORRHAGE,3,Home,13.34,13.0,27,No,No,None,N/A,No,N/A,12.769,Yes,No,No,500,Yes,No,4-10,Yes,No,N/A,,,
-437,49.4,White,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,16.45,6.5,16,No,No,None,N/A,Yes,1.71875,7.435,Yes,No,No,500,No,Yes,4-10,Yes,No,N/A,,,
+432,38.7,Other,M,Traumatic intracranial injury,7,Home,6.25,3.8,11,No,Yes,O,0,No,N/A,5.517,No,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+433,57.5,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Hospice,21.2,21.1,14,Yes,No,None,N/A,Yes,5.834722222,6.425,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,22,223,9.87
+434,55.6,White,M,INTRACEREBRAL HEMORRHAGE,3,Home,23.61,23.1,14,No,No,None,N/A,No,N/A,6.499,Yes,No,No,1000,No,No,10-Apr,Yes,Yes,Lamotrigine,,,
+436,60,White,F,INTRACEREBRAL HEMORRHAGE,3,Home,13.34,13,27,No,No,None,N/A,No,N/A,12.769,Yes,No,No,500,Yes,No,10-Apr,Yes,No,N/A,,,
+437,49.4,White,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,16.45,6.5,16,No,No,None,N/A,Yes,1.71875,7.435,Yes,No,No,500,No,Yes,10-Apr,Yes,No,N/A,,,
 438,67.8,White,M,INTRACEREBRAL HEMORRHAGE,15,Disch to Rehab Unit/Facility,18.29,13.6,15,No,Yes,HQ,3.911,Yes,6.771527778,7.849,No,No,Yes,750,No,No,0-3,Yes,No,N/A,14,215,6.51
 439,80.6,Black or African American,F,INTRACEREBRAL HEMORRHAGE,11,Home,4.61,1.8,10,Yes,Yes,Q,0.504,Yes,0.420833333,4.499,No,No,No,500,No,No,0-3,Yes,No,N/A,,,
 440,39.3,White,M,INTRACEREBRAL HEMORRHAGE,15,Home,3.95,1.6,8,No,No,None,N/A,No,N/A,3.424,No,Yes,No,500,No,No,0-3,Yes,No,N/A,,,
 441,73.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Hospice,17.35,17.3,11,Yes,No,None,N/A,No,N/A,4.906,No,No,Yes,1000,No,No,0-3,Yes,Yes,Lacosamide,11,99,11.11
-442,66.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,4,Disch to SNF,7.85,3.6,8,No,No,None,N/A,No,N/A,6.871,Yes,No,No,750,No,Yes,4-10,Yes,No,N/A,,,
-443,44.0,White,F,INTRACEREBRAL HEMORRHAGE,13,Home,25.80,21.9,15,Yes,No,None,N/A,Yes,3.635416667,6.220,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,28,345,8.12
+442,66.3,Black or African American,F,INTRACEREBRAL HEMORRHAGE,4,Disch to SNF,7.85,3.6,8,No,No,None,N/A,No,N/A,6.871,Yes,No,No,750,No,Yes,10-Apr,Yes,No,N/A,,,
+443,44,White,F,INTRACEREBRAL HEMORRHAGE,13,Home,25.8,21.9,15,Yes,No,None,N/A,Yes,3.635416667,6.22,Yes,No,Yes,500,Yes,Yes,0-3,Yes,No,N/A,28,345,8.12
 444,80.4,Black or African American,M,INTRACEREBRAL HEMORRHAGE,15,Disch to SNF,19.78,4.6,36,Yes,No,None,N/A,Yes,0.617361111,16.621,No,No,Yes,1500,No,No,0-3,Yes,No,N/A,1,134,0.75
-445,85.4,Black or African American,M,CEREBRAL INFARCTION,15,Expired,20.30,20.0,35,No,Yes,QH,3.765,Yes,1.665277778,18.258,No,No,Yes,500,Yes,No,0-3,Yes,Yes,Lacosamide,53,128,41.41
-446,55.8,Black or African American,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,22.36,19.1,14,Yes,No,None,N/A,Yes,6.24375,6.310,No,Yes,Yes,750,No,No,0-3,Yes,No,N/A,7,213,3.29
-447,54.6,White,F,SUBARACHNOID HEMORRHAGE,3,Expired,4.28,3.3,7,Yes,Yes,H,0.528,Yes,0.518055556,3.010,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,7,34,20.59
-449,53.6,Other,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,17.17,16.8,11,Yes,No,None,N/A,No,N/A,4.951,Yes,No,No,500,No,No,4-10,Yes,No,N/A,,,
-450,84.0,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,27.02,24.3,56,Yes,No,None,N/A,Yes,21.72430556,26.795,No,No,Yes,1500,Yes,No,0-3,Yes,No,N/A,38,178,21.35
-451,39.0,Black or African American,F,INTRACEREBRAL HEMORRHAGE,10,Disch to Rehab Unit/Facility,57.00,46.6,32,No,No,None,N/A,Yes,16.38263889,28.960,No,No,Yes,500,Yes,No,4-10,Yes,Yes,"Phenytoin, lacosamide",31,461,6.72
-452,66.4,Black or African American,F,CEREBRAL INFARCTION,15,Home,4.88,2.0,10,Yes,No,None,N/A,No,N/A,4.339,No,No,No,500,No,No,4-10,No,No,N/A,,,
+445,85.4,Black or African American,M,CEREBRAL INFARCTION,15,Expired,20.3,20,35,No,Yes,QH,3.765,Yes,1.665277778,18.258,No,No,Yes,500,Yes,No,0-3,Yes,Yes,Lacosamide,53,128,41.41
+446,55.8,Black or African American,M,CEREBRAL INFARCTION,15,Disch to Rehab Unit/Facility,22.36,19.1,14,Yes,No,None,N/A,Yes,6.24375,6.31,No,Yes,Yes,750,No,No,0-3,Yes,No,N/A,7,213,3.29
+447,54.6,White,F,SUBARACHNOID HEMORRHAGE,3,Expired,4.28,3.3,7,Yes,Yes,H,0.528,Yes,0.518055556,3.01,Yes,No,Yes,500,Yes,No,0-3,Yes,No,N/A,7,34,20.59
+449,53.6,Other,M,SUBARACHNOID HEMORRHAGE,15,Disch to Rehab Unit/Facility,17.17,16.8,11,Yes,No,None,N/A,No,N/A,4.951,Yes,No,No,500,No,No,10-Apr,Yes,No,N/A,,,
+450,84,Black or African American,F,SUBARACHNOID HEMORRHAGE,15,Disch to SNF,27.02,24.3,56,Yes,No,None,N/A,Yes,21.72430556,26.795,No,No,Yes,1500,Yes,No,0-3,Yes,No,N/A,38,178,21.35
+451,39,Black or African American,F,INTRACEREBRAL HEMORRHAGE,10,Disch to Rehab Unit/Facility,57,46.6,32,No,No,None,N/A,Yes,16.38263889,28.96,No,No,Yes,500,Yes,No,10-Apr,Yes,Yes,"Phenytoin, lacosamide",31,461,6.72
+452,66.4,Black or African American,F,CEREBRAL INFARCTION,15,Home,4.88,2,10,Yes,No,None,N/A,No,N/A,4.339,No,No,No,500,No,No,10-Apr,No,No,N/A,,,
 453,92.8,White,F,CEREBRAL INFARCTION,3,Disch to SNF,3.89,2.8,8,No,Yes,Q,1.619,No,N/A,3.265,Yes,No,No,500,No,No,0-3,No,No,N/A,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

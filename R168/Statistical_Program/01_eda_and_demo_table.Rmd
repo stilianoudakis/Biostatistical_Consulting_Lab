@@ -45,7 +45,7 @@ pwbe <- read.csv("keppra_data_with_behavior_v3.csv",
                 #               rep("character",2)))
 
 dim(pwbe)
-#453  30
+#415  30
 
 table(unlist(lapply(pwbe,class)))
 #character   integer   numeric 
@@ -60,7 +60,7 @@ pwobe <- read.csv("keppra_data_without_behavior_v3.csv",
                 header = TRUE,
                 na.strings='N/A',
                 stringsAsFactors = FALSE,
-                nrows = 512)
+                nrows = 550)
                 #colClasses = c(rep("numeric",2),
                 #               rep("character",3),
                 #               rep("numeric",1),
@@ -68,7 +68,7 @@ pwobe <- read.csv("keppra_data_without_behavior_v3.csv",
                 #               rep("numeric",3)))
 
 dim(pwobe)
-#512  22
+#550  22
 
 table(unlist(lapply(pwobe,class)))
 #character   integer   numeric 
@@ -83,7 +83,6 @@ keppra_demo <- rbind.data.frame(pwbe[,names(pwbe) %in% intersect(names(pwbe), na
 
 dim(keppra_demo)
 #965  22
-#927  26
 
 keppra_demo$BehavioralEvent <- c(rep("Yes", dim(pwbe)[1]),
                                  rep("No", dim(pwobe)[1]))
@@ -112,7 +111,7 @@ names(keppra_demo) <- c("ID",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
                         "Times_RASS_less_neg3",
-                        #"Times_RASS_evaluated",
+                        "Times_RASS_evaluated",
                         "Percent_RASS_less_neg3",
                         "Behavioral_Event")
 ```
@@ -217,7 +216,7 @@ tableOne <- CreateTableOne(vars = c("Age",
                         "Concurrent_AED",
                         "AED_Received_while_on_Keppra",
                         "Times_RASS_less_neg3",
-                        #"Times_RASS_evaluated",
+                        "Times_RASS_evaluated",
                         "Percent_RASS_less_neg3"
                         ),
                strata = "Behavioral_Event",
