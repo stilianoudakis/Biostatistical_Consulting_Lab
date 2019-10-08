@@ -57,7 +57,7 @@ pwobe <- read.csv("keppra_data_without_behavior_v3.csv",
                 header = TRUE,
                 na.strings='N/A',
                 stringsAsFactors = FALSE,
-                nrows = 512)
+                nrows = 550)
 
 dim(pwobe)
 #512  22
