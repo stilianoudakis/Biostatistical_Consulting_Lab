@@ -203,6 +203,7 @@ keppra_demo$Median_Keppra_Dose_cat <- factor(keppra_demo$Median_Keppra_Dose_cat,
 
 table(keppra_demo$Median_Keppra_Dose_cat)
 
+keppra_demo$Diagnosis <- factor(keppra_demo$Diagnosis)
 ```
 
 
@@ -210,7 +211,7 @@ table(keppra_demo$Median_Keppra_Dose_cat)
 
 ```{r}
 
-model1 <- glm(Behavioral_Event ~ Rass_less_than_3 + Received_Benzo + Pain_Scores + Received_IV_opioid + Concurrent_AED + Median_Keppra_Dose_cat,
+model1 <- glm(Behavioral_Event ~ Rass_less_than_3 + Received_Benzo + Pain_Scores + Received_IV_opioid + Concurrent_AED + Median_Keppra_Dose_cat + Diagnosis,
               family=binomial(link='logit'),
               data=keppra_demo)
 summary(model1)
